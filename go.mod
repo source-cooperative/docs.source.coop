@@ -1,5 +1,5 @@
 module github.com/repo/path
 
-go 1.21.4
+go 1.23
 
 require github.com/alex-shpak/hugo-book v0.0.0-20230808113920-3f1bcccbfb24 // indirect
