@@ -1,6 +1,9 @@
 baseURL = '/'
 languageCode = 'en-us'
 title = 'Source Docs'
+defaultContentLanguage = 'en'
+
+
 
 [module]
 [[module.imports]]
@@ -22,14 +25,18 @@ path = 'github.com/alex-shpak/hugo-book'
 [languages]
 [languages.en]
   languageName = 'English'
-  contentDir = 'content.en'
+  contentDir = 'content/en'
+  weight = 1
+[languages.es]
+  languageName = 'Español'
+  contentDir = 'content/es'
   weight = 1
 
 [menu]
 # [[menu.before]]
 [[menu.after]]
   name = "Source Docs on GitHub"
-  url = "https://github.com/source-cooperative/source-docs"
+  url = "https://github.com/source-cooperative/docs"
   weight = 10
 
 [[menu.after]]
@@ -66,7 +73,7 @@ path = 'github.com/alex-shpak/hugo-book'
 
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo = 'https://github.com/source-cooperative/source-docs'
+  BookRepo = 'https://github.com/source-cooperative/docs'
 
   # (Optional, default 'commit') Specifies commit portion of the link to the page's last modified
   # commit hash for 'doc' page type.
@@ -78,7 +85,7 @@ path = 'github.com/alex-shpak/hugo-book'
   # Enable "Edit this page" links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Edit path must point to root directory of repo.
-  BookEditPath = 'edit/main/exampleSite'
+  BookEditPath = 'edit/main'
 
   # Configure the date format used on the pages
   # - In git information
