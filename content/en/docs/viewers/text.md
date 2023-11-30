@@ -2,6 +2,17 @@
 title = "Text"
 +++
 
-Source Cooperative is a data publishing utility that allows trusted organizations and individuals to share data products using standard HTTP methods.
+# Text Viewer
 
-This is our new site for documentation and updates for developers. It's under construction.
+## Description
+
+The Text viewer allows you to render the plain-text content of a file.
+
+## Supported Filetypes
+
+- [Text File](https://en.wikipedia.org/wiki/Text_file)
+- [Markdown](https://www.markdownguide.org/)
+
+## Limitations
+
+This viewer has not been tested on large files.
