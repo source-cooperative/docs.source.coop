@@ -3,12 +3,9 @@ languageCode = 'en-us'
 title = 'Source Docs'
 defaultContentLanguage = 'en'
 
-
-
 [module]
 [[module.imports]]
 path = 'github.com/alex-shpak/hugo-book'
-
 
 # Needed for mermaid/katex shortcodes
 [markup]
@@ -16,7 +13,7 @@ path = 'github.com/alex-shpak/hugo-book'
   unsafe = true
 
 [markup.tableOfContents]
-  startLevel = 1
+  startLevel = 2
 
 # Multi-lingual mode config
 # There are different options to translate files
@@ -34,9 +31,9 @@ path = 'github.com/alex-shpak/hugo-book'
 
 [menu]
 # [[menu.before]]
+
 [[menu.after]]
-  name = "Source Docs on GitHub"
-  url = "https://github.com/source-cooperative/docs"
+  name = "—"
   weight = 10
 
 [[menu.after]]

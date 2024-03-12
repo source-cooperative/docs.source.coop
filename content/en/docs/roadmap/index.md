@@ -1,12 +1,13 @@
 +++
 title = "Roadmap"
+draft = true
 +++
 
 # Roadmap
 
-- [Target: December 2023] APIs for managing access credentials to repositories
-- [Target: January 2024] Source Cooperative Memberships
-- [Target: February 2024] Self-Service Organizations
+- [Target: March 2024] APIs for managing access credentials to repositories
+- [Target: May 2024] Source Cooperative Memberships
+- [Target: June 2024] Self-Service Organizations
 - [TBD] Private Repositories
 - [TBD] Repository Mirrors
 - [TBD] Repository Actions
