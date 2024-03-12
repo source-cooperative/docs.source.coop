@@ -1,5 +1,5 @@
 +++
-title = "Sharing STAC Catalogs"
+title = "Sharing STAC catalogs"
 weight = 10
 +++
 

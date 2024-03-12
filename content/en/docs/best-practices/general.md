@@ -1,5 +1,5 @@
 +++
-title = "Repository Basics"
+title = "Repository basics"
 weight = 10
 +++
 
