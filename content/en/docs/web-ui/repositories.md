@@ -8,7 +8,7 @@ Repositories are where data products live. Currently, new data products will be 
 
 ## Creating a Repository
 
-To create a repository, you must first create an account on Source Cooperative at [https://beta.source.coop/auth/registration](https://beta.source.coop/auth/registration) and have approval from us to create new repositories. Full instructions to create an account are and request approval to create repositories are [here]({{< ref "/docs/web-ui/creating-an-account" >}}).
+To create a repository, you must first create an account on Source Cooperative at [https://beta.source.coop/auth/registration](https://beta.source.coop/auth/registration) and have approval from us to create new repositories. Full instructions to create an account are and request approval to create repositories are [here]({{% ref "/docs/web-ui/creating-an-account" %}}).
 
 Once you have received confirmation that your account has been enabled for repository creation, sign out of your Source Cooperative account and sign back in. You should now have a "New Repository" button in the dropdown menu at the top right of the navigation bar.
 
