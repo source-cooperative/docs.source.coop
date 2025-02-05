@@ -25,7 +25,7 @@ import ThemedImage from '@theme/ThemedImage';
 
 A core belief behind Source is that it should be much easier for people and organizations to share data on the open web.
 
-Commoditized cloud object storage has made it easier than ever to store and share data, but it has not made it easier to discover and access that data. Source is an attempt to change this by making it easy for data providers to publish data on the open web without needing to run their own server, create a data portal, an API, or a dashboard. 
+Commoditized cloud object storage has made it easier than ever to store and share data, but it has not made it easier to discover and access that data. Source is an attempt to change this by making it easy for data providers to publish data in an object storage service and make it available on the open web without needing to run their own server, create a data portal, an API, or a dashboard.
 
 Source is currently in beta, but all data hosted in Source is available to the public and can be accessed by anyone. If you would like to publish data to Source, please [apply to be a beta tester](https://forms.gle/4weS1hkRjZhQLoPE9).
 
