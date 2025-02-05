@@ -1,21 +1,45 @@
-node_modules/
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.iml
+*.code-workspace
+.changelog
+.history
+
+node_modules
+.yarn
 package-lock.json
 
-# Hugo
-.hugo_build.lock
-/public
-resources/
+.eslintcache
 
-# vim temporary files
-*~
-*.sw?
+yarn-error.log
+website/build
+coverage
+.docusaurus
+.cache-loader
+types
+test-website
+test-website-in-workspace
 
-# system files
-.DS_Store
+packages/create-docusaurus/lib/
+packages/lqip-loader/lib/
+packages/docusaurus/lib/
+packages/docusaurus-*/lib/*
+packages/eslint-plugin/lib/
+packages/stylelint-copyright/lib/
 
-# IDE files
-.idea
+website/netlifyDeployPreview/*
+website/changelog
+!website/netlifyDeployPreview/index.html
+!website/netlifyDeployPreview/_redirects
 
-# VS Code
-/.vscode/**
-!/.vscode/cspell.json
+website/_dogfooding/_swizzle_theme_tests
+
+CrowdinTranslations_*.zip
+
+website/.cpu-prof
+
+website/i18n/**/*
+#!website/i18n/fr
+#!website/i18n/fr/**/*
