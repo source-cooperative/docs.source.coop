@@ -72,7 +72,11 @@
 .footer__copyright a {
   text-transform:uppercase;
   text-decoration: underline;
-  color: var(--ifm-color-primary-light);
+  color: var(--ifm-color-primary-darkest);
+}
+
+[data-theme='dark'] .footer__copyright a {
+  color: var(--ifm-color-primary-lighter);
 }
 
 .markdown a {
