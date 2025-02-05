@@ -1,0 +1,84 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #212529;        
+  --ifm-color-primary-dark: #ADB5BD;   
+  --ifm-color-primary-darker: #6C757D;  
+  --ifm-color-primary-darkest: #495057; 
+  --ifm-color-primary-light: #DEE2E6;   
+  --ifm-color-primary-lighter: #343A40; 
+  --ifm-color-primary-lightest: #2a2c30; 
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-footer-link-hover-color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #F8F9FA;        
+  --ifm-color-primary-dark: #495057;   
+  --ifm-color-primary-darker: #ADB5BD; 
+  --ifm-color-primary-darkest: #CED4DA;
+  --ifm-color-primary-light: #DEE2E6;   
+  --ifm-color-primary-lighter: #E9ECEF; 
+  --ifm-color-primary-lightest: #F8F9FA; 
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+--ifm-footer-link-hover-color: var(--ifm-color-primary-lighter);
+}
+
+/* Import IBM Plex Sans */
+@import '@ibm/plex/css/ibm-plex.css';
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/BerkeleyMonoVariable-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+}
+
+:root {
+  --ifm-font-family-base: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'Berkeley Mono', SFMono-Regular, monospace;
+}
+
+.footer__link-item,
+.footer__title,
+.footer__copyright {
+  font-family: "Berkeley Mono", monospace;
+}
+
+.footer__copyright {
+  text-align: left;
+}
+
+.footer__copyright a {
+  text-transform:uppercase;
+  text-decoration: underline;
+  color: var(--ifm-color-primary-light);
+}
+
+.markdown a {
+  text-decoration: underline;
+}
+
+.markdown a:hover {
+  color: var(--ifm-color-primary-darker);
+}
