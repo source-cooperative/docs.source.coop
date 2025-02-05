@@ -27,7 +27,7 @@
   --ifm-color-primary-lighter: #E9ECEF; 
   --ifm-color-primary-lightest: #F8F9FA; 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
---ifm-footer-link-hover-color: var(--ifm-color-primary-lighter);
+  --ifm-footer-link-hover-color: var(--ifm-color-primary-lighter);
 }
 
 /* Import IBM Plex Sans */

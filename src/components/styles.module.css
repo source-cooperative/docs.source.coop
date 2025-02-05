@@ -1,0 +1,7 @@
+.themedLogo {
+  display: var(--ifLight, block);
+}
+
+[data-theme='dark'] .themedLogo {
+  display: var(--ifDark, block);
+} 

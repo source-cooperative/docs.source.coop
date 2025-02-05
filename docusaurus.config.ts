@@ -72,7 +72,8 @@ const config: Config = {
       title: 'Source Cooperative Documentation',
       logo: {
         alt: 'Source Cooperative Documentation',
-        src: 'img/logo.svg',
+        src: 'img/logo-light.svg',
+        srcDark: 'img/logo-dark.svg',
       },
       items: [
       ],

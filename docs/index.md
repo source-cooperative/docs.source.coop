@@ -6,7 +6,17 @@ sidebar_label: Home
 sidebar_position: 1
 ---
 
-<img src="/img/logotype.svg" alt="Source Cooperative Logotype" width="400" height="auto" />
+import ThemedImage from '@theme/ThemedImage';
+
+<ThemedImage
+  alt="Source Cooperative Logotype"
+  width="400"
+  height="auto"
+  sources={{
+    light: '/img/logotype-light.svg',
+    dark: '/img/logotype-dark.svg',
+  }}
+/>
 ---
 
 # Source Cooperative Documentation
@@ -23,7 +33,7 @@ Source is currently in beta, but all data hosted in Source is available to the p
 
 The code for Source is open source and available on [GitHub](https://github.com/source-cooperative/). We welcome pull requests, bug reports, and feature requests to:
 
-- https://github.com/source-cooperative/source.coop – the Next.JS application which hosts the Source frontend and API
+- https://github.com/source-cooperative/source.coop – the Next.JS application which hosts the Source frontend and API
 - https://github.com/source-cooperative/data.source.coop – the rust application which hosts the Source Data Proxy
 
 We also seek volunteers and contractors to help with documentation, design, and community management. If you are interested in contributing to Source, please [contact us](mailto:hello@source.coop).
