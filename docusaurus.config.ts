@@ -7,18 +7,16 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Source Cooperative Documentation',
   tagline: 'Source Cooperative Documentation',
-  favicon: 'img/favicon.ico',
-
   // Set the production url of your site here
   url: 'https://docs.source.coop',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
+  
+  favicon: '/img/favicon.svg',
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'source-cooperative', // Usually your GitHub org/user name.
-  projectName: 'docs.source.coop', // Usually your repo name.
+  organizationName: 'source-cooperative',
+  projectName: 'docs.source.coop',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

@@ -1,5 +1,6 @@
 ---
 hide_title: true
+title: Source Cooperative Documentation
 id: index
 slug: /
 sidebar_label: Home
