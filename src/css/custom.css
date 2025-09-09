@@ -4,35 +4,10 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
-:root {
-  --ifm-color-primary: #212529;        
-  --ifm-color-primary-dark: #ADB5BD;   
-  --ifm-color-primary-darker: #6C757D;  
-  --ifm-color-primary-darkest: #495057; 
-  --ifm-color-primary-light: #DEE2E6;   
-  --ifm-color-primary-lighter: #343A40; 
-  --ifm-color-primary-lightest: #2a2c30; 
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-footer-link-hover-color: var(--ifm-color-primary-light);
-}
-
-[data-theme='dark'] {
-  --ifm-color-primary: #F8F9FA;        
-  --ifm-color-primary-dark: #495057;   
-  --ifm-color-primary-darker: #ADB5BD; 
-  --ifm-color-primary-darkest: #CED4DA;
-  --ifm-color-primary-light: #DEE2E6;   
-  --ifm-color-primary-lighter: #E9ECEF; 
-  --ifm-color-primary-lightest: #F8F9FA; 
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --ifm-footer-link-hover-color: var(--ifm-color-primary-lighter);
-}
-
 /* Import IBM Plex Sans */
 @import '@ibm/plex/css/ibm-plex.css';
 
+/* Custom Font Faces */
 @font-face {
   font-family: 'Berkeley Mono';
   src: url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2');
@@ -54,11 +29,88 @@
   font-style: italic;
 }
 
+/* Light Theme Color Variables */
 :root {
+  /* Font families */
   --ifm-font-family-base: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'Berkeley Mono', SFMono-Regular, monospace;
+  
+  /* Primary brand colors */
+  --ifm-color-primary: #121a1b;
+  --ifm-color-primary-dark: #1a2223;
+  --ifm-color-primary-darker: #222a2b;
+  --ifm-color-primary-darkest: #2a3233;
+  --ifm-color-primary-light: #3a4243;
+  --ifm-color-primary-lighter: #424a4b;
+  --ifm-color-primary-lightest: #4a5253;
+  
+  /* Background colors */
+  --ifm-background-color: #EFEBEA;
+  --ifm-background-surface-color: #E8E4E3;
+  
+  /* Content colors */
+  --ifm-color-content: #121a1b;
+  --ifm-color-content-secondary: #1a2223;
+  --ifm-color-content-inverse: #EFEBEA;
+  --ifm-color-content-inverse-secondary: #E8E4E3;
+  
+  /* Emphasis scale (gray scale) */
+  --ifm-color-emphasis-100: #E1DDDC;
+  --ifm-color-emphasis-200: #DAD6D5;
+  --ifm-color-emphasis-300: #D3CFCE;
+  --ifm-color-emphasis-400: #CCC8C7;
+  --ifm-color-emphasis-500: #C5C1C0;
+  --ifm-color-emphasis-600: #BEBBB9;
+  --ifm-color-emphasis-700: #B7B4B2;
+  --ifm-color-emphasis-800: #B0ADAB;
+  --ifm-color-emphasis-900: #A9A6A4;
+  --ifm-color-emphasis-1000: #121a1b;
+  
+  /* Other customizations */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(18, 26, 27, 0.1);
+  --ifm-footer-link-hover-color: var(--ifm-color-primary-light);
 }
 
+/* Dark Theme Color Variables */
+[data-theme='dark'] {
+  /* Primary brand colors */
+  --ifm-color-primary: #EFEBEA;
+  --ifm-color-primary-dark: #E8E4E3;
+  --ifm-color-primary-darker: #E1DDDC;
+  --ifm-color-primary-darkest: #DAD6D5;
+  --ifm-color-primary-light: #D3CFCE;
+  --ifm-color-primary-lighter: #CCC8C7;
+  --ifm-color-primary-lightest: #C5C1C0;
+  
+  /* Background colors */
+  --ifm-background-color: #121a1b;
+  --ifm-background-surface-color: #1a2223;
+  
+  /* Content colors */
+  --ifm-color-content: #EFEBEA;
+  --ifm-color-content-secondary: #E8E4E3;
+  --ifm-color-content-inverse: #121a1b;
+  --ifm-color-content-inverse-secondary: #1a2223;
+  
+  /* Emphasis scale (gray scale) */
+  --ifm-color-emphasis-100: #222a2b;
+  --ifm-color-emphasis-200: #2a3233;
+  --ifm-color-emphasis-300: #323a3b;
+  --ifm-color-emphasis-400: #3a4243;
+  --ifm-color-emphasis-500: #424a4b;
+  --ifm-color-emphasis-600: #4a5253;
+  --ifm-color-emphasis-700: #525a5b;
+  --ifm-color-emphasis-800: #5a6263;
+  --ifm-color-emphasis-900: #626a6b;
+  --ifm-color-emphasis-1000: #EFEBEA;
+  
+  /* Other customizations */
+  --docusaurus-highlighted-code-line-bg: rgba(239, 235, 234, 0.3);
+  --ifm-footer-link-hover-color: var(--ifm-color-primary-lighter);
+}
+
+/* Footer Styling */
 .footer__link-item,
 .footer__title,
 .footer__copyright {
@@ -70,7 +122,7 @@
 }
 
 .footer__copyright a {
-  text-transform:uppercase;
+  text-transform: uppercase;
   text-decoration: underline;
   color: var(--ifm-color-primary-darkest);
 }
@@ -79,10 +131,11 @@
   color: var(--ifm-color-primary-lighter);
 }
 
+/* Markdown Link Styling */
 .markdown a {
   text-decoration: underline;
 }
 
 .markdown a:hover {
-  color: var(--ifm-color-primary-darker);
+  color: var(--ifm-color-primary-light);
 }

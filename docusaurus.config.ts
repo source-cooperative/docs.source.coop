@@ -72,6 +72,12 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/source-docs-social-card.jpg',
+    metadata: [
+      {name: 'theme-color', content: '#121a1b'},
+      {name: 'apple-mobile-web-app-capable', content: 'yes'},
+      {name: 'apple-mobile-web-app-status-bar-style', content: 'default'},
+      {name: 'apple-mobile-web-app-title', content: 'Source Docs'},
+    ],
     navbar: {
       title: 'Source Cooperative Documentation',
       logo: {
