@@ -71,7 +71,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/source-docs-social-card.jpg',
+    image: 'img/source-docs-social-card.png',
     metadata: [
       {name: 'theme-color', content: '#121a1b'},
       {name: 'apple-mobile-web-app-capable', content: 'yes'},
