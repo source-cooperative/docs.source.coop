@@ -39,9 +39,9 @@ import ThemedImage from '@theme/ThemedImage';
 
 ## How is Source different?
 
-**vs. Cloud Object Storage:** While these services store your data, they don't make it discoverable or accessible to others. Source provides a public catalog, standardized access, and community visibility that raw cloud storage can't offer.
+**vs. Cloud Object Storage.** While object storage services like Amazon S3, Google Cloud Storage, and Azure Blob Storage can store data, they don't make it discoverable or accessible to others. Source is a utility built on top of cloud object storage services that provides a public catalog, standardized access, and community visibility that raw cloud storage can't offer. 
 
-**vs. Google Drive/Dropbox:** These are designed for personal file sharing, not data publishing. Source is built specifically for organizations that want to share data openly with proper documentation, standardized formats, and global discoverability – allowing others to access and build on your data without needing to download copies.
+**vs. Google Drive/Dropbox:** Most consumer-facing cloud storage services are designed for personal file sharing, not data publishing. Source is built specifically for organizations that want to share data openly with proper documentation, standardized formats, and global discoverability – allowing others to access and build on your data without needing to download it.
 
 **vs. Building your own solution:** Instead of building and maintaining data portals, custom APIs, and hosting infrastructure, Source lets you focus on the fundamentals that make data easy to publish and easy to use.
 
