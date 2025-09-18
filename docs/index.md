@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Source Cooperative Documentation
+description: Source Cooperative is the data publishing utility for the web, allowing trusted organizations and individuals to publish data of any kind at any scale.
 id: index
 slug: /
 sidebar_label: Home
