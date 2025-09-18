@@ -20,7 +20,7 @@ Earth Index uses multiple large-scale datasets and a global, cloud-optimized sat
 
 Earth Genome believes that foundational planetary data should be open and accessible. That's why they chose to release these datasets on Source Cooperative, which they see as a platform dedicated to fostering collaboration around open data for public good. Source provides the infrastructure necessary to host and share these large-scale datasets, enabling the community to easily access, explore, and build upon them.
 
-> "Source has allowed us to open up all of this data to really anybody in the world... we would have been hesitant to do this without Source. We get people from local communities, indigenous groups, and others from almost every continent, who have reached out to us about this data."
+> "Source has allowed us to open up all of this data to really anybody in the world… we would have been hesitant to do this without Source. We get people from local communities, indigenous groups, and others from almost every continent, who have reached out to us about this data."
 
 &mdash; **Tom (Hutch) Ingold, Earth Genome, CTO**
 
