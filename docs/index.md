@@ -19,23 +19,17 @@ import ThemedImage from '@theme/ThemedImage';
   }}
 />
 
-<div className="hero hero--primary" style={{padding: '4rem 0', marginBottom: '2rem'}}>
+<div className="hero hero--primary" style={{padding: '4rem 0', marginBottom: '0rem'}}>
   <div className="container">
     <h1 className="hero__title" style={{fontSize: '2.5rem', fontWeight: '700', marginBottom: '1rem'}}>
       Source Cooperative is the data publishing utility for the web
     </h1>
     <p className="hero__subtitle" style={{fontSize: '1.25rem', opacity: '0.9'}}>
-      Share your data with the world without building servers, APIs, or portals. Just upload and go.
+      [Source](https://source.coop) allows trusted organizations and individuals to publish data of any kind at any scale without the technical complexity of building their own infrastructure.
     </p>
   </div>
 </div>
 
-
----
-
-# Source Cooperative Documentation
-
-[Source Cooperative](https://source.coop) makes it easy for organizations to share data publicly without the technical complexity of building their own infrastructure.
 
 ## How is Source different?
 
