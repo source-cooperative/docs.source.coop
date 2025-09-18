@@ -5,39 +5,58 @@ slug: /data-proxy
 sidebar_position: 3
 ---
 
-Uploading data to Source is done through the Data Proxy which uses an S3-compatible API. 
+# Accessing Data Through the Source Data Proxy
 
-## Configuration
+The Source Data Proxy provides S3-compatible access to all data hosted on Source Cooperative. You can access data through the proxy without authentication, making it easy to programmatically download datasets using standard AWS CLI commands.
 
-The Data Proxy is configured using the same environment variables as the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html), but using API keys issued by Source.
+## Using the AWS CLI
 
-### Authentication
+All Source datasets are accessible using the AWS CLI with these parameters:
+- **Endpoint URL:** `https://data.source.coop`
+- **No authentication required:** Add `--no-sign-request` to all commands
 
-Authentication is required for all uploads to Source. API keys are issued by Source and are used to authenticate requests to the Data Proxy. API keys can be associated with an individual user, an organization, or specific repository and can be used to upload data to that repository.
+### Example: Fields of The World Dataset
 
-### Generating an API Key
+The Fields of The World (FTW) dataset is fully open and available at [https://source.coop/kerner-lab/fields-of-the-world](https://source.coop/kerner-lab/fields-of-the-world)
 
-To generate an API key, navigate to the *Manage* tab on your user profile, an organiztion that you own, or a repository that you own. Enter the Name of your API key in the "Create an API Key" box, and click "Create." Your API key will be displayed immediately.
+You can find and download all of the files there individually, or you can use the AWS CLI to access the data using the Source Data Proxy by adding `--endpoint-url https://data.source.coop --no-sign-request` to your standard AWS commands.
 
-### Required Environment Variables
+### Listing Dataset Contents
 
-The Data Proxy requires the following environment variables to be set:
-
-- `aws_access_key_id` - The access key ID for your repository.
-- `aws_secret_access_key` - The accompanying secret access key for your repository.
-- `endpoint_url` - The Source Data Proxy endpoint, which is `https://data.source.coop`.
-
-### Example 
-
-An example of how to set these environment variables in the AWS CLI configuration file is shown below.
+To list the contents at the root level of a dataset:
 
 ```bash
-[profile source]
-export aws_access_key_id=<YOUR_API_ACCESS_KEY_ID_HERE>
-export aws_secret_access_key=<YOUR_API_SECRET_ACCESS_KEY_HERE>
-export endpoint_url=https://data.source.coop
+aws s3 ls s3://kerner-lab/fields-of-the-world --endpoint-url https://data.source.coop --no-sign-request
 ```
 
-## In beta
+To recursively list all contents in a specific directory within the dataset (e.g., the `vietnam` directory):
 
-Ultimately, we want performance of the Source Data Proxy to be indistinguishable from accessing objects directly via the AWS CLI using the subset of S3 APIs that Source supports. Until then, if you need to upload a large number of objects, we recommend using the AWS CLI directly.
+```bash
+aws s3 ls s3://kerner-lab/fields-of-the-world/vietnam --endpoint-url https://data.source.coop --no-sign-request --recursive
+```
+
+Add `--summarize` to any `ls` command to see a count and total byte volume of the listed objects. For example:
+
+```bash
+aws s3 ls s3://kerner-lab/fields-of-the-world/vietnam --endpoint-url https://data.source.coop --no-sign-request --recursive --summarize
+```
+
+### Downloading Datasets
+
+Use the `cp` command to copy data to local storage:
+
+```bash
+aws s3 cp s3://kerner-lab/fields-of-the-world/README.md . --endpoint-url https://data.source.coop --no-sign-request
+```
+
+## Getting Started with AWS CLI
+
+If you don't have the AWS CLI installed, follow the [AWS CLI Getting Started Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+
+## Current Status
+
+The Source Data Proxy is currently in beta. We're working to make performance indistinguishable from accessing objects directly via AWS S3.
+
+## Uploading Data Through the Source Data Proxy
+
+Uploading data through the Source Data Proxy is currently disabled while we work on new, easier, and more secure ways to upload data. If you need to upload data, please contact hello@source.coop.

@@ -29,7 +29,7 @@ Your repository will be created in the "Unlisted" state. This state means that y
 
 ### Uploading Data
 
-After you have created your repository and you are ready to upload your data product, navigate to the repository page and click the "Access Data" link in the sidebar. Here you can generate the S3 credentials necessary to upload your data product to your bucket using the AWS CLI or other tools that support the S3 protocol. Examples on how to use these credentials are shown when your credentials are generated.
+Please write to hello@source.coop if you do not already have the ability to upload data to Source.
 
 ### Editing Repositories
 

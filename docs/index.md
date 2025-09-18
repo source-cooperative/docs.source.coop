@@ -18,17 +18,46 @@ import ThemedImage from '@theme/ThemedImage';
     dark: '/img/logotype-dark.svg',
   }}
 />
+
+<div className="hero hero--primary" style={{padding: '4rem 0', marginBottom: '2rem'}}>
+  <div className="container">
+    <h1 className="hero__title" style={{fontSize: '2.5rem', fontWeight: '700', marginBottom: '1rem'}}>
+      Source Cooperative is the data publishing utility for the web
+    </h1>
+    <p className="hero__subtitle" style={{fontSize: '1.25rem', opacity: '0.9'}}>
+      Share your data with the world without building servers, APIs, or portals. Just upload and go.
+    </p>
+  </div>
+</div>
+
+
 ---
 
 # Source Cooperative Documentation
 
-[Source Cooperative](https://source.coop) is a data publishing utility that allows trusted organizations and individuals to share data using standard HTTP methods.
+[Source Cooperative](https://source.coop) makes it easy for organizations to share data publicly without the technical complexity of building their own infrastructure.
 
-A core belief behind Source is that it should be much easier for people and organizations to share data on the open web.
+## How is Source different?
 
-Commoditized cloud object storage has made it easier than ever to store and share data, but it has not made it easier to discover and access that data. Source is an attempt to change this by making it easy for data providers to publish data in an object storage service and make it available on the open web without needing to run their own server, create a data portal, an API, or a dashboard.
+**vs. Cloud Object Storage:** While these services store your data, they don't make it discoverable or accessible to others. Source provides a public catalog, standardized access, and community visibility that raw cloud storage can't offer.
+
+**vs. Google Drive/Dropbox:** These are designed for personal file sharing, not data publishing. Source is built specifically for organizations that want to share data openly with proper documentation, standardized formats, and global discoverability – allowing others to access and build on your data without needing to download copies.
+
+**vs. Building your own solution:** Instead of building and maintaining data portals, custom APIs, and hosting infrastructure, Source lets you focus on the fundamentals that make data easy to publish and easy to use.
 
 Source is currently in beta, but all data hosted in Source is available to the public and can be accessed by anyone. If you would like to publish data to Source, please [apply to be a beta tester](https://forms.gle/4weS1hkRjZhQLoPE9).
+
+## Organizations Using Source
+
+Source is trusted by leading organizations to publish and share data for the public good:
+
+- **[Bridges to Prosperity](case-studies/bridges-to-prosperity)** uses Source to enable AI-powered global water mapping, tripling the known extent of mapped waterways worldwide and helping raise hundreds of thousands in funding for rural infrastructure projects.
+
+- **[Earth Genome](case-studies/earth-genome)** shares 60+ terabytes of processed satellite imagery and 3.5 billion embeddings through Source, making foundational planetary data accessible to researchers, journalists, and communities across nearly every continent.
+
+- **[Dynamical.org](case-studies/dynamical)** provides fast, easy access to weather data through Source, serving 13,000 unique visitors and 31.3 million data requests while enabling hundreds of organizations to save significant time on weather data management.
+
+- **[Auspatious](case-studies/auspatious)** uses Source to publish cloud-optimized geospatial datasets, making high-resolution sea surface temperature data accessible to researchers without requiring large downloads or complex infrastructure.
 
 ## Contributing to Source
 

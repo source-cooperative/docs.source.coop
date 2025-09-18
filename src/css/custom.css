@@ -139,3 +139,18 @@
 .markdown a:hover {
   color: var(--ifm-color-primary-light);
 }
+
+/* Custom Hero Banner Styling */
+.hero--primary {
+  background-color: var(--ifm-background-color) !important;
+  color: var(--ifm-color-content) !important;
+}
+
+.hero--primary .hero__title {
+  color: var(--ifm-color-content) !important;
+}
+
+.hero--primary .hero__subtitle {
+  color: var(--ifm-color-content-secondary) !important;
+}
+
