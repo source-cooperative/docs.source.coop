@@ -1,8 +1,20 @@
 # Bridges to Prosperity
 
+<ThemedImage
+  alt="Bridges to Prosperity Logo"
+  className="case-study-logo"
+  sources={{
+    light: '/img/case-studies/bridges-to-prosperity-light.svg',
+    dark: '/img/case-studies/bridges-to-prosperity-dark.svg',
+  }}
+  style={{ width: '18em', height: 'auto' }}
+/>
+
 ## Bridges to Prosperity Datasets on Source
 
 - [WaterNet Global Waterways](https://source.coop/fika/waternet)
+
+import ThemedImage from '@theme/ThemedImage';
 
 ## Introducing Bridges to Prosperity
 

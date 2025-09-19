@@ -29,128 +29,76 @@
   font-style: italic;
 }
 
-/* Light Theme Color Variables */
+/* Light Theme */
 :root {
-  /* Font families */
   --ifm-font-family-base: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'Berkeley Mono', SFMono-Regular, monospace;
-  
-  /* Primary brand colors */
-  --ifm-color-primary: #121a1b;
-  --ifm-color-primary-dark: #1a2223;
-  --ifm-color-primary-darker: #222a2b;
-  --ifm-color-primary-darkest: #2a3233;
-  --ifm-color-primary-light: #3a4243;
-  --ifm-color-primary-lighter: #424a4b;
-  --ifm-color-primary-lightest: #4a5253;
-  
-  /* Background colors */
-  --ifm-background-color: #EFEBEA;
-  --ifm-background-surface-color: #E8E4E3;
-  
-  /* Content colors */
-  --ifm-color-content: #121a1b;
-  --ifm-color-content-secondary: #1a2223;
-  --ifm-color-content-inverse: #EFEBEA;
-  --ifm-color-content-inverse-secondary: #E8E4E3;
-  
-  /* Emphasis scale (gray scale) */
-  --ifm-color-emphasis-100: #E1DDDC;
-  --ifm-color-emphasis-200: #DAD6D5;
-  --ifm-color-emphasis-300: #D3CFCE;
-  --ifm-color-emphasis-400: #CCC8C7;
-  --ifm-color-emphasis-500: #C5C1C0;
-  --ifm-color-emphasis-600: #BEBBB9;
-  --ifm-color-emphasis-700: #B7B4B2;
-  --ifm-color-emphasis-800: #B0ADAB;
-  --ifm-color-emphasis-900: #A9A6A4;
-  --ifm-color-emphasis-1000: #121a1b;
-  
-  /* Other customizations */
+  --ifm-color-primary: #2c3233;
+  --ifm-color-primary-dark: #282d2e;
+  --ifm-color-primary-darker: #252b2b;
+  --ifm-color-primary-darkest: #1f2324;
+  --ifm-color-primary-light: #303738;
+  --ifm-color-primary-lighter: #333a3b;
+  --ifm-color-primary-lightest: #394142;
+  --ifm-background-color: #efebea;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(18, 26, 27, 0.1);
-  --ifm-footer-link-hover-color: var(--ifm-color-primary-light);
 }
 
-/* Dark Theme Color Variables */
+/* Dark Theme */
 [data-theme='dark'] {
-  /* Primary brand colors */
-  --ifm-color-primary: #EFEBEA;
-  --ifm-color-primary-dark: #E8E4E3;
-  --ifm-color-primary-darker: #E1DDDC;
-  --ifm-color-primary-darkest: #DAD6D5;
-  --ifm-color-primary-light: #D3CFCE;
-  --ifm-color-primary-lighter: #CCC8C7;
-  --ifm-color-primary-lightest: #C5C1C0;
-  
-  /* Background colors */
-  --ifm-background-color: #121a1b;
-  --ifm-background-surface-color: #1a2223;
-  
-  /* Content colors */
-  --ifm-color-content: #EFEBEA;
-  --ifm-color-content-secondary: #E8E4E3;
-  --ifm-color-content-inverse: #121a1b;
-  --ifm-color-content-inverse-secondary: #1a2223;
-  
-  /* Emphasis scale (gray scale) */
-  --ifm-color-emphasis-100: #222a2b;
-  --ifm-color-emphasis-200: #2a3233;
-  --ifm-color-emphasis-300: #323a3b;
-  --ifm-color-emphasis-400: #3a4243;
-  --ifm-color-emphasis-500: #424a4b;
-  --ifm-color-emphasis-600: #4a5253;
-  --ifm-color-emphasis-700: #525a5b;
-  --ifm-color-emphasis-800: #5a6263;
-  --ifm-color-emphasis-900: #626a6b;
-  --ifm-color-emphasis-1000: #EFEBEA;
-  
-  /* Other customizations */
-  --docusaurus-highlighted-code-line-bg: rgba(239, 235, 234, 0.3);
-  --ifm-footer-link-hover-color: var(--ifm-color-primary-lighter);
+  --ifm-color-primary: #efebea;
+  --ifm-color-primary-dark: #dbd1cf;
+  --ifm-color-primary-darker: #d0c5c2;
+  --ifm-color-primary-darkest: #b29e99;
+  --ifm-color-primary-light: #ffffff;
+  --ifm-color-primary-lighter: #ffffff;
+  --ifm-color-primary-lightest: #ffffff;
+  --ifm-background-color: #2c3233;
 }
 
-/* Footer Styling */
-.footer__link-item,
-.footer__title,
-.footer__copyright {
-  font-family: "Berkeley Mono", monospace;
+/* Hero section styling to match site theme */
+.hero--primary {
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
 }
 
-.footer__copyright {
-  text-align: left;
+.hero--primary .hero__title {
+  color: var(--ifm-color-primary);
 }
 
-.footer__copyright a {
-  text-transform: uppercase;
-  text-decoration: underline;
-  color: var(--ifm-color-primary-darkest);
+.hero--primary .hero__subtitle {
+  color: var(--ifm-color-primary);
+  opacity: 0.8;
 }
 
-[data-theme='dark'] .footer__copyright a {
-  color: var(--ifm-color-primary-lighter);
-}
-
-/* Markdown Link Styling */
+/* Link styling for accessibility - only for content links, not navigation */
 .markdown a {
+  color: var(--ifm-color-primary);
   text-decoration: underline;
 }
 
 .markdown a:hover {
   color: var(--ifm-color-primary-light);
+  text-decoration: none;
 }
 
-/* Custom Hero Banner Styling */
-.hero--primary {
-  background-color: var(--ifm-background-color) !important;
-  color: var(--ifm-color-content) !important;
+/* Ensure content links are visible in both themes */
+:root {
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--ifm-color-primary-light);
 }
 
-.hero--primary .hero__title {
-  color: var(--ifm-color-content) !important;
+[data-theme='dark'] {
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--ifm-color-primary-light);
 }
 
-.hero--primary .hero__subtitle {
-  color: var(--ifm-color-content-secondary) !important;
+/* Case study logo floating */
+.case-study-logo {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: auto;
 }
 

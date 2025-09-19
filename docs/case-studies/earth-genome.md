@@ -1,10 +1,21 @@
 # Earth Genome
 
+<ThemedImage
+  alt="Earth Genome Logo"
+  className="case-study-logo"
+  sources={{
+    light: '/img/case-studies/earth-genome-light.svg',
+    dark: '/img/case-studies/earth-genome-dark.svg',
+  }}
+/>
+
 ## Earth Genome Datasets on Source
 
 - [Sentinel 2 Cloud Free Temporal Mosaics](https://source.coop/earthgenome/sentinel2-temporal-mosaics)
 - [EarthIndex Embeddings from Sentinel 2 Temporal Mosaics](https://source.coop/earthgenome/sentinel2-temporal-mosaics)
 - [EarthIndex yearly imagery mosaics](https://source.coop/earthgenome/earthindeximagery)
+
+import ThemedImage from '@theme/ThemedImage';
 
 ## Introducing Earth Genome
 

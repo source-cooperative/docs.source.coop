@@ -1,8 +1,20 @@
 # Auspatious
 
+<ThemedImage
+  alt="Auspatious Logo"
+  className="case-study-logo"
+  sources={{
+    light: '/img/case-studies/auspatious-light.svg',
+    dark: '/img/case-studies/auspatious-dark.svg',
+  }}
+  style={{ width: '10em', height: 'auto' }}
+/>
+
 ## Auspatious Datasets on Source
 
-- GHRSST Multi-scale Ultra-high Resolution (MUR) dataset: [https://source.coop/ausantarctic/ghrsst-mur-v2/](https://source.coop/ausantarctic/ghrsst-mur-v2/)
+- [GHRSST Multi-scale Ultra-high Resolution (MUR) dataset](https://source.coop/ausantarctic/ghrsst-mur-v2/)
+
+import ThemedImage from '@theme/ThemedImage';
 
 ## Introducing Auspatious
 
