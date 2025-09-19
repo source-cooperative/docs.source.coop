@@ -22,7 +22,7 @@ Earth Genome believes that foundational planetary data should be open and access
 
 > "Source has allowed us to open up all of this data to really anybody in the world… we would have been hesitant to do this without Source. We get people from local communities, indigenous groups, and others from almost every continent, who have reached out to us about this data."
 
-&mdash; **Tom (Hutch) Ingold, Earth Genome, CTO**
+&mdash; **Tom "Hutch" Ingold, Earth Genome, CTO**
 
 ## Sharing Through Source: Key Benefits and Impact
 

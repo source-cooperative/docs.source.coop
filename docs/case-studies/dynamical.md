@@ -8,7 +8,7 @@
 
 ## Introducing Dynamical.org
 
-[dynamical.org](https://dynamical.org) is a not-for-profit organization with a mission to advance humanity's ability to access, understand, and act on accurate weather and climate data. The organization uses a governance model that their team calls 'Public Benefit Corporation, Hardcore Mode' — designed to prioritize long-term operations and stewardship. They explicitly: 1) prohibit sale of the organization; 2) require (hypothetical) profit be reinvested in the organization's purpose; and 3) set organizational priorities led by active members and users. Unlike other solutions for weather data management, dynamical.org is building a common utility, making weather data accessible and easy to use as a public good.
+[dynamical.org](https://dynamical.org) is a nonprofit with a mission to advance humanity's ability to access, understand, and act on accurate weather and climate data. The organization uses a governance model that their team calls 'Public Benefit Corporation, Hardcore Mode' — designed to prioritize long-term operations and stewardship. They explicitly: 1) prohibit sale of the organization; 2) require (hypothetical) profit be reinvested in the organization's purpose; and 3) set organizational priorities led by active members and users. Unlike other solutions for weather data management, dynamical.org is building a common utility, making weather data accessible and easy to use as a public good.
 
 ## Fast, Easy, Open Weather Data for Everyone
 
@@ -16,7 +16,7 @@ The team at dynamical.org knows firsthand how hard it can be to obtain and utili
 
 Dynamical is committed to preparing weather data so it is more accessible and easy to use for people with fewer technical skills — making it a public good for everyone. Today, dynamical's weather datasets are accessed by users from all over the world, with 13,000 unique visitors and 31.3 million data requests just in the month of July 2025.
 
-> "Source makes the hurdle disappear for folks trying to do something for the public good. The impact for us was being able to get started—focus on the science and experimentation. This kick-started the flywheel in a way that wouldn't otherwise have been possible. It created a virtuous cycle of gaining support because we were able to demonstrate the work. The external impact has been hundreds of organizations saving dozens, if not hundreds of hours dealing with weather data."
+> "Source makes the hurdle disappear for folks trying to do something for the public good. The impact for us was being able to get started—focus on the science and experimentation. This kickstarted the flywheel in a way that wouldn't otherwise have been possible. It created a virtuous cycle of gaining support because we were able to demonstrate the work. The external impact has been hundreds of organizations saving dozens, if not hundreds of hours dealing with weather data."
 
 &mdash; **Marshall Moutenot, dynamical.org Founder**
 
