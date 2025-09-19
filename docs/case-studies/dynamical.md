@@ -1,7 +1,7 @@
-# Dynamical.org
+# dynamical.org
 
 <ThemedImage
-  alt="Dynamical.org Logo"
+  alt="dynamical.org logo"
   className="case-study-logo"
   sources={{
     light: '/img/case-studies/dynamical-light.svg',
@@ -9,7 +9,7 @@
   }}
 />
 
-## Dynamical.org Datasets on Source
+## dynamical.org Datasets on Source
 
 - [NOAA GEFS analysis](https://source.coop/dynamical/noaa-gefs-analysis)
 - [NOAA GEFS forecast, 35 day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)
@@ -17,7 +17,7 @@
 
 import ThemedImage from '@theme/ThemedImage';
 
-## Introducing Dynamical.org
+## Introducing dynamical.org
 
 [dynamical.org](https://dynamical.org) is a nonprofit with a mission to advance humanity's ability to access, understand, and act on accurate weather and climate data. The organization uses a governance model that their team calls 'Public Benefit Corporation, Hardcore Mode' — designed to prioritize long-term operations and stewardship. They explicitly: 1) prohibit sale of the organization; 2) require (hypothetical) profit be reinvested in the organization's purpose; and 3) set organizational priorities led by active members and users. Unlike other solutions for weather data management, dynamical.org is building a common utility, making weather data accessible and easy to use as a public good.
 
@@ -31,7 +31,7 @@ Dynamical is committed to preparing weather data so it is more accessible and ea
 
 &mdash; **Marshall Moutenot, dynamical.org Founder**
 
-## Dynamical.org Shares Through Source Cooperative
+## dynamical.org Shares Through Source Cooperative
 
 dynamical.org created a public, live-updating catalog of Zarr-formatted weather datasets that are:
 
@@ -50,7 +50,7 @@ dynamical.org created a public, live-updating catalog of Zarr-formatted weather 
 
 While dynamical currently primarily uses NOAA data, they have plans to integrate data from other government agencies, such as the European center, and private tech weather forecasts.
 
-## Find Out More About Dynamical.org
+## Find Out More About dynamical.org
 
 Learn more about dynamical.org: [www.dynamical.org](https://www.dynamical.org)
 
