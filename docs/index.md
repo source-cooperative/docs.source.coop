@@ -26,7 +26,7 @@ import ThemedImage from '@theme/ThemedImage';
       Source Cooperative is the data publishing utility for the web
     </h1>
     <p className="hero__subtitle" style={{fontSize: '1.25rem', opacity: '0.9'}}>
-      [Source](https://source.coop) allows trusted organizations and individuals to publish data of any kind at any scale without the technical complexity of building their own infrastructure.
+      [Source](https://source.coop) allows trusted organizations and individuals to publish data of any kind at any scale without needing to build or maintain their own infrastructure.
     </p>
   </div>
 </div>
@@ -34,11 +34,17 @@ import ThemedImage from '@theme/ThemedImage';
 
 ## How is Source different?
 
-**vs. Cloud Object Storage.** While object storage services like Amazon S3, Google Cloud Storage, and Azure Blob Storage can store data, they don't make it discoverable or accessible to others. Source is a utility built on top of cloud object storage services that provides a public catalog, standardized access, and community visibility that raw cloud storage can't offer. 
+### vs. Cloud object storage
 
-**vs. Google Drive/Dropbox:** Most consumer-facing cloud storage services are designed for personal file sharing, not data publishing. Source is built specifically for organizations that want to share data openly with proper documentation, standardized formats, and global discoverability – allowing others to access and build on your data without needing to download it.
+While object storage services like Amazon S3, Google Cloud Storage, and Azure Blob Storage can store data, they don't make it discoverable or accessible to others. Source is a utility built on top of cloud object storage services that provides a public catalog, standardized access, and community visibility that raw cloud storage can't offer. 
 
-**vs. Building your own solution:** Instead of building and maintaining data portals, custom APIs, and hosting infrastructure, Source lets you focus on the fundamentals that make data easy to publish and easy to use.
+### vs. Cloud file sharing services
+
+Most consumer-facing cloud storage services like Box, Dropbox, and Google Drive are designed for personal file sharing, not data publishing. Source is built specifically for organizations that want to share data openly with proper documentation, standardized formats, and global discoverability – allowing others to access and build on your data without needing to download it.
+
+### vs. Building your own solution
+
+Instead of building and maintaining data portals, custom APIs, and hosting infrastructure, Source lets you focus on the fundamentals that make data easy to publish and easy to use.
 
 Source is currently in beta, but all data hosted in Source is available to the public and can be accessed by anyone. If you would like to publish data to Source, please [apply to be a beta tester](https://forms.gle/4weS1hkRjZhQLoPE9).
 
@@ -46,11 +52,11 @@ Source is currently in beta, but all data hosted in Source is available to the p
 
 Source is trusted by leading organizations to publish and share data for the public good:
 
-- **[Bridges to Prosperity](case-studies/bridges-to-prosperity)** uses Source to enable AI-powered global water mapping, tripling the known extent of mapped waterways worldwide and helping raise hundreds of thousands in funding for rural infrastructure projects.
+- **[Bridges to Prosperity](case-studies/bridges-to-prosperity)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide and helping raise hundreds of thousands in funding for rural infrastructure projects.
 
-- **[Earth Genome](case-studies/earth-genome)** shares 60+ terabytes of processed satellite imagery and 3.5 billion embeddings through Source, making foundational planetary data accessible to researchers, journalists, and communities across nearly every continent.
+- **[Earth Genome](case-studies/earth-genome)** shares 60+ terabytes of processed satellite imagery and 3.5 billion vector embeddings through Source, making foundational planetary data accessible to researchers, journalists, and communities across nearly every continent.
 
-- **[Dynamical.org](case-studies/dynamical)** provides fast, easy access to weather data through Source, serving 13,000 unique visitors and 31.3 million data requests while enabling hundreds of organizations to save significant time on weather data management.
+- **[Dynamical.org](case-studies/dynamical)** provides fast, easy access to weather data through Source, serving 13,000 unique visitors and 31.3 million API requests while enabling hundreds of organizations to save significant time on weather data management.
 
 - **[Auspatious](case-studies/auspatious)** uses Source to publish cloud-optimized geospatial datasets, making high-resolution sea surface temperature data accessible to researchers without requiring large downloads or complex infrastructure.
 
@@ -65,6 +71,8 @@ We also seek volunteers and contractors to help with documentation, design, and 
 
 ## Funding and Governance  
 
-Source is developed, maintained, and governed by [Radiant Earth](https://radiant.earth), a 501(c)(3) non-profit organization. We are exploring cooperative governance models for Source that we may implement in the future, and have drafted proposed bylaws at https://github.com/source-cooperative/governance.
+Source is developed, maintained, and governed by [Radiant Earth](https://radiant.earth), a 501(c)(3) non-profit organization. A core belief behind Source is that no single entity should unilaterally control the systems required to share information necessary to solve global challenges, and we are exploring cooperative governance models for Source that we will implement in the future. We have drafted proposed cooperative bylaws for Source at https://github.com/source-cooperative/governance.
 
 Current development of Source is funded by the [Navigation Fund's Open Science Initiative](https://www.navigation.org/grants/open-science). If you are interested in providing financial support to accelerate development of Source, please [contact us](mailto:hello@source.coop).
+
+Our ultimate goal is to build a financially self-sustaining utility worth paying for that expands access to data without locking customers into proprietary data formats or seeking arbitrary profits.
