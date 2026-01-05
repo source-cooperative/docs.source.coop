@@ -1,13 +1,13 @@
 # How to Upload Your Data to Source Cooperative
 
-This guide explains **how to deliver your data to Source Cooperative** in a secure and simple way.  
-It is written for **data providers** and does not require deep Amazon Web Service (AWS) knowledge.
+This guide explains how to deliver your data to Source Cooperative in a secure and simple way.  
+It is written for data providers and does not require deep Amazon Web Service (AWS) knowledge.
 
 ---
 
 ## The short version (what you need to do)
 
-You have **two main ways** to upload data:
+You have two main ways to upload data:
 
 1. **Upload directly in the Source Cooperative User Interface (UI)** (drag-and-drop or file selector), or  
 2. **Use temporary AWS credentials** to upload via the AWS Command Linke Interface (CLI) or Software Development Kits (SDKs)
@@ -22,11 +22,11 @@ If you prefer not to use AWS tools, you can upload files directly in the web int
 
 ### How to upload via the UI
 
-1. Go to your **Product page** in Source Cooperative (e.g. `https://source.coop/your-org/your-product`)
+1. Go to your product page in Source Cooperative (e.g. `https://source.coop/your-org/your-product`)
 2. In the top-right corner of the Product Contents card, click on the lock icon to open the dropdown menu and enable edit mode by clicking on `Edit Mode`.
 3. Either:
-   - Drag‑and‑drop files to the Product Contents card
-   - Use Upload Files or Upload Directory options in dropdown menu to upload files via operating system's file selectory
+   - Drag‑and‑drop files to the `Product Contents` card
+   - Use `Upload Files` or `Upload Directory` options in dropdown menu to upload files via operating system's file selectory
 
 Your files will be uploaded automatically to your product.
 
@@ -40,22 +40,22 @@ This option is ideal for:
 
 ## Option 2: Upload using temporary AWS credentials (recommended for larger uploads)
 
-For larger uploads, scripting, or programmatic access, use **temporary AWS credentials**.
+For larger uploads, scripting, or programmatic access, use temporary AWS credentials.
 
 ### How to get credentials
 
-1. Go to your **Product page**
-2. In the **Product Contents** card, open the dropdown (top‑right)
-3. Select **View Credentials**
+1. Go to your product page
+2. In the `Product Contents` card, open the dropdown (click on lock icon in top‑right corner)
+3. Select `View Credentials`
 4. Choose:
-   - **JSON (SDK)** credentials, or
-   - **Environment Variables** / Shell
+   - `JSON (SDK)` credentials, or
+   - `Environment Variables` (shell)
 
 You will also see:
 
-- **Expiration**: the expiration time (a specific date and time)
-- **Bucket**: the bucket name (`us-west-2.opendata.source.coop`)
-- **Prefix**: the prefix (folder) you are allowed to write to (`your-org/your-product/`)
+- `Expiration`: the expiration time of the credentials (a specific date and time)
+- `Bucket`: the bucket name (`us-west-2.opendata.source.coop`)
+- `Prefix`: the prefix (folder) you are allowed to write to (e.g. `your-org/your-product/`)
 
 ---
 
@@ -93,7 +93,7 @@ These credentials are:
 
 ## Where to upload your data
 
-You may upload **only** to the provided prefix, for example:
+You may upload only to the provided prefix, for example:
 
 ```
 s3://us-west-2.opendata.source.coop/your-org/your-product/
@@ -111,7 +111,7 @@ You may upload:
 - Folders
 - Multiple objects
 
-You may **not** upload outside this path.
+You may not upload outside this path.
 
 ---
 
@@ -137,21 +137,21 @@ If you need:
 - Scheduled pipelines
 - Integration from your own AWS account
 
-You can use **your own IAM role** to write to the Source Cooperative bucket.
+You can use your own IAM role to write to the Source Cooperative bucket.
 
 ### How this works
 
-- You keep using **your existing AWS role**
-- Source Cooperative grants that role **write access** to the bucket/prefix
-- You must set the **bucket owner to have full control** on uploaded objects
+- You keep using your existing AWS role
+- Source Cooperative grants that role write access to the bucket/prefix
+- You must set the bucket owner to have full control on uploaded objects
 
-This avoids sharing credentials and does **not** require role chaining.
+This avoids sharing credentials and does not require role chaining.
 
 ---
 
 ### Required ACL setting (IMPORTANT)
 
-When uploading from your own AWS account, you **must** set:
+When uploading from your own AWS account, you must set:
 
 ```
 bucket-owner-full-control
@@ -183,13 +183,13 @@ These controls prevent accidental or unauthorized access and ensure:
 - No accidental access to other providers’ data
 - Secure handling without sharing permanent credentials
 
-This protects both **you** and **Source Cooperative**.
+This protects both you and Source Cooperative.
 
 ---
 
 ## What not to do
 
-Please **do not**:
+Please do not:
 
 - Request permanent AWS access keys
 - Ask for full bucket access
