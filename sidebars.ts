@@ -19,6 +19,11 @@ const sidebars: SidebarsConfig = {
     'data-proxy',
     'web-ui',
     {
+      type: 'doc',
+      id: 'data-upload',
+      label: 'Data Upload',
+    },
+    {
       type: 'category',
       label: 'Case Studies',
       items: [
