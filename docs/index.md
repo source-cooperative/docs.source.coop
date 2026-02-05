@@ -6,6 +6,7 @@ id: index
 slug: /
 sidebar_label: Home
 sidebar_position: 1
+
 ---
 
 import ThemedImage from '@theme/ThemedImage';

@@ -1,4 +1,9 @@
-# How to Upload Your Data to Source Cooperative
+---
+title: How to Upload Your Data to Source Cooperative
+id: data-upload
+slug: /data-upload
+sidebar_position: 2
+---
 
 This guide explains how to deliver your data to Source Cooperative in a secure and simple way.  
 It is written for data providers and does not require deep Amazon Web Service (AWS) knowledge.

@@ -1,11 +1,9 @@
 ---
-title: Data Proxy
+title: Accessing Data Through the Source Data Proxy
 id: data-proxy
 slug: /data-proxy
 sidebar_position: 3
 ---
-
-# Accessing Data Through the Source Data Proxy
 
 The Source Data Proxy provides S3-compatible access to all data hosted on Source Cooperative. You can access data through the proxy without authentication, making it easy to programmatically download datasets using standard AWS CLI commands.
 
