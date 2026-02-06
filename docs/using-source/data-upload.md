@@ -1,5 +1,5 @@
 ---
-title: How to Upload Your Data to Source Cooperative
+title: Upload Your Data
 id: data-upload
 slug: /data-upload
 sidebar_position: 2

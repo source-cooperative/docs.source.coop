@@ -25,20 +25,20 @@ Source Cooperative is a data publishing utility for the web that allows trusted 
 
 Organizations already using Source include:
 
-- **Bridges to Prosperity** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide
-- **Earth Genome** shares 60+ terabytes of processed satellite imagery and 3.5 billion vector embeddings through Source
-- **Dynamical.org** provides fast, easy access to weather data, serving 13,000 unique visitors and 31.3 million API requests
-- **Auspatious** publishes cloud-optimized geospatial datasets, making high-resolution data accessible without requiring large downloads
+- **[Bridges to Prosperity](/case-studies/bridges-to-prosperity.md)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide
+- **[Earth Genome](/case-studies/earth-genome.md)** shares 60+ terabytes of processed satellite imagery and 3.5 billion vector embeddings through Source
+- **[Dynamical.org](/case-studies/dynamical.md)** provides fast, easy access to weather data, serving 13,000 unique visitors and 31.3 million API requests
+- **[Auspatious](/case-studies/auspatious.md)** publishes cloud-optimized geospatial datasets, making high-resolution data accessible without requiring large downloads
 
 ## Current Status
 
 Source is currently in beta. While all data hosted in Source is available to the public, publishing data requires applying to be a beta tester. To apply, visit [the beta tester application form](https://forms.gle/4weS1hkRjZhQLoPE9).
 
 Source currently:
+
 - Hosts over 1 petabyte of data
 - Serves approximately 500 terabytes of data transfer per month
 - Logs an average of 126 million data requests per month
 - Supports over 300 data products from 66+ organizations
 
-Source is funded by the Navigation Fund's Open Science Initiative, with in-kind support from AWS and Azure for data hosting.
-
+Source is funded by Taylor Geospatial, with in-kind support from AWS and Azure for data hosting.
