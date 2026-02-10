@@ -1,5 +1,5 @@
 ---
-title: Creating an Account
+title: Create an Account
 id: create-an-account
 slug: /create-an-account
 sidebar_position: 1
@@ -10,7 +10,7 @@ Getting started with Source Cooperative requires creating an account. Currently,
 Before creating an account, be aware that:
 
 - **Source is currently in beta**: All data hosted in Source is publicly accessible, but publishing data requires applying to be a beta tester
-- **Beta tester application**: To publish data to Source, apply at [https://forms.gle/4weS1hkRjZhQLoPE9](https://forms.gle/4weS1hkRjZhQLoPE9)
+- **Beta tester application**: To publish data on Source, apply at [https://forms.gle/4weS1hkRjZhQLoPE9](https://forms.gle/4weS1hkRjZhQLoPE9)
 - **Browsing and downloading**: You can browse and download public data on Source without an account
 
 ## Step 1: Navigate to Source Cooperative
@@ -40,7 +40,7 @@ If you want to publish data on Source:
 
 1. Complete the beta tester application at [https://forms.gle/4weS1hkRjZhQLoPE9](https://forms.gle/4weS1hkRjZhQLoPE9)
 2. Wait for approval from the Radiant Earth team
-3. Once approved, you'll be able to create data products and upload data
+3. Once approved, sign out and sign back in so the option to create a new data product appears in the top-right menu. You can then create data products and upload data
 
 ## Creating an Organizational Account
 
@@ -64,7 +64,7 @@ If you need to publish data under an organizational identity rather than your pe
 
 Once you have an account and beta access:
 
-- **Publish data products**: Create repositories to host your datasets
+- **Publish data products**: Create data products to host your datasets
 - **Generate access credentials**: Get AWS CLI credentials for programmatic data access
 - **Manage your data**: Update, organize, and document your data products
 - **Collaborate**: Add team members to organizational accounts
@@ -89,6 +89,5 @@ However, you will need an account for:
 After creating your account:
 
 1. Explore existing data products to see examples
-2. Review the [Core Concepts](core-concepts.md) to understand how Source works
-3. If approved as a beta tester, proceed to [Publishing a Data Product](publishing-a-data-product.md)
-4. Learn about [uploading data](uploading-data.md) to your repositories
+2. Review [Core Concepts](/core-concepts) to understand how Source works
+3. If approved as a beta tester, follow [Create a Data Product](/create-a-data-product), then learn about [uploading your data](/data-upload)

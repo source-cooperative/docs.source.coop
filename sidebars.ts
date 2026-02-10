@@ -28,10 +28,9 @@ const sidebars: SidebarsConfig = {
       label: 'Using Source',
       items: [
         'using-source/create-an-account',
+        'using-source/create-a-data-product',
         'using-source/data-upload',
-        'using-source/web-ui',
         'using-source/data-proxy',
-        
       ],
     },
     {

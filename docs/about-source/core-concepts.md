@@ -28,7 +28,7 @@ A data product is a collection of related data files with associated metadata an
 - **Objects**: The actual data files stored in the data product (any number of files)
 - **Visibility settings**: Controlling who can access the data
 
-Data products are built entirely on cloud object storage, which allows Source to host very large volumes of data. While platforms like GitHub limit repositories to around 5GB, Source data products can be hundreds of terabytes. For example, the RapidAI4EO dataset on Source is over 100TB.
+Data products are built entirely on cloud object storage, which allows Source to host very large volumes of data. While platforms like GitHub limit project size to around 5GB, Source data products can be hundreds of terabytes. For example, the RapidAI4EO dataset on Source is over 100TB.
 
 #### Data Product URLs
 
@@ -51,6 +51,8 @@ Everything in Source is designed to be linkable. You can navigate deeper into da
 - **Restricted Access**: The ability to restrict data product access based on identity and access rules
 - **Data Product Monetization**: The ability to charge for access to data products
 - **Versioning**: Support for tracking changes made to data products
+
+For how to create and manage data products in the web interface, see [Create a Data Product](/create-a-data-product).
 
 ### Objects
 
@@ -78,6 +80,7 @@ Source uses object storage rather than traditional file storage. This has import
 Source provides built-in preview functionality for common data formats directly in the browser. This allows users to visualize and explore data before downloading. When you navigate to an individual file in Source, you'll see a preview along with metadata rather than immediately downloading the file.
 
 Currently supported preview formats include:
+
 - **Geospatial vector data**: PMTiles
 - **Cloud-optimized rasters**: Cloud Optimized GeoTIFFs (COG)
 - **Vector data**: GeoJSON, FlatGeobuf

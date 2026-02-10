@@ -1,5 +1,5 @@
 ---
-title: Accessing Data Through the Source Data Proxy
+title: Access Data Through the Source Data Proxy
 id: data-proxy
 slug: /data-proxy
 sidebar_position: 3
