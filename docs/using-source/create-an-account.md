@@ -5,12 +5,12 @@ slug: /create-an-account
 sidebar_position: 1
 ---
 
-Getting started with Source Cooperative requires creating an account. Currently, Source is in beta, so publishing data requires being accepted as a beta tester.
+Getting started with sharing data on Source Cooperative requires creating an account. Currently, Source is in beta, so publishing data requires being accepted as a beta tester.
 
 Before creating an account, be aware that:
 
 - **Source is currently in beta**: All data hosted in Source is publicly accessible, but publishing data requires applying to be a beta tester
-- **Beta tester application**: To publish data on Source, apply at [https://forms.gle/4weS1hkRjZhQLoPE9](https://forms.gle/4weS1hkRjZhQLoPE9)
+- **Beta tester application**: To publish data on Source, apply via [this form](https://forms.gle/4weS1hkRjZhQLoPE9)
 - **Browsing and downloading**: You can browse and download public data on Source without an account
 
 ## Step 1: Navigate to Source Cooperative
@@ -32,15 +32,15 @@ After authentication, you'll be able to:
 - Set your username (this becomes your namespace: `username/`)
 - Add a display name
 - Provide biographical information (optional)
-- Add profile links and additional information
+- Add profile photo, links, and additional information
 
 ## Step 4: Apply as a Beta Tester (For Data Publishers)
 
 If you want to publish data on Source:
 
-1. Complete the beta tester application at [https://forms.gle/4weS1hkRjZhQLoPE9](https://forms.gle/4weS1hkRjZhQLoPE9)
-2. Wait for approval from the Radiant Earth team
-3. Once approved, sign out and sign back in so the option to create a new data product appears in the top-right menu. You can then create data products and upload data
+1. Complete the beta tester application via [this form](https://forms.gle/4weS1hkRjZhQLoPE9)
+2. Wait for approval from the Source Cooperative team
+3. Once approved, refresh your page or sign out and sign back in so the option to create a new data product appears in the top-right menu. You can then create data products and upload data
 
 ## Creating an Organizational Account
 

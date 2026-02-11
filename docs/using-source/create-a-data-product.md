@@ -7,7 +7,7 @@ sidebar_position: 2
 
 To create a data product, you need an account and [beta access](/create-an-account). After approval, sign out and sign back in—the option to create a new data product will then appear in the dropdown at the top right of the navigation bar.
 
-Data products can be owned by an organization or an individual. Organization creation and management is currently disabled, so new data products are created under your individual account.
+Data products can be owned by an organization or an individual. You will see a dropdown option when creating the data product of who will be displayed as the data product host (you or one of your organizations).
 
 ## When creating a data product
 

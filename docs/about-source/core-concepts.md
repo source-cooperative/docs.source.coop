@@ -81,11 +81,12 @@ Source provides built-in preview functionality for common data formats directly 
 
 Currently supported preview formats include:
 
-- **Geospatial vector data**: PMTiles
+- **Geospatial vector tiles**: PMTiles
 - **Cloud-optimized rasters**: Cloud Optimized GeoTIFFs (COG)
 - **Vector data**: GeoJSON, FlatGeobuf
 - **Tabular data**: CSV, Parquet
 - **Metadata and documentation**: JSON, XML, Markdown
+- **3D data**: 3D data files (e.g. Harvard Smithsonian data archive)
 
 The preview system is extensible, and the community can propose solutions for additional file formats as needs arise.
 
@@ -101,11 +102,19 @@ Source provides multiple ways to access data:
 
 ### Tags and Discoverability
 
+Data products can be tagged with relevant keywords to improve discoverability. Common tags include:
+- Data types: `vector`, `raster`, `tabular`
+- Themes: `agriculture`, `climate`, `conservation`, `land cover`
+- Formats: `geoparquet`, `cog`, `pmtiles`, `netcdf`
+- Applications: `machine learning`, `segmentation`, `time series`
+
+Tags help users find relevant datasets through search and browsing, and improve Source's visibility in search engines.
+
 ## Accounts
 
 ### Individual Accounts
 
-When you create an account on Source, you get a personal namespace where you can publish and manage your own data products. Your individual account is identified by your username (e.g., `username`). This username becomes part of your data product URLs.
+When you create an account on Source, you get a personal namespace where you can publish and manage your own data products. Your individual account is identified by your username (e.g., `source.coop/cholmes`). This username becomes part of your data product URLs.
 
 #### Individual Account Benefits
 
@@ -146,16 +155,6 @@ Organizations can create shared accounts that multiple individuals can manage co
 - **Owner**: Full control over the data product, including deletion and access management
 - **Contributor**: Can upload and modify data within the product
 - **Viewer**: Can view and download data (relevant for restricted access data products)
-
-
-
-Data products can be tagged with relevant keywords to improve discoverability. Common tags include:
-- Data types: `vector`, `raster`, `tabular`
-- Themes: `agriculture`, `climate`, `conservation`, `land cover`
-- Formats: `geoparquet`, `cog`, `pmtiles`, `netcdf`
-- Applications: `machine learning`, `segmentation`, `time series`
-
-Tags help users find relevant datasets through search and browsing, and improve Source's visibility in search engines.
 
 ## Key Principles
 
