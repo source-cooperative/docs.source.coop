@@ -28,7 +28,7 @@ const sidebars: SidebarsConfig = {
       label: 'Case Studies',
       items: [
         'case-studies/auspatious',
-        'case-studies/bridges-to-prosperity',
+        'case-studies/fika',
         'case-studies/earth-genome',
         'case-studies/dynamical',
       ],
