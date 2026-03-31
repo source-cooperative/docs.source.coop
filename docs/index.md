@@ -52,7 +52,7 @@ Source is currently in beta, but all data hosted in Source is available to the p
 
 Source is trusted by leading organizations to publish and share data for the public good:
 
-- **[Bridges to Prosperity](case-studies/bridges-to-prosperity)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide and helping raise hundreds of thousands in funding for rural infrastructure projects.
+- **[Fika](case-studies/fika)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide and helping raise hundreds of thousands in funding for rural infrastructure projects.
 
 - **[Earth Genome](case-studies/earth-genome)** shares 60+ terabytes of processed satellite imagery and 3.5 billion vector embeddings through Source, making foundational planetary data accessible to researchers, journalists, and communities across nearly every continent.
 
