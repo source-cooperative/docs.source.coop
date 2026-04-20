@@ -75,20 +75,19 @@ Source uses object storage rather than traditional file storage. This has import
 - **No version control**: Unlike Git-based systems, Source doesn't provide granular version control on individual objects. Source is designed for publishing "fully baked" data products
 - **Flat namespace**: While you can organize objects with path prefixes, the underlying storage is flat rather than hierarchical
 
-### Object Previewers
+### Data Viewers
 
 Source provides built-in preview functionality for common data formats directly in the browser. This allows users to visualize and explore data before downloading. When you navigate to an individual file in Source, you'll see a preview along with metadata rather than immediately downloading the file.
 
 Currently supported preview formats include:
 
-- **Geospatial vector tiles**: PMTiles
-- **Cloud-optimized rasters**: Cloud Optimized GeoTIFFs (COG)
-- **Vector data**: GeoJSON, FlatGeobuf
-- **Tabular data**: CSV, Parquet
-- **Metadata and documentation**: JSON, XML, Markdown
-- **3D data**: 3D data files (e.g. Harvard Smithsonian data archive)
+- **PMTiles** - [https://source.coop/vida/google-microsoft-osm-open-buildings/pmtiles/goog_msft_osm.pmtiles](https://source.coop/vida/google-microsoft-osm-open-buildings/pmtiles/goog_msft_osm.pmtiles)
+- **GeoParquet / Parquet** - [https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet](https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet)
+- **CSV** - [https://source.coop/severo/csv-papaparse-test-files/long-sample.csv](https://source.coop/severo/csv-papaparse-test-files/long-sample.csv)
+- **3D / GLB** - [https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb](https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb)
+- **Markdown / README** - [https://source.coop/alexgleith/gebco-2024](https://source.coop/alexgleith/gebco-2024)
 
-The preview system is extensible, and the community can propose solutions for additional file formats as needs arise.
+The data viewer system is extensible, and the community can propose solutions for additional file formats as needs arise.
 
 ### Data Access Methods
 

@@ -88,6 +88,6 @@ However, you will need an account for:
 
 After creating your account:
 
-1. Explore existing data products to see examples
+1. [Explore existing data](https://source.coop/products) products to see examples
 2. Review [Core Concepts](/core-concepts) to understand how Source works
 3. If approved as a beta tester, follow [Create a Data Product](/create-a-data-product), then learn about [uploading your data](/data-upload)
