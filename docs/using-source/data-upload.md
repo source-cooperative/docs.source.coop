@@ -17,7 +17,7 @@ If you do not see the option to upload (for example, Edit Mode or View Credentia
 You have two main ways to upload data:
 
 1. **Upload directly in the Source Cooperative User Interface (UI)** (drag-and-drop or file selector), or  
-2. **Use temporary AWS credentials** to upload via the AWS Command Linke Interface (CLI) or Software Development Kits (SDKs)
+2. **Use temporary AWS credentials** to upload via the AWS Command Line Interface (CLI) or Software Development Kits (SDKs)
 
 For long‑term or automated access, contact the Source Cooperative team at `hello@source.coop`.
 
