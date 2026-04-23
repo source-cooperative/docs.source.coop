@@ -15,7 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "3.8.1",
+    "@docusaurus/core": "^3.8.1",
     "@docusaurus/plugin-vercel-analytics": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@ibm/plex": "^6.4.1",
@@ -49,5 +49,12 @@
   },
   "engines": {
     "node": "22.x"
+  },
+  "//webpack-pin": "Pin webpack to 5.97.1 to work around webpackbar 6.0.1 + webpack 5.99+ ProgressPlugin incompatibility. Remove once webpackbar is upgraded.",
+  "resolutions": {
+    "webpack": "5.97.1"
+  },
+  "overrides": {
+    "webpack": "5.97.1"
   }
 }
