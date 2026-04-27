@@ -36,9 +36,9 @@ Source is currently in beta. While all data hosted in Source is available to the
 
 Source currently:
 
-- Hosts over 1 petabyte of data
-- Serves approximately 500 terabytes of data transfer per month
-- Logs an average of 126 million data requests per month
-- Supports over 300 data products from 66+ organizations
+- Hosts over 5 petabytes of data
+- Serves approximately 700 terabytes of data transfer per month
+- Logs an average of 500 million data requests per month
+- Supports over 330 data products from 130+ organizations
 
 Source is funded by Taylor Geospatial, with in-kind support from AWS and Azure for data hosting.
