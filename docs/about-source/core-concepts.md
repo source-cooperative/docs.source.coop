@@ -5,7 +5,7 @@ slug: /core-concepts
 sidebar_position: 2
 ---
 
-Source is a data publishing utility designed to make data shared in object stores easier to find, explore, and share on the web. Understanding these fundamental concepts will help you navigate and use Source Cooperative effectively.
+Source Cooperative ("Source") is a data publishing utility designed to make data shared in object stores easier to find, explore, and share on the web. Understanding these fundamental concepts will help you navigate and use Source effectively.
 
 ## Overview
 
