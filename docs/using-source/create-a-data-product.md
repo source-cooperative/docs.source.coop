@@ -19,7 +19,7 @@ Data products can be owned by an organization or an individual. You will see a d
 
 ## Editing a data product
 
-To change the title, description, tags, or visibility later, open your data product page and click **Edit** in the sidebar.
+To change the title, description, tags, or visibility later, open your data product page and click the gear icon.
 
 ## README and documentation
 
