@@ -15,7 +15,7 @@ Data products can be owned by an organization or an individual. You will see a d
 - **Title**: Maximum 200 characters.
 - **Description**: Optional; maximum 500 characters. Use it for a short overview; put detailed documentation in the README.
 - **Tags**: Comma-separated, up to 20 tags. They help others discover your data.
-- **Visibility**: New data products are created **Unlisted** (not shown in search). When ready to publish, open the data product page, click **Edit** in the sidebar, and set the state to **Listed**.
+- **Visibility**: New data products are created **Unlisted** (not shown in search). When ready to publish, open the data product page, click the gear icon, and set the state to **Listed**.
 
 ## Editing a data product
 
