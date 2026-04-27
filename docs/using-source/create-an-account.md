@@ -64,7 +64,7 @@ If you need to publish data under an organizational identity rather than your pe
 
 Once you have an account and beta access:
 
-- **Publish data products**: Create data products to host your datasets
+- **Publish data products**: [Create data products](/create-a-data-product) to host your datasets
 - **Generate access credentials**: Get AWS CLI credentials for programmatic data access
 - **Manage your data**: Update, organize, and document your data products
 - **Collaborate**: Add team members to organizational accounts
