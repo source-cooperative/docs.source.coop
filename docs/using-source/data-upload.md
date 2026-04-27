@@ -8,7 +8,7 @@ sidebar_position: 2
 This guide explains how to deliver your data to Source Cooperative in a secure and simple way.  
 It is written for data providers and does not require deep Amazon Web Service (AWS) knowledge.
 
-If you do not see the option to upload (for example, Edit Mode or View Credentials on your product page), contact [hello@source.coop](mailto:hello@source.coop) to request upload access.
+If you do not see the option to upload (for example, Edit Mode or View Credentials on your product page under the lock icon), contact [hello@source.coop](mailto:hello@source.coop) to request upload access.
 
 ---
 
