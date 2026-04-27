@@ -9,15 +9,26 @@ Getting started with sharing data on Source Cooperative requires creating an acc
 
 Before creating an account, be aware that:
 
-- **Source is currently in beta**: All data hosted in Source is publicly accessible, but publishing data requires applying to be a beta tester
+- **Source is currently in beta**: Since we are still in beta for Source, all data hosted in Source is publicly accessible. Therefore, publishing data requires applying to be a beta tester
 - **Beta tester application**: To publish data on Source, apply via [this form](https://forms.gle/4weS1hkRjZhQLoPE9)
 - **Browsing and downloading**: You can browse and download public data on Source without an account
 
-## Step 1: Navigate to Source Cooperative
+## What You Can Do With an Account
+
+Once you have an account and beta access:
+
+- **Publish data products**: [Create data products](/create-a-data-product) to host your datasets
+- **Generate access credentials**: Get AWS CLI credentials for programmatic data access
+- **Manage your data**: Update, organize, and document your data products
+- **Collaborate**: Add team members to organizational accounts
+
+## Create Your Account
+
+### Step 1: Navigate to Source Cooperative
 
 Visit [https://source.coop](https://source.coop) and click "Log In / Register" in the top navigation.
 
-## Step 2: Choose Your Sign-Up Method
+### Step 2: Choose Your Sign-Up Method
 
 Source offers authentication through third-party providers. Select your preferred authentication method and follow the sign-in flow. Common options may include:
 
@@ -25,16 +36,16 @@ Source offers authentication through third-party providers. Select your preferre
 - Google authentication  
 - Other OAuth providers
 
-## Step 3: Set Up Your Profile
+### Step 3: Set Up Your Profile
 
 After authentication, you'll be able to:
 
 - Set your username (this becomes your namespace: `username/`)
 - Add a display name
 - Provide biographical information (optional)
-- Add profile photo, links, and additional information
+- Add profile photo, links, ORCID ID, and additional information (optional)
 
-## Step 4: Apply as a Beta Tester (For Data Publishers)
+### Step 4: Apply as a Beta Tester (For Data Publishers)
 
 If you want to publish data on Source:
 
@@ -42,7 +53,7 @@ If you want to publish data on Source:
 2. Wait for approval from the Source Cooperative team
 3. Once approved, refresh your page or sign out and sign back in so the option to create a new data product appears in the top-right menu. You can then create data products and upload data
 
-## Creating an Organizational Account
+### Creating an Organizational Account
 
 If you need to publish data under an organizational identity rather than your personal account:
 
@@ -59,15 +70,6 @@ If you need to publish data under an organizational identity rather than your pe
 - **Complete your profile**: A complete profile with biographical information helps other users understand who is publishing the data and builds confidence in your data products.
 
 - **Link to your work**: Include links to your organization, research profile (ORCID), or relevant work to establish credibility.
-
-## What You Can Do With an Account
-
-Once you have an account and beta access:
-
-- **Publish data products**: [Create data products](/create-a-data-product) to host your datasets
-- **Generate access credentials**: Get AWS CLI credentials for programmatic data access
-- **Manage your data**: Update, organize, and document your data products
-- **Collaborate**: Add team members to organizational accounts
 
 ## Data Access Without an Account
 

@@ -19,14 +19,13 @@ Data products are the primary organizational unit in Source. They serve as conta
 
 A data product is a collection of related data files with associated metadata and documentation. Each data product consists of:
 
-- **A unique identifier**: Following the pattern `account-name/data-product-name` (e.g., `cholmes/eurocrops`)
-- **Title**: A descriptive, human-readable name for the data product
+- **Product ID**: A unique identifier following the pattern `account-name/data-product-name` (e.g., `cholmes/eurocrops`)
+- **Product Title**: A descriptive, human-readable name for the data product
 - **Description**: A detailed explanation of what the data product contains and its purpose
-- **Owner**: Either an individual or an organization
-- **Metadata**: Including tags, license information, and other descriptive details
-- **Documentation**: Typically a README.md file at the data product root that explains the data
-- **Objects**: The actual data files stored in the data product (any number of files)
-- **Visibility settings**: Controlling who can access the data
+- **Owner Account**: Either an individual or an organization
+- **Documentation and Metadata**: Typically a README.md file at the data product root that explains the data. Suggested to includea description of the data product, license information (separate for metadata vs data), access examples (interactive maps preferred over downloads), contact information and citation/DOI information.
+- **Product Contents**: The actual data files stored in the data product (any number of files)
+- **Visibility**: Controlling who can access the data
 
 Data products are built entirely on cloud object storage, which allows Source to host very large volumes of data. While platforms like GitHub limit project size to around 5GB, Source data products can be hundreds of terabytes. For example, the RapidAI4EO dataset on Source is over 100TB.
 
@@ -52,7 +51,7 @@ Everything in Source is designed to be linkable. You can navigate deeper into da
 - **Data Product Monetization**: The ability to charge for access to data products
 - **Versioning**: Support for tracking changes made to data products
 
-For how to create and manage data products in the web interface, see [Create a Data Product](/create-a-data-product).
+For information on how to create and manage data products in the web interface, see [Create a Data Product](/create-a-data-product).
 
 ### Objects
 
@@ -81,11 +80,11 @@ Source provides built-in preview functionality for common data formats directly 
 
 Currently supported preview formats include:
 
-- **PMTiles** - [https://source.coop/vida/google-microsoft-osm-open-buildings/pmtiles/goog_msft_osm.pmtiles](https://source.coop/vida/google-microsoft-osm-open-buildings/pmtiles/goog_msft_osm.pmtiles)
+- **PMTiles** - [https://source.coop/ftw/global-data/predictions/vectors/alpha/global.pmtiles](https://source.coop/ftw/global-data/predictions/vectors/alpha/global.pmtiles))
 - **GeoParquet / Parquet** - [https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet](https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet)
 - **CSV** - [https://source.coop/severo/csv-papaparse-test-files/long-sample.csv](https://source.coop/severo/csv-papaparse-test-files/long-sample.csv)
 - **3D / GLB** - [https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb](https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb)
-- **Markdown / README** - [https://source.coop/alexgleith/gebco-2024](https://source.coop/alexgleith/gebco-2024)
+- **README Markdowns** - [https://source.coop/alexgleith/gebco-2024](https://source.coop/alexgleith/gebco-2024)
 
 The data viewer system is extensible, and the community can propose solutions for additional file formats as needs arise.
 
@@ -95,9 +94,9 @@ Source provides multiple ways to access data:
 
 1. **Web Browser**: Browse and download files through the web interface at `https://source.coop`
 2. **Direct HTTP**: Access individual files directly via `https://data.source.coop`
-3. **AWS CLI**: Use the S3-compatible API to list, upload, download, and manage objects programmatically
-4. **SDKs**: Use AWS SDKs (boto3 for Python, AWS SDK for JavaScript, etc.) with Source's endpoint
-5. **Direct Cloud Access**: Authenticated users can generate credentials to access data directly from the underlying cloud storage
+3. **AWS CLI**: Use the Source Data Proxy's S3-compatible API to list, upload, download, and manage objects programmatically
+4. **AWS SDKs**: Use AWS SDKs (boto3 for Python, AWS SDK for JavaScript, etc.) with Source's endpoint
+5. **Direct Cloud Access**: Authenticated users can generate credentials to access data directly from the underlying cloud storage  using native tools (e.g. `aws s3`, `azcopy`)
 
 ### Tags and Discoverability
 
