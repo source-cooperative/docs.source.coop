@@ -80,7 +80,7 @@ Source provides built-in preview functionality for common data formats directly 
 
 Currently supported preview formats include:
 
-- **PMTiles** - [https://source.coop/ftw/global-data/predictions/vectors/alpha/global.pmtiles](https://source.coop/ftw/global-data/predictions/vectors/alpha/global.pmtiles))
+- **PMTiles** - [https://source.coop/protomaps/openstreetmap/v4.pmtiles](https://source.coop/protomaps/openstreetmap/v4.pmtiles)
 - **GeoParquet / Parquet** - [https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet](https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet)
 - **CSV** - [https://source.coop/severo/csv-papaparse-test-files/long-sample.csv](https://source.coop/severo/csv-papaparse-test-files/long-sample.csv)
 - **3D / GLB** - [https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb](https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb)
