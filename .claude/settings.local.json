@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh pr view:*)",
+      "Bash(gh pr checkout:*)",
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(gh pr checks:*)",
+      "WebFetch(domain:vercel.com)",
+      "Bash(node --version:*)",
+      "Bash(git add:*)",
+      "Bash(=18.0\" engine constraint.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(hugo:*)",
+      "Bash(ls:*)",
+      "Bash(xargs:*)",
+      "Bash(node:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)"
+    ]
+  }
+}
