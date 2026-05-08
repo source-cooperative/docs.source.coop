@@ -1,7 +1,14 @@
-# How to Upload Your Data to Source Cooperative
+---
+title: Upload Your Data
+id: data-upload
+slug: /data-upload
+sidebar_position: 2
+---
 
 This guide explains how to deliver your data to Source Cooperative in a secure and simple way.  
 It is written for data providers and does not require deep Amazon Web Service (AWS) knowledge.
+
+If you do not see the option to upload (for example, Edit Mode or View Credentials on your product page under the lock icon), contact [hello@source.coop](mailto:hello@source.coop) to request upload access.
 
 ---
 
@@ -10,7 +17,7 @@ It is written for data providers and does not require deep Amazon Web Service (A
 You have two main ways to upload data:
 
 1. **Upload directly in the Source Cooperative User Interface (UI)** (drag-and-drop or file selector), or  
-2. **Use temporary AWS credentials** to upload via the AWS Command Linke Interface (CLI) or Software Development Kits (SDKs)
+2. **Use temporary AWS credentials** to upload via the AWS Command Line Interface (CLI) or Software Development Kits (SDKs)
 
 For long‑term or automated access, contact the Source Cooperative team at `hello@source.coop`.
 

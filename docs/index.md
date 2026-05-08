@@ -73,6 +73,7 @@ We also seek volunteers and contractors to help with documentation, design, and 
 
 Source is developed, maintained, and governed by [Radiant Earth](https://radiant.earth), a 501(c)(3) non-profit organization. A core belief behind Source is that no single entity should unilaterally control the systems required to share information necessary to solve global challenges, and we are exploring cooperative governance models for Source that we will implement in the future. We have drafted proposed cooperative bylaws for Source at https://github.com/source-cooperative/governance.
 
-Current development of Source is funded by the [Navigation Fund's Open Science Initiative](https://www.navigation.org/grants/open-science). If you are interested in providing financial support to accelerate development of Source, please [contact us](mailto:hello@source.coop).
+
+Source is funded by [Taylor Geospatial](https://taylorgeospatial.org/), with in-kind support from AWS and Azure for data hosting. If you are interested in providing financial support to accelerate development of Source, please [contact us](mailto:hello@source.coop).
 
 Our ultimate goal is to build a financially self-sustaining utility worth paying for that expands access to data without locking customers into proprietary data formats or seeking arbitrary profits.

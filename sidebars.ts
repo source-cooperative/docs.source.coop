@@ -15,13 +15,23 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     'index',
-    'core-concepts',
-    'data-proxy',
-    'web-ui',
     {
-      type: 'doc',
-      id: 'data-upload',
-      label: 'Data Upload',
+      type: 'category',
+      label: 'About Source',
+      items: [
+        'about-source/what-is-source',
+        'about-source/core-concepts',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Using Source',
+      items: [
+        'using-source/create-an-account',
+        'using-source/create-a-data-product',
+        'using-source/data-upload',
+        'using-source/data-proxy',
+      ],
     },
     {
       type: 'category',

@@ -1,0 +1,95 @@
+---
+title: Create an Account
+id: create-an-account
+slug: /create-an-account
+sidebar_position: 1
+---
+
+Getting started with sharing data on Source Cooperative requires creating an account. Currently, Source is in beta, and publishing data requires being accepted as a beta tester.
+
+Before creating an account, be aware that:
+
+- **Source is currently in beta**: Since we are still in beta for Source, all data hosted in Source is publicly accessible. Therefore, publishing data requires applying to be a beta tester
+- **Beta tester application**: To publish data on Source, apply via [this form](https://forms.gle/4weS1hkRjZhQLoPE9)
+- **Browsing and downloading**: You can browse and download public data on Source without an account
+
+## What You Can Do With an Account
+
+Once you have an account and beta access:
+
+- **Publish data products**: [Create data products](/create-a-data-product) to host your datasets
+- **Generate access credentials**: Get AWS CLI credentials for programmatic data access
+- **Manage your data**: Update, organize, and document your data products
+- **Collaborate**: Add team members to organizational accounts
+
+## Create Your Account
+
+### Step 1: Navigate to Source Cooperative
+
+Visit [https://source.coop](https://source.coop) and click "Log In / Register" in the top navigation.
+
+### Step 2: Choose Your Sign-Up Method
+
+Source offers authentication through third-party providers. Select your preferred authentication method and follow the sign-in flow. Common options may include:
+
+- GitHub authentication
+- Google authentication  
+- Other OAuth providers
+
+### Step 3: Set Up Your Profile
+
+After authentication, you'll be able to:
+
+- Set your username (this becomes your namespace: `username/`)
+- Add a display name
+- Provide biographical information (optional)
+- Add profile photo, links, ORCID ID, and additional information (optional)
+
+### Step 4: Apply as a Beta Tester (For Data Publishers)
+
+If you want to publish data on Source:
+
+1. Complete the beta tester application via [this form](https://forms.gle/4weS1hkRjZhQLoPE9)
+2. Wait for approval from the Source Cooperative team
+3. Once approved, refresh your page or sign out and sign back in so the option to create a new data product appears in the top-right menu. You can then create data products and upload data
+
+### Creating an Organizational Account
+
+If you need to publish data under an organizational identity rather than your personal account:
+
+1. First create your individual account
+2. Contact the Source team at [hello@source.coop](mailto:hello@source.coop) to request creation of an organizational account
+3. Once granted permission, you can create the organizational account at source.coop.
+
+## Tips for Account Setup
+
+- **Choose your username carefully**: Your username becomes part of all your data product URLs (e.g., `https://source.coop/username/dataset-name/`). Choose something professional and recognizable.
+
+- **Use your real identity**: Source is built for trusted organizations and individuals. Using your real name or organizational identity helps build trust in the data you publish.
+
+- **Complete your profile**: A complete profile with biographical information helps other users understand who is publishing the data and builds confidence in your data products.
+
+- **Link to your work**: Include links to your organization, research profile (ORCID), or relevant work to establish credibility.
+
+## Data Access Without an Account
+
+You don't need an account to:
+
+- Browse public data products on Source
+- Download data through your web browser  
+- Access data via direct HTTP URLs
+- View data previews
+
+However, you will need an account for:
+
+- Accessing data programmatically via AWS CLI
+- Generating S3-compatible access credentials
+- Publishing your own data products
+
+## Next Steps
+
+After creating your account:
+
+1. [Explore existing data](https://source.coop/products) products to see examples
+2. Review [Core Concepts](/core-concepts) to understand how Source works
+3. If approved as a beta tester, follow [Create a Data Product](/create-a-data-product), then learn about [uploading your data](/data-upload)
