@@ -5,7 +5,7 @@ slug: /create-an-account
 sidebar_position: 1
 ---
 
-Getting started with sharing data on Source Cooperative requires creating an account. Currently, Source is in beta, so publishing data requires being accepted as a beta tester.
+Getting started with sharing data on Source Cooperative requires creating an account. Currently, Source is in beta, and publishing data requires being accepted as a beta tester.
 
 Before creating an account, be aware that:
 
