@@ -1,20 +1,20 @@
 # Bridges to Prosperity
 
-<ThemedImage
-  alt="Bridges to Prosperity Logo"
-  className="case-study-logo"
-  sources={{
-    light: '/img/case-studies/bridges-to-prosperity-light.svg',
-    dark: '/img/case-studies/bridges-to-prosperity-dark.svg',
-  }}
-  style={{ width: '18em', height: 'auto' }}
-/>
+:::{image} /img/case-studies/bridges-to-prosperity-light.svg
+:alt: Bridges to Prosperity Logo
+:class: case-study-logo only-light
+:width: 288px
+:::
+
+:::{image} /img/case-studies/bridges-to-prosperity-dark.svg
+:alt: Bridges to Prosperity Logo
+:class: case-study-logo only-dark
+:width: 288px
+:::
 
 ## Bridges to Prosperity Datasets on Source
 
 - [WaterNet Global Waterways](https://source.coop/fika/waternet)
-
-import ThemedImage from '@theme/ThemedImage';
 
 ## Introducing Bridges to Prosperity
 

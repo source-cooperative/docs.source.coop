@@ -1,42 +1,34 @@
 ---
-hide_title: true
 title: Source Cooperative Documentation
 description: Source Cooperative is the data publishing utility for the web, allowing trusted organizations and individuals to publish data of any kind at any scale.
-id: index
-slug: /
-sidebar_label: Home
-sidebar_position: 1
+short_title: Home
 ---
 
-import ThemedImage from '@theme/ThemedImage';
+:::{image} /img/logotype-light.svg
+:alt: Source Cooperative Logotype
+:width: 400px
+:class: only-light
+:::
 
-<ThemedImage
-  alt="Source Cooperative Logotype"
-  width="400"
-  height="auto"
-  sources={{
-    light: '/img/logotype-light.svg',
-    dark: '/img/logotype-dark.svg',
-  }}
-/>
+:::{image} /img/logotype-dark.svg
+:alt: Source Cooperative Logotype
+:width: 400px
+:class: only-dark
+:::
 
-<div className="hero hero--primary" style={{padding: '4rem 0', marginBottom: '0rem'}}>
-  <div className="container">
-    <h1 className="hero__title" style={{fontSize: '2.5rem', fontWeight: '700', marginBottom: '1rem'}}>
-      Source Cooperative is the data publishing utility for the web
-    </h1>
-    <p className="hero__subtitle" style={{fontSize: '1.25rem', opacity: '0.9'}}>
-      [Source](https://source.coop) allows trusted organizations and individuals to publish data of any kind at any scale without needing to build or maintain their own infrastructure.
-    </p>
-  </div>
-</div>
+:::{div} source-hero
 
+# Source Cooperative is the data publishing utility for the web
+
+[Source](https://source.coop) allows trusted organizations and individuals to publish data of any kind at any scale without needing to build or maintain their own infrastructure.
+
+:::
 
 ## How is Source different?
 
 ### vs. Cloud object storage
 
-While object storage services like Amazon S3, Google Cloud Storage, and Azure Blob Storage can store data, they don't make it discoverable or accessible to others. Source is a utility built on top of cloud object storage services that provides a public catalog, standardized access, and community visibility that raw cloud storage can't offer. 
+While object storage services like Amazon S3, Google Cloud Storage, and Azure Blob Storage can store data, they don't make it discoverable or accessible to others. Source is a utility built on top of cloud object storage services that provides a public catalog, standardized access, and community visibility that raw cloud storage can't offer.
 
 ### vs. Cloud file sharing services
 
@@ -52,27 +44,26 @@ Source is currently in beta, but all data hosted in Source is available to the p
 
 Source is trusted by leading organizations to publish and share data for the public good:
 
-- **[Bridges to Prosperity](case-studies/bridges-to-prosperity)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide and helping raise hundreds of thousands in funding for rural infrastructure projects.
+- **[Bridges to Prosperity](case-studies/bridges-to-prosperity.md)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide and helping raise hundreds of thousands in funding for rural infrastructure projects.
 
-- **[Earth Genome](case-studies/earth-genome)** shares 60+ terabytes of processed satellite imagery and 3.5 billion vector embeddings through Source, making foundational planetary data accessible to researchers, journalists, and communities across nearly every continent.
+- **[Earth Genome](case-studies/earth-genome.md)** shares 60+ terabytes of processed satellite imagery and 3.5 billion vector embeddings through Source, making foundational planetary data accessible to researchers, journalists, and communities across nearly every continent.
 
-- **[Dynamical.org](case-studies/dynamical)** provides fast, easy access to weather data through Source, serving 13,000 unique visitors and 31.3 million API requests while enabling hundreds of organizations to save significant time on weather data management.
+- **[Dynamical.org](case-studies/dynamical.md)** provides fast, easy access to weather data through Source, serving 13,000 unique visitors and 31.3 million API requests while enabling hundreds of organizations to save significant time on weather data management.
 
-- **[Auspatious](case-studies/auspatious)** uses Source to publish cloud-optimized geospatial datasets, making high-resolution sea surface temperature data accessible to researchers without requiring large downloads or complex infrastructure.
+- **[Auspatious](case-studies/auspatious.md)** uses Source to publish cloud-optimized geospatial datasets, making high-resolution sea surface temperature data accessible to researchers without requiring large downloads or complex infrastructure.
 
 ## Contributing to Source
 
 The code for Source is open source and available on [GitHub](https://github.com/source-cooperative/). We welcome pull requests, bug reports, and feature requests to:
 
-- https://github.com/source-cooperative/source.coop – the Next.JS application which hosts the Source frontend and API
-- https://github.com/source-cooperative/data.source.coop – the rust application which hosts the Source Data Proxy
+- <https://github.com/source-cooperative/source.coop> – the Next.JS application which hosts the Source frontend and API
+- <https://github.com/source-cooperative/data.source.coop> – the rust application which hosts the Source Data Proxy
 
 We also seek volunteers and contractors to help with documentation, design, and community management. If you are interested in contributing to Source, please [contact us](mailto:hello@source.coop).
 
-## Funding and Governance  
+## Funding and Governance
 
-Source is developed, maintained, and governed by [Radiant Earth](https://radiant.earth), a 501(c)(3) non-profit organization. A core belief behind Source is that no single entity should unilaterally control the systems required to share information necessary to solve global challenges, and we are exploring cooperative governance models for Source that we will implement in the future. We have drafted proposed cooperative bylaws for Source at https://github.com/source-cooperative/governance.
-
+Source is developed, maintained, and governed by [Radiant Earth](https://radiant.earth), a 501(c)(3) non-profit organization. A core belief behind Source is that no single entity should unilaterally control the systems required to share information necessary to solve global challenges, and we are exploring cooperative governance models for Source that we will implement in the future. We have drafted proposed cooperative bylaws for Source at <https://github.com/source-cooperative/governance>.
 
 Source is funded by [Taylor Geospatial](https://taylorgeospatial.org/), with in-kind support from AWS and Azure for data hosting. If you are interested in providing financial support to accelerate development of Source, please [contact us](mailto:hello@source.coop).
 

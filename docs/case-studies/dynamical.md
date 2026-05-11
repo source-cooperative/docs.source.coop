@@ -1,21 +1,20 @@
 # dynamical.org
 
-<ThemedImage
-  alt="dynamical.org logo"
-  className="case-study-logo"
-  sources={{
-    light: '/img/case-studies/dynamical-light.svg',
-    dark: '/img/case-studies/dynamical-dark.svg',
-  }}
-/>
+:::{image} /img/case-studies/dynamical-light.svg
+:alt: dynamical.org logo
+:class: case-study-logo only-light
+:::
+
+:::{image} /img/case-studies/dynamical-dark.svg
+:alt: dynamical.org logo
+:class: case-study-logo only-dark
+:::
 
 ## dynamical.org Datasets on Source
 
 - [NOAA GEFS analysis](https://source.coop/dynamical/noaa-gefs-analysis)
 - [NOAA GEFS forecast, 35 day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)
 - [NOAA GFS analysis, hourly](https://source.coop/dynamical/noaa-gfs-analysis-hourly)
-
-import ThemedImage from '@theme/ThemedImage';
 
 ## Introducing dynamical.org
 

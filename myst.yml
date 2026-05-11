@@ -1,0 +1,37 @@
+version: 1
+
+project:
+  title: Source Cooperative Documentation
+  description: Source Cooperative is the data publishing utility for the web, allowing trusted organizations and individuals to publish data of any kind at any scale.
+  github: https://github.com/source-cooperative/docs.source.coop
+  toc:
+    - file: docs/index.md
+    - title: About Source
+      children:
+        - file: docs/about-source/what-is-source.md
+        - file: docs/about-source/core-concepts.md
+    - title: Using Source
+      children:
+        - file: docs/using-source/create-an-account.md
+        - file: docs/using-source/create-a-data-product.md
+        - file: docs/using-source/data-upload.md
+        - file: docs/using-source/data-proxy.md
+    - title: Case Studies
+      children:
+        - file: docs/case-studies/auspatious.md
+        - file: docs/case-studies/bridges-to-prosperity.md
+        - file: docs/case-studies/earth-genome.md
+        - file: docs/case-studies/dynamical.md
+
+site:
+  template: book-theme
+  options:
+    logo: img/logo-light.svg
+    logo_dark: img/logo-dark.svg
+    logo_text: Source Cooperative Documentation
+    favicon: img/favicon.svg
+    style: public/custom.css
+    hide_outline: false
+  nav: []
+  actions: []
+  domains: []

@@ -1,0 +1,139 @@
+/* IBM Plex Sans (body) — loaded from Google Fonts CDN */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+/* Berkeley Mono (code) — vendored under public/fonts */
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('/fonts/BerkeleyMonoVariable-Italic.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: italic;
+}
+
+/* MystMD book-theme uses Tailwind-style CSS custom properties.
+   These overrides preserve the Source palette from the Docusaurus build. */
+:root {
+  --font-system: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Berkeley Mono', SFMono-Regular, Menlo, monospace;
+
+  /* Source brand palette — light */
+  --color-source-bg: #efebea;
+  --color-source-fg: #2c3233;
+}
+
+html {
+  font-family: var(--font-system);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
+
+/* Page-level background — match Source palette.
+   MystMD's book-theme paints the page via Tailwind utility classes
+   (bg-white in light mode, bg-stone-900 in dark). Override those so
+   the whole site uses the Source colors instead. */
+html.light,
+html.light body,
+html.light .bg-white {
+  background-color: var(--color-source-bg) !important;
+  color: var(--color-source-fg);
+}
+
+html.dark,
+html.dark body,
+html.dark .dark\:bg-stone-900 {
+  background-color: var(--color-source-fg) !important;
+  color: var(--color-source-bg);
+}
+
+/* Top nav: keep a solid white bar in both light and dark mode. */
+.myst-top-nav {
+  background-color: #ffffff !important;
+}
+
+/* Sidebar / Contents panel — inherit page background so it blends in
+   instead of showing the theme's default panel color. */
+.myst-primary-sidebar,
+.myst-primary-sidebar > *,
+.myst-toc,
+.myst-outline-section,
+.myst-outline-section > * {
+  background-color: transparent !important;
+}
+
+/* Content links — match the Docusaurus underlined-primary style:
+   same color as body text, underlined; underline removed on hover. */
+article a,
+article a.link,
+article a.hover-link {
+  color: inherit !important;
+  text-decoration: underline;
+}
+
+article a:hover,
+article a.link:hover,
+article a.hover-link:hover {
+  color: inherit !important;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+/* External-link icon and link text inherit the link's color. */
+article a .link-text,
+article a .link-icon {
+  color: inherit;
+}
+
+/* Light/dark image variants — show only the variant matching the
+   active page theme (book-theme toggles `light`/`dark` on <html>). */
+html.light .only-dark,
+html.dark .only-light {
+  display: none !important;
+}
+
+/* Case-study logos: pin to the right of the page title. Each logo's
+   bottom edge sits on the same baseline (~6rem from article top), so
+   logos of very different aspect ratios (e.g. the short-and-wide
+   Bridges logo vs taller logos) all visually align with the title. */
+article.article,
+article.content {
+  position: relative;
+}
+
+.myst-fm-block {
+  padding-right: 220px;
+}
+
+.case-study-logo {
+  position: absolute;
+  right: 0;
+  top: 5rem;
+  width: 200px;
+  height: auto;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Hero section on the home page */
+.source-hero {
+  padding: 4rem 0 1rem;
+  margin-bottom: 0;
+}
+
+.source-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.source-hero p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
