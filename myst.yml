@@ -19,7 +19,7 @@ project:
     - title: Case Studies
       children:
         - file: docs/case-studies/auspatious.md
-        - file: docs/case-studies/bridges-to-prosperity.md
+        - file: docs/case-studies/fika.md
         - file: docs/case-studies/earth-genome.md
         - file: docs/case-studies/dynamical.md
 

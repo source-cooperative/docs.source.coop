@@ -23,7 +23,7 @@ A data product is a collection of related data files with associated metadata an
 - **Product Title**: A descriptive, human-readable name for the data product
 - **Description**: A detailed explanation of what the data product contains and its purpose
 - **Owner Account**: Either an individual or an organization
-- **Documentation and Metadata**: Typically a README.md file at the data product root that explains the data. Suggested to include description of the data product, license information (separate for metadata vs data), access examples (interactive maps preferred over downloads), contact information and citation/DOI information.
+- **Documentation and Metadata**: Typically a README.md file at the data product root that explains the data. Suggested to include a description of the data product, license information (separate for metadata vs data), access examples (interactive maps preferred over downloads), contact information and citation/DOI information.
 - **Product Contents**: The actual data files stored in the data product (any number of files)
 - **Visibility**: Controlling who can access the data
 
@@ -80,7 +80,7 @@ Source provides built-in preview functionality for common data formats directly 
 
 Currently supported preview formats include:
 
-- **PMTiles** - [https://source.coop/ftw/global-data/predictions/vectors/alpha/global.pmtiles](https://source.coop/ftw/global-data/predictions/vectors/alpha/global.pmtiles))
+- **PMTiles** - [https://source.coop/protomaps/openstreetmap/v4.pmtiles](https://source.coop/protomaps/openstreetmap/v4.pmtiles)
 - **GeoParquet / Parquet** - [https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet](https://source.coop/maxar/maxar-opendata/maxar-opendata.parquet)
 - **CSV** - [https://source.coop/severo/csv-papaparse-test-files/long-sample.csv](https://source.coop/severo/csv-papaparse-test-files/long-sample.csv)
 - **3D / GLB** - [https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb](https://source.coop/harvard-lil/smithsonian-open-access/3d/002f2567-7384-4027-9b99-bcb7a7e6361e/USNM153798_cranium_-400-150k-1024-low-nondraco.glb)
