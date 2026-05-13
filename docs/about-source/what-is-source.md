@@ -25,7 +25,7 @@ Source Cooperative is a data publishing utility for the web that allows trusted 
 
 Organizations already using Source include:
 
-- **[Bridges to Prosperity](/case-studies/bridges-to-prosperity.md)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide
+- **[Fika](/case-studies/fika.md)** uses Source to enable AI-powered global water mapping, tripling the known coverage of mapped waterways worldwide
 - **[Earth Genome](/case-studies/earth-genome.md)** shares 60+ terabytes of processed satellite imagery and 3.5 billion vector embeddings through Source
 - **[Dynamical.org](/case-studies/dynamical.md)** provides fast, easy access to weather data, serving 13,000 unique visitors and 31.3 million API requests
 - **[Auspatious](/case-studies/auspatious.md)** publishes cloud-optimized geospatial datasets, making high-resolution data accessible without requiring large downloads
