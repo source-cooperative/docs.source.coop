@@ -36,9 +36,7 @@ Source provisions a **data connection** for your bucket and gives you its
 
 Contact [hello@source.coop](mailto:hello@source.coop) with:
 
-- The **bucket name** and its **AWS region**. We informally recommend
-  `us-west-2`, where most Source data lives—colocating keeps access fast and
-  avoids cross-region transfer costs.
+- The **bucket name** and its **AWS region**.
 - The **key prefix** Source should read under (or the whole bucket).
 - Whether the bucket is **public** or **private**.
 
