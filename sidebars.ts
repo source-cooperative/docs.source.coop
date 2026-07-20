@@ -31,7 +31,7 @@ const sidebars: SidebarsConfig = {
         'using-source/create-a-data-product',
         'using-source/data-upload',
         'using-source/data-proxy',
-        'using-source/connect-private-s3',
+        'using-source/bring-your-own-bucket',
       ],
     },
     {

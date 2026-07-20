@@ -1,23 +1,56 @@
 ---
-title: Connect a Private S3 Bucket
-id: connect-private-s3
-slug: /connect-private-s3
+title: Bring Your Own Bucket
+id: bring-your-own-bucket
+slug: /bring-your-own-bucket
 sidebar_position: 4
 ---
 
 :::info Beta
-Federated backends are rolling out. Source provisions your data connection and
-gives you its **connection ID**; you create the AWS resources below and send the
-**role ARN** back. To get started, contact [hello@source.coop](mailto:hello@source.coop).
+Bring Your Own Bucket (BYOB) is a beta feature that Source staff must enable for
+your account. To get started, contact [hello@source.coop](mailto:hello@source.coop).
 :::
 
-Source can serve data from a **private** S3 bucket you own — without ever holding
-your bucket credentials. Instead of handing Source long-lived access keys, you
-create an IAM role that the Source data proxy assumes on demand via OpenID
-Connect (OIDC) federation. Source stores only the role's ARN; there is no secret
-at rest, on either side.
+Normally Source stores your data in buckets it manages. With **Bring Your Own
+Bucket (BYOB)**, Source instead serves data from an S3 bucket **you own**. The
+bucket can be:
+
+- **Public** — anyone can already read it. Source just points at it.
+- **Private** — Source reads it on demand through OIDC federation, without ever
+  holding your bucket credentials.
+
+Either way you keep control of the storage: the data lives in your account, on
+your terms, and Source serves it through the [data proxy](/data-proxy) like any
+other product.
 
 ## How it works
+
+Source provisions a **data connection** for your bucket and gives you its
+**connection ID**. From there:
+
+- For a **public** bucket, that's it — Source reads it directly.
+- For a **private** bucket, you create an IAM role that the Source data proxy
+  assumes on demand. Source stores only the role's ARN; there is no secret at
+  rest, on either side.
+
+## Step 1 — Ask Source to add the backend
+
+Contact [hello@source.coop](mailto:hello@source.coop) with:
+
+- The **bucket name** and its **AWS region**.
+- The **key prefix** Source should read under (or the whole bucket).
+- Whether the bucket is **public** or **private**.
+
+Source enables BYOB for your account, provisions the connection, and gives you a
+**connection ID** (for example, `acme-data`).
+
+If the bucket is **public**, you're done — Source can serve it now.
+
+If the bucket is **private**, continue to Step 2 to grant federated read access.
+
+## Setting up private access
+
+For a private bucket, Source reads your objects through OpenID Connect (OIDC)
+federation:
 
 1. The Source data proxy (`https://data.source.coop`) is an OIDC identity provider.
 2. When a request needs your bucket, the proxy mints a short-lived OIDC token
@@ -32,15 +65,7 @@ You stay in control: the trust policy says *who* (which Source connection) may
 assume the role, and the permission policy says *what* (which bucket and prefix)
 they may read.
 
-## What you'll need
-
-- An AWS account containing the private S3 bucket.
-- Your **connection ID** from Source (for example, `acme-private`). If you have
-  admin access to the connection in Source, it's shown on the connection's page
-  along with the exact subject pattern; otherwise Source provides it.
-- The bucket name and the key prefix Source should read under.
-
-## The federation contract
+### The federation contract
 
 The proxy presents these values; your AWS resources must match them exactly.
 
@@ -55,7 +80,7 @@ wildcard at the connection level: `scv1:conn:<connection-id>:*`. This lets the
 proxy assume the role for any product served by that one connection, and nothing
 else.
 
-## Step 1 — Create the OIDC identity provider
+### Step 2 — Create the OIDC identity provider
 
 You need exactly **one** OIDC provider for `https://data.source.coop` per AWS
 account, no matter how many buckets you connect. The CLI and console retrieve the
@@ -71,7 +96,7 @@ This returns the provider ARN
 (`arn:aws:iam::<account-id>:oidc-provider/data.source.coop`), which you'll
 reference below. If the provider already exists, reuse it.
 
-## Step 2 — Create the IAM role
+### Step 3 — Create the IAM role
 
 Create a role with the **trust policy** below. Replace `<ACCOUNT_ID>` with your
 AWS account ID and `<CONNECTION_ID>` with your Source connection ID.
@@ -124,20 +149,21 @@ bucket). This is your blast-radius cap — Source can never read outside it.
 }
 ```
 
-## Step 3 — Give Source the role ARN
+### Step 4 — Give Source the role ARN
 
-Send the role ARN to Source. If you manage the connection yourself, paste it into
-the connection's **Role ARN** field in the admin UI. Source fills in the rest;
-no key or secret is ever exchanged.
+Send the role ARN back to Source. If you manage the connection yourself, paste it
+into the connection's **Role ARN** field in the admin UI. Source fills in the
+rest; no key or secret is ever exchanged.
 
-## Infrastructure as code
+### Infrastructure as code
 
-Both templates create the IAM role and its policies, parameterized by connection
-ID, bucket, and prefix.
+Prefer to manage the IAM resources declaratively? The templates below create the
+role and its policies, parameterized by connection ID, bucket, and prefix.
 
-### CloudFormation
+<details>
+<summary>CloudFormation</summary>
 
-This template creates the role and takes the OIDC provider ARN from Step 1 as a
+This template creates the role and takes the OIDC provider ARN from Step 2 as a
 parameter (so the provider — one per account — is managed separately).
 
 ```yaml
@@ -157,7 +183,7 @@ Parameters:
     Description: Key prefix Source may read under (leave blank for the whole bucket).
   OidcProviderArn:
     Type: String
-    Description: ARN of the data.source.coop OIDC provider in this account (see Step 1).
+    Description: ARN of the data.source.coop OIDC provider in this account (see Step 2).
 
 Resources:
   SourceFederatedRole:
@@ -198,7 +224,10 @@ Outputs:
     Value: !GetAtt SourceFederatedRole.Arn
 ```
 
-### Terraform
+</details>
+
+<details>
+<summary>Terraform</summary>
 
 This creates the OIDC provider too (fetching the TLS thumbprint via the `tls`
 provider). If the provider already exists in your account, drop the
@@ -280,7 +309,9 @@ output "role_arn" {
 }
 ```
 
-## Troubleshooting
+</details>
+
+### Troubleshooting
 
 - **`AccessDenied` on assume:** the `data.source.coop:sub` or
   `data.source.coop:aud` condition doesn't match. Confirm the connection ID in
