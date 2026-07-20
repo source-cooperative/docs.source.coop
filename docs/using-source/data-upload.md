@@ -55,16 +55,7 @@ The [Source CLI](https://github.com/source-cooperative/source-coop-cli) authenti
 
 **1. Install the CLI**
 
-```bash
-# macOS / Linux
-curl --proto '=https' --tlsv1.2 -LsSf \
-  https://github.com/source-cooperative/source-coop-cli/releases/latest/download/source-coop-cli-installer.sh | sh
-
-# or with Homebrew
-brew install source-cooperative/tap/source-coop
-```
-
-For Windows and build-from-source instructions, see the [CLI README](https://github.com/source-cooperative/source-coop-cli).
+Follow the install instructions in the [CLI README](https://github.com/source-cooperative/source-coop-cli).
 
 **2. Log in**
 
