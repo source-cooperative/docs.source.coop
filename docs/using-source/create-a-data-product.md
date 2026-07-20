@@ -17,6 +17,9 @@ Data products can be owned by an organization or an individual. You will see a d
 - **Description**: Optional; maximum 500 characters. Use it for a short overview; put detailed documentation in the README.
 - **Visibility**: New data products are created **Unlisted** (not shown in search). When ready to publish, open the data product page, click the gear icon, and set the state to **Listed**.
 - **Tags**: Comma-separated, up to 20 tags. They help others discover your data.
+- **Data Connection**: Choose where the product's data lives. By default it uses Source-managed storage. If you've set up [Bring Your Own Bucket](/bring-your-own-bucket), select the data connection for your bucket instead. If you don't have a strong preference, choose a connection in the `us-west-2` region—this is where most Source data lives, and colocating keeps access fast and avoids cross-region transfer costs.
+
+You can bring an existing S3 bucket you own rather than storing data on Source. This is a beta feature—see [Bring Your Own Bucket](/bring-your-own-bucket) to set up a data connection before creating the product, then select it here.
 
 ## Editing a data product
 

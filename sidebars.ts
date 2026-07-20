@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
         'using-source/create-an-account',
         'using-source/create-a-data-product',
         'using-source/data-upload',
+        'using-source/bring-your-own-bucket',
         'using-source/data-proxy',
       ],
     },
