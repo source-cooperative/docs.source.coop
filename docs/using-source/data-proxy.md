@@ -1,5 +1,5 @@
 ---
-title: Access Data Through the Source Data Proxy
+title: Access Data
 id: data-proxy
 slug: /data-proxy
 sidebar_position: 3
