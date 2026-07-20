@@ -92,6 +92,12 @@ aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv
 aws s3 sync ./data s3://your-org/your-product/
 ```
 
+:::tip
+
+`AWS_PROFILE` is also picked up automatically by the AWS SDKs (boto3, JavaScript, Go, etc.), so your scripts can use the default credential chain instead of hardcoding access keys or endpoint details.
+
+:::
+
 The AWS CLI will refresh credentials automatically; re-run `source-coop login` when your session expires. Your upload permissions are scoped to the products you have access to.
 
 ### Get credentials from the UI
