@@ -77,9 +77,19 @@ endpoint_url = https://data.source.coop
 
 **4. Use standard AWS commands with the profile**
 
+Pass the profile per command with `--profile`:
+
 ```bash
 aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv --profile source-coop
 aws s3 sync ./data s3://your-org/your-product/ --profile source-coop
+```
+
+Or set it once for your shell session with the `AWS_PROFILE` environment variable:
+
+```bash
+export AWS_PROFILE=source-coop
+aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv
+aws s3 sync ./data s3://your-org/your-product/
 ```
 
 The AWS CLI will refresh credentials automatically; re-run `source-coop login` when your session expires. Your upload permissions are scoped to the products you have access to.
