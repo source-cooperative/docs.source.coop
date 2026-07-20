@@ -24,26 +24,46 @@ other product.
 
 ## How it works
 
-Source provisions a **data connection** for your bucket and gives you its
-**connection ID**. From there:
+Once Source enables BYOB for your account, you create a **data connection** that
+describes your bucket. Products can then mirror to it instead of Source-managed
+storage. From there:
 
-- For a **public** bucket, that's it — Source reads it directly.
-- For a **private** bucket, you create an IAM role that the Source data proxy
-  assumes on demand. Source stores only the role's ARN; there is no secret at
-  rest, on either side.
+- For a **public** bucket, that's it — Source reads it directly (unsigned).
+- For a **private** bucket, you also create an IAM role that the Source data
+  proxy assumes on demand. Source stores only the role's ARN; there is no secret
+  at rest, on either side.
 
-## Step 1 — Ask Source to add the backend
+## Step 1 — Create a data connection
 
-Contact [hello@source.coop](mailto:hello@source.coop) with:
+In your account or organization admin, open **Data Connections** and choose
+**Create Data Connection**. Fill in the form:
 
-- The **bucket name** and its **AWS region**.
-- The **key prefix** Source should read under (or the whole bucket).
-- Whether the bucket is **public** or **private**.
+- **Connection ID**: lowercase letters, numbers, and hyphens. It's stored as
+  `<account>--<id>` and **cannot be changed after creation**.
+- **Name**: a human-readable label shown in admin lists and the product mirror
+  picker.
+- **Prefix Template**: the object-key prefix each product gets within the bucket.
+  `{{repository.account_id}}` and `{{repository.repository_id}}` are substituted
+  when a product attaches. The default
+  (`{{repository.account_id}}/{{repository.repository_id}}/`) is usually right.
+- **Read Only**: check this to allow browse/download only. **Required for a
+  public (unsigned) connection.**
+- **Allowed Visibilities**: product visibilities permitted to use this connection.
+- **Provider**: `S3 / S3-compatible (R2, MinIO)`.
+- **Bucket**: your bucket name.
+- **Base Prefix**: optional shared root folder prepended to every object path;
+  leave blank for the bucket root.
+- **Region**: the bucket's AWS region (use `auto` for S3-compatible backends
+  like Cloudflare R2).
+- **Endpoint**: a custom S3-compatible endpoint for non-AWS backends; leave blank
+  for AWS S3.
+- **Authentication Type**: how the data proxy reaches your bucket.
+  - **Public bucket** → **None (unsigned)** (and check **Read Only**).
+  - **Private bucket** → the role-based/federated option, then set up the IAM
+    role in Step 2.
 
-Source enables BYOB for your account, provisions the connection, and gives you a
-**connection ID** (for example, `acme-data`).
-
-If the bucket is **public**, you're done — Source can serve it now.
+Click **Create Connection**. If the bucket is **public**, you're done — attach
+the connection when you [create a data product](/create-a-data-product).
 
 If the bucket is **private**, continue to Step 2 to grant federated read access.
 
@@ -74,6 +94,10 @@ The proxy presents these values; your AWS resources must match them exactly.
 | OIDC provider URL (issuer) | `https://data.source.coop` |
 | Audience (`aud`) | `source-coop-data-proxy` |
 | Subject (`sub`) | `scv1:conn:<connection-id>:<account>/<product>` |
+
+Here `<connection-id>` is the stored ID of the connection you created in Step 1
+(the full `<account>--<id>` value). The connection's page in the admin shows its
+exact `sub` pattern.
 
 Because the subject is product-grained, your trust policy matches it with a
 wildcard at the connection level: `scv1:conn:<connection-id>:*`. This lets the
