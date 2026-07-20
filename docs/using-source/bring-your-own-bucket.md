@@ -44,8 +44,8 @@ In your account or organization admin, open **Data Connections** and choose
   picker.
 - **Prefix Template**: the object-key prefix each product gets within the bucket.
   `{{repository.account_id}}` and `{{repository.repository_id}}` are substituted
-  when a product attaches. The default
-  (`{{repository.account_id}}/{{repository.repository_id}}/`) is usually right.
+  when a product attaches. For a custom bucket, leave this **blank** so products
+  read from the paths already in your bucket rather than a Source-style prefix.
 - **Read Only**: check this to allow browse/download only. **Required for a
   public (unsigned) connection.**
 - **Allowed Visibilities**: product visibilities permitted to use this connection.
