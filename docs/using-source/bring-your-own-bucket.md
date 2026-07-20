@@ -36,27 +36,18 @@ storage. From there:
 ## Step 1 — Create a data connection
 
 In your account or organization admin, open **Data Connections** and choose
-**Create Data Connection**. Fill in the form:
+**Create Data Connection**. Most fields are self-explanatory; a few are worth
+calling out:
 
-- **Connection ID**: lowercase letters, numbers, and hyphens. It's stored as
-  `<account>--<id>` and **cannot be changed after creation**.
-- **Name**: a human-readable label shown in admin lists and the product mirror
-  picker.
-- **Prefix Template**: the object-key prefix each product gets within the bucket.
-  `{{repository.account_id}}` and `{{repository.repository_id}}` are substituted
-  when a product attaches. For a custom bucket, leave this **blank** so products
-  read from the paths already in your bucket rather than a Source-style prefix.
-- **Read Only**: check this to allow browse/download only. **Required for a
-  public (unsigned) connection.**
-- **Allowed Visibilities**: product visibilities permitted to use this connection.
-- **Provider**: `S3 / S3-compatible (R2, MinIO)`.
-- **Bucket**: your bucket name.
-- **Base Prefix**: optional shared root folder prepended to every object path;
-  leave blank for the bucket root.
-- **Region**: the bucket's AWS region (use `auto` for S3-compatible backends
-  like Cloudflare R2).
-- **Endpoint**: a custom S3-compatible endpoint for non-AWS backends; leave blank
-  for AWS S3.
+- **Read Only**: allows browse/download only, blocking writes through the
+  connection. **Required for a public (unsigned) connection.**
+- **Base Prefix**: an optional shared root folder prepended to every object path
+  (leave blank for the bucket root). Individual products can read from a child
+  prefix under this via the **Prefix Template**, which substitutes
+  `{{repository.account_id}}` and `{{repository.repository_id}}` when a product
+  attaches.
+- **Allowed Visibilities**: the product visibilities (public, unlisted,
+  restricted) permitted to use this connection.
 - **Authentication Type**: how the data proxy reaches your bucket.
   - **Public bucket** → **None (unsigned)** (and check **Read Only**).
   - **Private bucket** → the role-based/federated option, then set up the IAM
