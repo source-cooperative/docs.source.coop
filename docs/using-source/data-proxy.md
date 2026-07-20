@@ -47,6 +47,17 @@ Use the `cp` command to copy data to local storage:
 aws s3 cp s3://kerner-lab/fields-of-the-world/README.md . --endpoint-url https://data.source.coop --no-sign-request
 ```
 
+## Authenticated Access with the Source CLI
+
+Public datasets work with `--no-sign-request`. To access data that requires authentication, use the [Source CLI](https://github.com/source-cooperative/source-coop-cli), which logs you in and supplies temporary AWS credentials through an AWS profile:
+
+```bash
+source-coop login
+aws s3 ls s3://your-org/your-product --profile source-coop
+```
+
+See [Upload Your Data](/data-upload#get-credentials-with-the-source-cli-recommended) for the one-time install and profile setup.
+
 ## Getting Started with AWS CLI
 
 If you don't have the AWS CLI installed, follow the [AWS CLI Getting Started Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).

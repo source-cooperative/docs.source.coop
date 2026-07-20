@@ -49,7 +49,58 @@ This option is ideal for:
 
 For larger uploads, scripting, or programmatic access, use temporary AWS credentials.
 
-### How to get credentials
+### Get credentials with the Source CLI (recommended)
+
+The [Source CLI](https://github.com/source-cooperative/source-coop-cli) authenticates you and provides temporary AWS credentials automatically, so you don't have to copy expiring credentials out of the UI. Once configured as an AWS profile, the AWS CLI and SDKs refresh credentials for you.
+
+**1. Install the CLI**
+
+Follow the install instructions in the [CLI README](https://github.com/source-cooperative/source-coop-cli).
+
+**2. Log in**
+
+```bash
+source-coop login
+```
+
+This opens your browser to authenticate and caches short‑lived credentials in your OS keyring.
+
+**3. Configure an AWS profile**
+
+Add a profile to `~/.aws/config` that calls the CLI to fetch credentials on demand:
+
+```ini
+[profile source-coop]
+credential_process = source-coop creds
+endpoint_url = https://data.source.coop
+```
+
+**4. Use standard AWS commands with the profile**
+
+Pass the profile per command with `--profile`:
+
+```bash
+aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv --profile source-coop
+aws s3 sync ./data s3://your-org/your-product/ --profile source-coop
+```
+
+Or set it once for your shell session with the `AWS_PROFILE` environment variable:
+
+```bash
+export AWS_PROFILE=source-coop
+aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv
+aws s3 sync ./data s3://your-org/your-product/
+```
+
+:::tip
+
+`AWS_PROFILE` is also picked up automatically by the AWS SDKs (boto3, JavaScript, Go, etc.), so your scripts can use the default credential chain instead of hardcoding access keys or endpoint details.
+
+:::
+
+The AWS CLI will refresh credentials automatically; re-run `source-coop login` when your session expires. Your upload permissions are scoped to the products you have access to.
+
+### Get credentials from the UI
 
 1. Go to your product page
 2. In the `Product Contents` card, open the dropdown (click on lock icon in top‑right corner)
