@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'about-source/what-is-source',
         'about-source/core-concepts',
+        'about-source/infrastructure',
       ],
     },
     {
