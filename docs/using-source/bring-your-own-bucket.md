@@ -65,7 +65,7 @@ federation:
 
 1. The Source data proxy (`https://data.source.coop`) is an OIDC identity provider.
 2. When a request needs your bucket, the proxy mints a short-lived OIDC token
-   whose **subject** identifies the Source connection, account, and product.
+   whose **subject** identifies the Source connection.
 3. The proxy calls `sts:AssumeRoleWithWebIdentity` on your role. Your role's
    **trust policy** decides whether to allow it; its **permission policy** caps
    what it can read.
@@ -83,17 +83,20 @@ The proxy presents these values; your AWS resources must match them exactly.
 | Field | Value |
 | --- | --- |
 | OIDC provider URL (issuer) | `https://data.source.coop` |
-| Audience (`aud`) | `source-coop-data-proxy` |
-| Subject (`sub`) | `scv1:conn:<connection-id>:<account>/<product>` |
+| Audience (`aud`) | `sts.amazonaws.com` |
+| Subject (`sub`) | `scv1:conn:<connection-id>` |
+
+The audience is AWS's fixed web-identity value, the same for every connection and
+every customer. It is not Source-specific, and it is the value you register the
+OIDC provider with in Step 2.
 
 Here `<connection-id>` is the stored ID of the connection you created in Step 1
 (the full `<account>--<id>` value). The connection's page in the admin shows its
-exact `sub` pattern.
+exact `sub`.
 
-Because the subject is product-grained, your trust policy matches it with a
-wildcard at the connection level: `scv1:conn:<connection-id>:*`. This lets the
-proxy assume the role for any product served by that one connection, and nothing
-else.
+The subject is connection-grained, so your trust policy matches it exactly — no
+wildcard. The role can be assumed for the products served by that one connection,
+and nothing else.
 
 ### Step 2 — Create the OIDC identity provider
 
@@ -104,7 +107,7 @@ TLS thumbprint automatically:
 ```bash
 aws iam create-open-id-connect-provider \
   --url https://data.source.coop \
-  --client-id-list source-coop-data-proxy
+  --client-id-list sts.amazonaws.com
 ```
 
 This returns the provider ARN
@@ -128,10 +131,8 @@ AWS account ID and `<CONNECTION_ID>` with your Source connection ID.
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
-          "data.source.coop:aud": "source-coop-data-proxy"
-        },
-        "StringLike": {
-          "data.source.coop:sub": "scv1:conn:<CONNECTION_ID>:*"
+          "data.source.coop:aud": "sts.amazonaws.com",
+          "data.source.coop:sub": "scv1:conn:<CONNECTION_ID>"
         }
       }
     }
@@ -213,9 +214,8 @@ Resources:
             Action: sts:AssumeRoleWithWebIdentity
             Condition:
               StringEquals:
-                "data.source.coop:aud": "source-coop-data-proxy"
-              StringLike:
-                "data.source.coop:sub": !Sub "scv1:conn:${ConnectionId}:*"
+                "data.source.coop:aud": "sts.amazonaws.com"
+                "data.source.coop:sub": !Sub "scv1:conn:${ConnectionId}"
       Policies:
         - PolicyName: SourceReadAccess
           PolicyDocument:
@@ -262,7 +262,7 @@ data "tls_certificate" "source" {
 
 resource "aws_iam_openid_connect_provider" "source" {
   url             = "https://data.source.coop"
-  client_id_list  = ["source-coop-data-proxy"]
+  client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.tls_certificate.source.certificates[0].sha1_fingerprint]
 }
 
@@ -277,12 +277,12 @@ data "aws_iam_policy_document" "trust" {
     condition {
       test     = "StringEquals"
       variable = "data.source.coop:aud"
-      values   = ["source-coop-data-proxy"]
+      values   = ["sts.amazonaws.com"]
     }
     condition {
-      test     = "StringLike"
+      test     = "StringEquals"
       variable = "data.source.coop:sub"
-      values   = ["scv1:conn:${var.connection_id}:*"]
+      values   = ["scv1:conn:${var.connection_id}"]
     }
   }
 }
@@ -330,8 +330,8 @@ output "role_arn" {
 
 - **`AccessDenied` on assume:** the `data.source.coop:sub` or
   `data.source.coop:aud` condition doesn't match. Confirm the connection ID in
-  your `sub` wildcard matches the one Source gave you, and that the audience is
-  exactly `source-coop-data-proxy`.
+  your `sub` matches the one Source gave you, that it has no trailing path
+  segments, and that the audience is exactly `sts.amazonaws.com`.
 - **`AccessDenied` reading objects:** the permission policy's bucket or prefix
   doesn't cover the requested keys. Check `<BUCKET>` and `<PREFIX>`.
 - **Provider already exists:** an account can have only one OIDC provider per
