@@ -199,37 +199,196 @@ You can use your own IAM role to write to the Source Cooperative bucket.
 
 ### How this works
 
-- You keep using your existing AWS role
-- Source Cooperative grants that role write access to the bucket/prefix
-- You must set the bucket owner to have full control on uploaded objects
+- You create an IAM role (or use an existing IAM user/account) in **your own** AWS account
+- You send us its ARN, and we grant it write access to your account's prefix in the Source Cooperative bucket
+- You upload with `--acl bucket-owner-full-control` so Source Cooperative owns the objects
 
-This avoids sharing credentials and does not require role chaining.
-
----
-
-### Required ACL setting (IMPORTANT)
-
-When uploading from your own AWS account, you must set:
-
-```
-bucket-owner-full-control
-```
-
-This ensures Source Cooperative fully owns and can manage the uploaded objects.
+No credentials are shared, and no role chaining is required.
 
 ---
 
-### Example: Upload with bucket owner full control
+### Step 1: Create an IAM role (or pick an identity to use)
 
-```bash
-aws s3 cp mydata.csv s3://us-west-2.opendata.source.coop/your-org/your-product/mydata.csv --acl bucket-owner-full-control
+Which identity you send us depends on what is doing the uploading:
+
+| Uploading from | Send us |
+| --- | --- |
+| A service (ingestion pipeline, ECS task, Lambda, EC2, GitHub Actions with OIDC) | An **IAM role** ARN |
+| A person running the AWS CLI locally | An **IAM user** ARN |
+| Many identities in one account | The **AWS account** ARN (we trust the whole account; your account controls who may use it) |
+
+For a service, create a role in your account with a trust policy for whatever assumes it, then attach a policy granting it read/write access under your account prefix. Replace `your-org` with your Source Cooperative account ID.
+
+:::tip
+
+The [IAM policy wizard](/tools/iam-policy-wizard) generates this policy for you — enter your account ID and, optionally, a product ID.
+
+:::
+
+<details>
+<summary>Example trust policy (ECS tasks)</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": { "Service": "ecs-tasks.amazonaws.com" },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
 ```
 
-Or for a directory:
+</details>
+
+<details>
+<summary>Example access policy</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject",
+        "s3:PutObjectAcl",
+        "s3:AbortMultipartUpload",
+        "s3:ListMultipartUploadParts"
+      ],
+      "Resource": "arn:aws:s3:::us-west-2.opendata.source.coop/your-org/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::us-west-2.opendata.source.coop",
+      "Condition": {
+        "StringLike": { "s3:prefix": "your-org/*" }
+      }
+    }
+  ]
+}
+```
+
+`s3:AbortMultipartUpload` and `s3:ListMultipartUploadParts` cover the multipart
+uploads the AWS CLI and SDKs use automatically for large files. `s3:PutObject`
+alone authorizes starting an upload and sending its parts, but without those two
+a failed or resumed transfer cannot clean up after itself. Both are object-level
+actions, so the prefix in `Resource` scopes them like the rest.
+
+:::note
+
+This policy deliberately omits `s3:ListBucketMultipartUploads`, which lists
+in-progress uploads across the *whole* bucket. AWS does not support the
+`s3:prefix` condition key on it, so it cannot be limited to your data, and no
+upload path needs it — incomplete uploads are cleaned up automatically after 7
+days. Only `aws s3api list-multipart-uploads` requires it; contact us if you
+have a workflow that does.
+
+:::
+
+</details>
+
+<details>
+<summary>Creating the role with the AWS CLI</summary>
 
 ```bash
-aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ --acl bucket-owner-full-control
+aws iam create-role \
+  --role-name source-coop-upload \
+  --assume-role-policy-document file://trust-policy.json
+
+aws iam put-role-policy \
+  --role-name source-coop-upload \
+  --policy-name source-coop-write \
+  --policy-document file://s3-policy.json
 ```
+
+</details>
+
+:::note
+
+This policy only grants permission on *your* side. Uploads will still fail with `AccessDenied` until we grant the same role access on the bucket side (Step 2).
+
+:::
+
+---
+
+### Step 2: Send us the ARN
+
+Email [hello@source.coop](mailto:hello@source.coop) with:
+
+- The ARN of the role, user, or account you want us to trust, for example:
+  - Role: `arn:aws:iam::123456789012:role/source-coop-upload`
+  - User: `arn:aws:iam::123456789012:user/data-uploader`
+  - Account: `arn:aws:iam::123456789012:root`
+- Your Source Cooperative account ID and product ID (the `your-org/your-product` prefix you will write to)
+- A short description of the workflow (e.g. "nightly ingestion pipeline running on ECS")
+
+We will add the ARN to the bucket policy and confirm when it is active.
+
+---
+
+### Step 3: Upload using that identity
+
+Once we confirm, upload with credentials for that role, user, or account. **You must set `bucket-owner-full-control`** so Source Cooperative fully owns and can manage the uploaded objects:
+
+```bash
+aws s3 cp mydata.csv s3://us-west-2.opendata.source.coop/your-org/your-product/mydata.csv \
+  --acl bucket-owner-full-control
+```
+
+Services that already run as the role (ECS tasks, Lambda, EC2 instance profiles) need no assume-role step — the SDK picks up the role automatically.
+
+<details>
+<summary>Uploading a directory</summary>
+
+```bash
+aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ \
+  --acl bucket-owner-full-control
+```
+
+</details>
+
+<details>
+<summary>Assuming the role from a workstation or CI job</summary>
+
+Let the AWS CLI do the assume-role for you — add a profile to `~/.aws/config`:
+
+```ini
+[profile source-coop-upload]
+role_arn = arn:aws:iam::123456789012:role/source-coop-upload
+source_profile = default
+region = us-west-2
+```
+
+```bash
+aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ \
+  --acl bucket-owner-full-control \
+  --profile source-coop-upload
+```
+
+</details>
+
+<details>
+<summary>Uploading with boto3</summary>
+
+```python
+import boto3
+
+s3 = boto3.client("s3")
+s3.upload_file(
+    "mydata.csv",
+    "us-west-2.opendata.source.coop",
+    "your-org/your-product/mydata.csv",
+    ExtraArgs={"ACL": "bucket-owner-full-control"},
+)
+```
+
+</details>
 
 ---
 
