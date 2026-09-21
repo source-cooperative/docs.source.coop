@@ -37,6 +37,13 @@ const config: Config = {
         mode: 'auto',
       },
     ],
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        docsRouteBasePath: '/',
+      },
+    ],
   ],
 
   presets: [
