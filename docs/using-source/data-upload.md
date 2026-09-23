@@ -112,8 +112,8 @@ The AWS CLI will refresh credentials automatically; re-run `source-coop login` w
 You will also see:
 
 - `Expiration`: the expiration time of the credentials (a specific date and time)
-- `Bucket`: the bucket name (`us-west-2.opendata.source.coop`)
-- `Prefix`: the prefix (folder) you are allowed to write to (e.g. `your-org/your-product/`)
+- `Bucket`: the bucket name (`your-org`)
+- `Prefix`: the prefix (folder) you are allowed to write to (e.g. `your-product/`)
 
 ---
 
