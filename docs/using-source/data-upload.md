@@ -258,7 +258,6 @@ or contact us.
 
 - You create an IAM role (or use an existing IAM user/account) in **your own** AWS account
 - You send us its ARN, and we grant it write access to your account's prefix in the Source Cooperative bucket
-- You upload with `--acl bucket-owner-full-control` so Source Cooperative owns the objects
 
 No credentials are shared, and no role chaining is required.
 
@@ -391,11 +390,10 @@ We will add the ARN to the bucket policy and confirm when it is active.
 
 ### Step 3: Upload using that identity
 
-Once we confirm, upload with credentials for that role, user, or account. **You must set `bucket-owner-full-control`** so Source Cooperative fully owns and can manage the uploaded objects:
+Once we confirm, upload with credentials for that role, user, or account:
 
 ```bash
-aws s3 cp mydata.csv s3://us-west-2.opendata.source.coop/your-org/your-product/mydata.csv \
-  --acl bucket-owner-full-control
+aws s3 cp mydata.csv s3://us-west-2.opendata.source.coop/your-org/your-product/mydata.csv
 ```
 
 Services that already run as the role (ECS tasks, Lambda, EC2 instance profiles) need no assume-role step — the SDK picks up the role automatically.
@@ -404,8 +402,7 @@ Services that already run as the role (ECS tasks, Lambda, EC2 instance profiles)
 <summary>Uploading a directory</summary>
 
 ```bash
-aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ \
-  --acl bucket-owner-full-control
+aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/
 ```
 
 </details>
@@ -424,7 +421,6 @@ region = us-west-2
 
 ```bash
 aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ \
-  --acl bucket-owner-full-control \
   --profile source-coop-upload
 ```
 
@@ -441,7 +437,6 @@ s3.upload_file(
     "mydata.csv",
     "us-west-2.opendata.source.coop",
     "your-org/your-product/mydata.csv",
-    ExtraArgs={"ACL": "bucket-owner-full-control"},
 )
 ```
 
@@ -469,7 +464,6 @@ Please do not:
 - Ask for full bucket access
 - Upload outside your assigned prefix
 - Reuse expired temporary credentials
-- Upload without `bucket-owner-full-control` when using your own role
 
 ---
 
