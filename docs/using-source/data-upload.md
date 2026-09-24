@@ -246,7 +246,7 @@ You can use your own IAM role to write to the Source Cooperative bucket.
 :::info This option really is AWS
 
 Unlike Options 1 and 2, this option bypasses the data proxy. You write
-directly to Source Cooperative's Amazon S3 bucket (`us-west-2.opendata.source.coop`)
+directly to Source Cooperative's Amazon S3 bucket (e.g. `us-west-2.opendata.source.coop`, `eu-west-1.opendata.source.coop`)
 using an identity in **your own AWS account**. It only applies to products stored
 in that bucket. If your product is stored with another provider, or you don't have
 an AWS account, use [Option 2](#option-2-upload-through-the-data-proxy-with-temporary-credentials-recommended-for-larger-uploads)
