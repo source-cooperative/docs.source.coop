@@ -58,6 +58,8 @@ aws s3 ls s3://your-org/your-product --profile source-coop
 
 See [Upload Your Data](/data-upload#get-credentials-with-the-source-cli-recommended) for the one-time install and profile setup.
 
+For software that runs on its own, with nobody there to log in, use a [service account](/automated-access) instead.
+
 ## Getting Started with AWS CLI
 
 If you don't have the AWS CLI installed, follow the [AWS CLI Getting Started Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).

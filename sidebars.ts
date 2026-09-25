@@ -33,6 +33,7 @@ const sidebars: SidebarsConfig = {
         'using-source/data-upload',
         'using-source/bring-your-own-bucket',
         'using-source/data-proxy',
+        'using-source/automated-access',
       ],
     },
     {
