@@ -82,7 +82,7 @@ issued by Source Cooperative with an S3 client pointed at the data proxy.
 
 ### Get credentials with the Source CLI (recommended)
 
-The [Source CLI](https://github.com/source-cooperative/source-coop-cli) authenticates you with Source Cooperative and provides temporary credentials automatically, so you don't have to copy expiring credentials out of the UI. Once configured as an AWS CLI profile, the AWS CLI and SDKs refresh credentials for you.
+The [Source CLI](https://github.com/source-cooperative/source-coop-cli) authenticates you with Source Cooperative and provides temporary credentials automatically, so you don't have to copy expiring credentials out of the UI. Once configured as an AWS CLI profile, the AWS CLI and SDKs refresh credentials for you, and you'll only need to re-authenticate every 30 days.
 
 **1. Install the CLI**
 
