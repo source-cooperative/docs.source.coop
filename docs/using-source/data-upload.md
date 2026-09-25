@@ -343,7 +343,7 @@ in-progress uploads across the *whole* bucket. AWS does not support the
 `s3:prefix` condition key on it, so it cannot be limited to your data, and no
 upload path needs it — incomplete uploads are cleaned up automatically after 7
 days. Only `aws s3api list-multipart-uploads` requires it; contact us if you
-have a workflow that does.
+have a workflow that requires this policy.
 
 :::
 
