@@ -31,6 +31,7 @@ for (const bad of ['123456789012', 'arn:aws:s3:::bucket', 'arn:aws:iam::12345:ro
 const identity = buildIdentityPolicy(DEFAULT_BUCKET, 'org/product');
 assert.equal(identity.Statement[0].Resource, `arn:aws:s3:::${DEFAULT_BUCKET}/org/product/*`);
 assert.ok(identity.Statement[0].Action.includes('s3:AbortMultipartUpload'));
+assert.ok(!identity.Statement[0].Action.includes('s3:PutObjectAcl'));
 // s3:ListBucketMultipartUploads cannot be scoped to a prefix, so it must never
 // appear: it would expose every other provider's in-progress uploads.
 const grantsBucketWideMultipart = (policy) =>

@@ -312,7 +312,6 @@ The [IAM policy wizard](/tools/iam-policy-wizard) generates this policy for you 
         "s3:PutObject",
         "s3:GetObject",
         "s3:DeleteObject",
-        "s3:PutObjectAcl",
         "s3:AbortMultipartUpload",
         "s3:ListMultipartUploadParts"
       ],
