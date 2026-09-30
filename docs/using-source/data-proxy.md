@@ -62,6 +62,58 @@ See [Upload Your Data](/data-upload#get-credentials-with-the-source-cli-recommen
 
 If you don't have the AWS CLI installed, follow the [AWS CLI Getting Started Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 
+## Using GeoPandas
+
+For working with spatial data using Python, you can use [GeoPandas](https://geopandas.org/). You'll need Python and the `geopandas` and `s3fs` packages.
+
+```sh
+pip install geopandas s3fs
+```
+
+Then, in your code:
+
+```python
+import geopandas
+
+# Use the Data Proxy
+storage_options = {
+    "endpoint_url": "https://data.source.coop",
+    "anon": True
+}
+
+gdf = geopandas.read_parquet(
+    "s3://kerner-lab/fields-of-the-world/vietnam/chips_vietnam.parquet",
+    storage_options=storage_options,
+)
+```
+
+The code for using pandas (for non-geospatial data) is similar.
+
+## Using [DuckDB](https://duckdb.org/)
+
+```sql
+-- https://duckdb.org/docs/current/core_extensions/httpfs/overview#installation-and-loading
+INSTALL httpfs;
+LOAD httpfs;
+
+-- https://duckdb.org/docs/current/core_extensions/spatial/overview#installing-and-loading
+INSTALL spatial;
+LOAD spatial;
+
+CREATE OR REPLACE SECRET source_coop (
+    TYPE s3,
+    PROVIDER config,
+    ENDPOINT 'data.source.coop',
+    URL_STYLE 'path'
+    -- If you're working with multiple S3-compatible sources (beyond the Data Proxy), you'll want to only apply this SECRET to the Source Cooperative account name(s).
+    -- https://duckdb.org/docs/current/configuration/secrets_manager#creating-multiple-secrets-for-the-same-service-type
+    -- SCOPE 's3://kerner-lab'
+);
+
+SELECT *
+FROM 's3://kerner-lab/fields-of-the-world/vietnam/chips_vietnam.parquet';
+```
+
 ## Current Status
 
 The Source Data Proxy is currently in beta. We're working to make performance indistinguishable from accessing objects directly via AWS S3.
