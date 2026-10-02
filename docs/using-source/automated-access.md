@@ -36,15 +36,18 @@ such as `your-org--nightly-sync`. It can't be changed.
 2. Click **New service account**.
 3. Under **Who it is**, enter a **Name**, such as `Nightly Sync`. The **Account
    ID** is made from the name; click **Edit** beside it to choose another.
-4. Leave **How software signs in** empty. It is for GitHub Actions, which
-   [isn't available yet](#github-actions).
+4. Under **How software signs in**, click **Add a GitHub workflow** to trust a
+   [GitHub Actions workflow](#github-actions), or **Add an API key** to issue
+   [a key](#issue-a-key) for anything else. Both are optional here: you can add
+   either later.
 5. Under **What it can reach**, click **Grant a product**, choose a product and
    **Read** or **Read and write**, and click the check mark. Repeat for each
    product the job needs, and no more: a job that only downloads needs **Read**.
 6. Click **Create service account**.
 
-You land on the service account's page. You can change what it reaches at any
-time under **Can reach**; each change is saved as you make it.
+You land on the service account's page, showing the key if you added one. You
+can change what it reaches at any time under **Can reach**; each change is saved
+as you make it.
 
 ## API keys
 
@@ -53,8 +56,8 @@ as the service account.
 
 ### Issue a key
 
-1. On the service account's page, under **API keys**, click **Issue an API
-   key**.
+1. On the service account's page, under **Signs in with**, click **Add
+   sign-in** and choose **API key**.
 2. Enter a **Label** that says where the key will live, such as `HPC cron job`,
    so you know which key to revoke later.
 3. Choose when it **Expires**: in 30 days, 90 days or a year, or never (until
@@ -78,9 +81,9 @@ cat > ~/.source-coop/nightly-sync.key   # paste the key, press Enter, then Ctrl-
 chmod 600 ~/.source-coop/nightly-sync.key
 ```
 
-Then set five environment variables wherever the job runs. The dialog that
-showed you the key lists them too, filled in for your service account apart from
-the key file's path:
+Then set five environment variables wherever the job runs. The key's row on the
+service account's page lists them too, under **Example usage** in its menu,
+filled in for your service account apart from the key file's path:
 
 ```bash
 export AWS_ROLE_ARN=arn:aws:iam::your-org--nightly-sync:role/FullAccess
@@ -97,6 +100,10 @@ export AWS_REGION=us-west-2
 | `AWS_ENDPOINT_URL_STS` | Where to exchange the key for credentials: the data proxy. |
 | `AWS_ENDPOINT_URL_S3` | Where to send S3 requests: the data proxy. |
 | `AWS_REGION` | Required by S3 clients. It doesn't say where your data is stored. |
+
+For a job that only reads, end `AWS_ROLE_ARN` in `role/ReadOnly` instead of
+`role/FullAccess`. Its credentials can't write, even to products the service
+account may write to. Any other role name is refused.
 
 That's all. The AWS CLI and SDKs read the key from the file, exchange it at the
 data proxy for credentials that last an hour, and exchange it again before those
@@ -173,7 +180,7 @@ A service account can have several keys at once, so you can replace one without
 stopping the job: issue a new key, deploy it, and revoke the old one once
 nothing uses it. Each key's row shows when it was last used.
 
-To change when a key expires, click **Change expiry** on its row: later, for a
+To change when a key expires, choose **Change expiry** from its row's menu: later, for a
 job that runs longer than planned, or sooner, during an incident. The new expiry
 counts from today.
 
@@ -227,8 +234,9 @@ out.
 
 | To | Do this | What happens |
 | --- | --- | --- |
-| Stop one key | Click **Revoke** on the key's row. | New exchanges with the key are refused within about a minute. |
-| Stop everything the service account does | Click **Disable** under **Danger zone**. | New exchanges with any of its keys are refused within about a minute. Writes stop within about a minute, and reads of restricted products within about five minutes. |
+| Stop one key | Choose **Revoke** from the key's menu. | New exchanges with the key are refused within about a minute. |
+| Stop one workflow | Choose **Remove** from the workflow's menu. | New sign-ins from the workflow are refused within about a minute. |
+| Stop everything the service account does | Click **Disable** under **Danger zone**. | New exchanges with any of its keys, and new sign-ins from its workflows, are refused within about a minute. Writes stop within about a minute, and reads of restricted products within about five minutes. |
 
 Revoking a key doesn't recall credentials already issued with it: they keep
 working until they expire, an hour after they were issued, or up to 12 hours if
@@ -261,16 +269,75 @@ through GitHub's secret scanning.
 
 ## GitHub Actions
 
-:::info Coming soon
+A service account can trust a GitHub Actions workflow, which then signs in with
+a token GitHub issues for each run. There is no key to store, rotate or leak.
 
-A service account can also trust a GitHub Actions workflow, which then signs in
-with a token GitHub issues for each run, with no key to store. The service
-account page already lets you add a workflow, but the data proxy doesn't accept
-those sign-ins yet
-([data.source.coop#222](https://github.com/source-cooperative/data.source.coop/issues/222),
-[data.source.coop#223](https://github.com/source-cooperative/data.source.coop/issues/223)).
-Until it does, a workflow can use an API key like any other machine: keep the
-key in a GitHub Actions secret, write it to a file at the start of the job, and
-set the variables above.
+### Trust a workflow
 
-:::
+1. On the service account's page, under **Signs in with**, click **Add
+   sign-in** and choose **GitHub workflow**.
+2. Enter the **Repository**, such as `your-org/pipelines`.
+3. Under **Pinned to**, choose **Ref** and enter the full ref the workflow runs
+   on, such as `refs/heads/main` or `refs/tags/v1.0`; or choose **Environment**
+   and enter the name of the GitHub environment the job runs in.
+4. Click **Trust it**.
+
+The dialog shows the exact subject it trusts, such as
+`repo:your-org/pipelines:ref:refs/heads/main`. A run's token has to carry that
+subject exactly, so:
+
+- A job that names an `environment:` carries the environment's subject, not
+  the branch's. Pin such a job to its environment.
+- Runs for pull requests carry a subject that can't be trusted, so a job
+  triggered by `pull_request` can't sign in.
+- Repositories created after July 2026 carry their owner's and their own
+  numeric IDs, as in `your-org@123/pipelines@456`. The dialog offers that form
+  when GitHub shows the repository publicly; for a private one, it prints a `gh`
+  command that finds it.
+
+A repository is trusted only for the ref or environment you name. To trust
+another branch, add another workflow.
+
+### Sign in from the job
+
+Choose **Example usage** from the workflow's menu on the service account's page
+for the step to add, filled in for your service account. It looks like this:
+
+```yaml
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # lets the job ask GitHub for its token
+      contents: read
+    env:
+      AWS_ENDPOINT_URL_S3: https://data.source.coop
+    steps:
+      - name: Sign in to Source Cooperative as your-org--nightly-sync
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::your-org--nightly-sync:role/FullAccess
+          audience: https://data.source.coop
+          sts-endpoint: https://data.source.coop/.sts
+          aws-region: us-west-2
+      - run: aws s3 sync ./outgoing s3://your-org/your-product/outgoing/
+```
+
+Unlike with an API key, the ID in `role-to-assume` matters: it names the service
+account the job signs in as, and the sign-in succeeds only if that service
+account trusts the workflow. End it in `role/ReadOnly` for a job that only
+reads.
+
+The step's credentials last an hour, and nothing renews them during the job. For
+a longer job, add `role-duration-seconds` to the step, up to `43200` (12 hours).
+
+A refused sign-in fails the step with:
+
+```text
+AccessDenied: Not authorized to perform sts:AssumeRoleWithWebIdentity (request id 8f3a1c2b9d4e5f60-SEA)
+```
+
+The same error covers a workflow the service account doesn't trust (check the
+subject, as above), a disabled service account, and an ID in `role-to-assume`
+that isn't a service account. If none of those explains it, email
+[hello@source.coop](mailto:hello@source.coop) and quote the request id.
