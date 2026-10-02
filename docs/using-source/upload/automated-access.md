@@ -96,7 +96,7 @@ export AWS_WEB_IDENTITY_TOKEN_FILE=$HOME/.source-coop/nightly-sync.key
 
 | Variable | What it's for |
 | --- | --- |
-| `AWS_REGION` | Required by S3 clients. It doesn't say where your data is stored. |
+| `AWS_REGION` | Unused by the data proxy, which accepts any region, but set it anyway: many SDKs won't sign requests without one. It doesn't say where your data is stored. |
 | `AWS_ENDPOINT_URL_S3` | Where to send S3 requests: the data proxy. |
 | `AWS_ENDPOINT_URL_STS` | Where to exchange the key for credentials: the data proxy. |
 | `AWS_ROLE_ARN` | How much the credentials may do. `FullAccess` is everything the service account may do; `ReadOnly` is reads only. The value has the shape AWS tools expect, with the service account's ID where an AWS account number would be. |

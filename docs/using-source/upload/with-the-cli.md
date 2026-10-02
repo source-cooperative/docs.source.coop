@@ -84,8 +84,9 @@ You will also see:
 
 These are Source Cooperative credentials in the AWS credential format. They
 only work against the data proxy, so always set the endpoint to
-`https://data.source.coop`. The region value is required by S3 clients; it does
-not say where your data is stored.
+`https://data.source.coop`. The data proxy doesn't use the region and accepts
+any value, but set one anyway: many SDKs won't sign requests without it. It
+doesn't say where your data is stored.
 
 For SDK clients (boto3, AWS SDKs, etc.):
 

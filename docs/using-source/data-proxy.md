@@ -67,7 +67,3 @@ If you don't have the AWS CLI installed, follow the [AWS CLI Getting Started Gui
 ## Current Status
 
 The Source Data Proxy is currently in beta. We're working to make performance indistinguishable from accessing objects directly via AWS S3.
-
-## Uploading Data Through the Source Data Proxy
-
-Uploading data through the Source Data Proxy is currently disabled while we work on new, easier, and more secure ways to upload data. If you need to upload data, please contact hello@source.coop.
