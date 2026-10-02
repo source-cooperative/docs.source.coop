@@ -56,7 +56,7 @@ source-coop login
 aws s3 ls s3://your-org/your-product --profile source-coop
 ```
 
-See [Upload Your Data](/data-upload#get-credentials-with-the-source-cli-recommended) for the one-time install and profile setup.
+See [Upload with the Source CLI](/upload-with-the-cli) for the one-time install and profile setup.
 
 For software that runs on its own, with nobody there to log in, use a [service account](/automated-access) instead.
 

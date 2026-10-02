@@ -1,5 +1,6 @@
 ---
 title: Automated Access
+sidebar_label: With a Service Account
 id: automated-access
 slug: /automated-access
 ---
