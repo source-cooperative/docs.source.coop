@@ -14,7 +14,9 @@ their own, so nothing else has to run on the machine.
 ## What a service account is
 
 A service account is a login for software. It belongs to one account, yours or
-an organization's, and whoever manages that account manages it.
+an organization's. Only the owner of a personal account, or an owner or
+maintainer of an organization, can create or edit its service accounts. Other
+organization members can't.
 
 - **It has its own access.** You grant it products one at a time, to read or to
   read and write. It can reach only products its owner owns, and it never
@@ -31,6 +33,9 @@ A service account's ID is its owner's ID, two hyphens, and a name of its own,
 such as `your-org--nightly-sync`. It can't be changed.
 
 ## Create a service account
+
+You need to be the account's owner or, for an organization, one of its owners or
+maintainers.
 
 1. Open the profile page of the account that will own it, yours or an
    organization's, click the gear icon, and choose **Service Accounts**.
