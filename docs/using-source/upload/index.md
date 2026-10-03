@@ -11,14 +11,17 @@ If you do not see the option to upload (for example, Edit Mode or View Credentia
 
 ## Choose how to upload
 
-<!-- The anchors keep links to this page's old Option sections working. -->
+<a id="the-short-version-what-you-need-to-do"></a>
+
+<!-- The anchors keep links to this page's old sections landing next to the page that now covers them. -->
 
 | | Best for | |
 | --- | --- | --- |
-| <a id="option-1-upload-directly-in-the-ui-easiest"></a>**[In the browser](/upload-in-the-browser)** | Small or one-time uploads, without installing anything | Easiest |
-| <a id="option-2-upload-through-the-data-proxy-with-temporary-credentials-recommended-for-larger-uploads"></a><a id="get-credentials-with-the-source-cli-recommended"></a>**[With the Source CLI](/upload-with-the-cli)** | Large uploads and scripts that you run yourself | Recommended for larger uploads |
+| <a id="option-1-upload-directly-in-the-ui-easiest"></a><a id="how-to-upload-via-the-ui"></a>**[In the browser](/upload-in-the-browser)** | Small or one-time uploads, without installing anything | Easiest |
+| <a id="option-2-upload-through-the-data-proxy-with-temporary-credentials-recommended-for-larger-uploads"></a><a id="get-credentials-with-the-source-cli-recommended"></a><a id="get-credentials-from-the-ui"></a><a id="what-the-credentials-look-like"></a><a id="for-sdk-clients-boto3-aws-sdks-etc"></a><a id="for-terminal--shell-usage"></a><a id="example-upload-using-the-aws-cli"></a>**[With the Source CLI](/upload-with-the-cli)** | Large uploads and scripts that you run yourself | Recommended for larger uploads |
 | <a id="option-3-longstanding-or-automated-access-advanced"></a>**[With a service account](/automated-access)** | Pipelines, scheduled jobs and GitHub Actions: anything that runs with nobody at the keyboard | Advanced |
 
+<a id="how-this-works"></a><a id="step-1-create-an-iam-role-or-pick-an-identity-to-use"></a><a id="step-2-send-us-the-arn"></a><a id="step-3-upload-using-that-identity"></a>
 Already upload from your own AWS account with an IAM role? That method is
 deprecated in favor of service accounts, but its instructions are still at
 [Direct uploads](/direct-uploads).

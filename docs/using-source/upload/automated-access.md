@@ -6,10 +6,15 @@ slug: /automated-access
 ---
 
 Some software reaches Source Cooperative with nobody at the keyboard: a nightly
-sync, a publishing pipeline, an instrument that uploads its readings. Give it a
-**service account** and an **API key**. The AWS CLI and SDKs exchange the key
-for short-lived credentials at the [data proxy](/data-proxy) and renew them on
-their own, so nothing else has to run on the machine.
+sync, a publishing pipeline, an instrument that uploads its readings. Such
+software signs in as a **service account**, in one of two ways:
+
+- A [GitHub Actions workflow](#github-actions) uses a token GitHub issues for
+  each run, so there's no secret to store.
+- Anything else uses one of the service account's [API keys](#api-keys). The AWS
+  CLI and SDKs trade the key at the [data proxy](/data-proxy) for credentials
+  that last an hour, and trade it again before those run out. You don't need
+  the Source CLI or any other helper on the machine.
 
 ## What a service account is
 
@@ -47,7 +52,7 @@ maintainers.
    [a key](#issue-a-key) for anything else. Both are optional here: you can add
    either later.
 5. Under **What it can reach**, click **Grant a product**, choose a product and
-   **Read** or **Read and write**, and click the check mark. Repeat for each
+   **Read** or **Read and write**, and click **Grant**. Repeat for each
    product the job needs, and no more: a job that only downloads needs **Read**.
 6. Click **Create service account**.
 
@@ -110,9 +115,10 @@ For a job that only reads, end `AWS_ROLE_ARN` in `role/ReadOnly` instead of
 `role/FullAccess`. Its credentials can't write, even to products the service
 account may write to. Any other role name is refused.
 
-That's all. The AWS CLI and SDKs read the key from the file, exchange it at the
-data proxy for credentials that last an hour, and exchange it again before those
-run out. Nothing else runs on the machine, and the key file never changes.
+That's all. The AWS CLI and SDKs read the key from the file, trade it at the
+data proxy for credentials that last an hour, and trade it again before those
+run out. The key file never changes, and no other program has to run alongside
+the job.
 
 The two endpoint variables need **AWS CLI 2.13** or later, or **boto3 1.28**
 (**botocore 1.31**) or later. Older releases ignore them and send the key to AWS
