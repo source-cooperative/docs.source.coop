@@ -70,7 +70,6 @@ These controls prevent accidental or unauthorized access and ensure:
 
 - Clear ownership of uploaded data
 - No accidental access to other providers’ data
-- Secure handling without sharing permanent credentials
 
 This protects both you and Source Cooperative.
 
@@ -78,7 +77,6 @@ This protects both you and Source Cooperative.
 
 Please do not:
 
-- Request permanent access keys
 - Ask for full bucket access
 - Upload outside your assigned prefix
 - Reuse expired temporary credentials
