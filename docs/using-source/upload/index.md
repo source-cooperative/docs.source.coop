@@ -61,14 +61,6 @@ This matches your product page URL, `https://source.coop/your-org/your-product`.
 
 You may not upload outside this path.
 
-## What not to do
-
-Please do not:
-
-- Ask for full bucket access
-- Upload outside your assigned prefix
-- Reuse expired temporary credentials
-
 ## Need help?
 
 If you’re unsure which option is right for you, or need help setting up automated access, contact the Source Cooperative team at `hello@source.coop`, and we will help you choose the best approach for your use case.
