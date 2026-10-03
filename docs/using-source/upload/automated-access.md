@@ -82,9 +82,8 @@ Save the key in a file that only the job's user can read. A trailing newline is
 fine.
 
 ```bash
-mkdir -p -m 700 ~/.source-coop
-cat > ~/.source-coop/nightly-sync.key   # paste the key, press Enter, then Ctrl-D
-chmod 600 ~/.source-coop/nightly-sync.key
+mkdir -p ~/.source-coop && chmod 700 ~/.source-coop
+(umask 077; cat > ~/.source-coop/nightly-sync.key)   # paste the key, press Enter, then Ctrl-D
 ```
 
 Then set five environment variables wherever the job runs. The key's row on the
