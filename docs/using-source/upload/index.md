@@ -59,12 +59,6 @@ s3://your-org/your-product/
 
 This matches your product page URL, `https://source.coop/your-org/your-product`.
 
-You may upload:
-
-- Files
-- Folders
-- Multiple objects
-
 You may not upload outside this path.
 
 ## Why we use these controls
