@@ -96,7 +96,7 @@ service account's page lists them too, under **Example usage** in its menu,
 filled in for your service account apart from the key file's path:
 
 ```bash
-export AWS_DEFAULT_REGION=us-west-2
+export AWS_REGION=us-west-2
 export AWS_ENDPOINT_URL_S3=https://data.source.coop
 export AWS_ENDPOINT_URL_STS=https://data.source.coop/.sts
 export AWS_ROLE_ARN=arn:aws:iam::your-org--nightly-sync:role/FullAccess
@@ -105,7 +105,7 @@ export AWS_WEB_IDENTITY_TOKEN_FILE=/home/your-user/.source-coop/nightly-sync.key
 
 | Variable | What it's for |
 | --- | --- |
-| `AWS_DEFAULT_REGION` | Unused by the data proxy, which accepts any region, but set it anyway: many SDKs won't sign requests without one. It doesn't say where your data is stored. The AWS CLI, boto3 and the Go SDK read it; the JavaScript and Java SDKs read `AWS_REGION` instead, so for those set that too. |
+| `AWS_REGION` | Unused by the data proxy, which accepts any region, but set it anyway: many SDKs won't sign requests without one. It doesn't say where your data is stored. |
 | `AWS_ENDPOINT_URL_S3` | Where to send S3 requests: the data proxy. |
 | `AWS_ENDPOINT_URL_STS` | Where to exchange the key for credentials: the data proxy. |
 | `AWS_ROLE_ARN` | How much the credentials may do. `FullAccess` is everything the service account may do; `ReadOnly` is reads only. The value has the shape AWS tools expect, with the service account's ID where an AWS account number would be. |
@@ -137,10 +137,15 @@ With boto3:
 ```python
 import boto3  # boto3 1.28 (botocore 1.31) or later
 
-# No keys, endpoint or region here: boto3 reads the five variables.
+# No keys or endpoint here: boto3 reads them from the variables above.
 s3 = boto3.client("s3")
 s3.upload_file("mydata.csv", "your-org", "your-product/mydata.csv")
 ```
+
+boto3 is the exception among the SDKs: it reads its region from
+`AWS_DEFAULT_REGION`, not `AWS_REGION`. Set that as well
+(`export AWS_DEFAULT_REGION=us-west-2`), or pass `region_name` to
+`boto3.client`.
 
 Other AWS SDKs work the same way, provided their web identity credential
 provider reads `AWS_ENDPOINT_URL_STS`.
