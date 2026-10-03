@@ -19,9 +19,13 @@ If you do not see the option to upload (for example, Edit Mode or View Credentia
 | <a id="option-2-upload-through-the-data-proxy-with-temporary-credentials-recommended-for-larger-uploads"></a><a id="get-credentials-with-the-source-cli-recommended"></a>**[With the Source CLI](/upload-with-the-cli)** | Large uploads and scripts that you run yourself | Recommended for larger uploads |
 | <a id="option-3-longstanding-or-automated-access-advanced"></a>**[With a service account](/automated-access)** | Pipelines, scheduled jobs and GitHub Actions: anything that runs with nobody at the keyboard | Advanced |
 
+Already upload from your own AWS account with an IAM role? That method is
+deprecated in favor of service accounts, but its instructions are still at
+[Direct uploads](/direct-uploads).
+
 ## How uploads work: the Source data proxy
 
-Every upload goes through the **Source data proxy** at `https://data.source.coop`.
+Uploads go through the **Source data proxy** at `https://data.source.coop`.
 The proxy speaks the **S3 API**, the object storage protocol that Amazon S3
 introduced and that most storage tools now support. It is not itself an AWS service.
 
