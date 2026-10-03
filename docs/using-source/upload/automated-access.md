@@ -257,13 +257,17 @@ before you enable the account.
 ### Revoke a key you found
 
 Anyone who holds a key can revoke it, without an account. If you come across one
-that has leaked, in a repository, a log or a message, send it in the body of
-this request:
+that has leaked, in a repository, a log or a message, save it in a file and
+send it in the body of this request, so it stays out of your shell history and
+process list:
 
 ```bash
-curl -X POST https://source.coop/api/v1/service-account-keys/revocations \
-  -H 'content-type: application/json' \
-  -d '{"key":"sck_…"}'
+cat > found.key   # paste the key, press Enter, then Ctrl-D
+printf '{"key":"%s"}' "$(tr -d '\n' < found.key)" |
+  curl -X POST https://source.coop/api/v1/service-account-keys/revocations \
+    -H 'content-type: application/json' \
+    --data-binary @-
+rm found.key
 ```
 
 For a well-formed key the answer is always `204 No Content`, whether the key was
