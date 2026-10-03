@@ -26,10 +26,15 @@ export default function IamPolicyWizard(): ReactNode {
       description="Generate the IAM policy your AWS role or user needs to upload to Source Cooperative.">
       <main className="container margin-vert--lg">
         <h1>IAM policy wizard</h1>
+        <div className="alert alert--warning margin-bottom--md" role="note">
+          <strong>Deprecated.</strong> Uploading with an IAM role in your own AWS account is deprecated
+          in favor of <a href="/automated-access">service accounts</a>. Use this wizard only for
+          pipelines already set up this way.
+        </div>
         <p>
           Generate the policy to attach to the IAM role or user in <strong>your own</strong> AWS
           account, so it can upload to your prefix in the Source Cooperative bucket. See{' '}
-          <a href="/data-upload">Upload Your Data</a> for the full walkthrough.
+          <a href="/direct-uploads">Direct uploads</a> for the full walkthrough.
         </p>
 
         <div className="margin-bottom--lg" style={{display: 'grid', gap: '1rem', maxWidth: 480}}>
