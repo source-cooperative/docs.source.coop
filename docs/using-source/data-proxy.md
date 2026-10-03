@@ -56,7 +56,9 @@ source-coop login
 aws s3 ls s3://your-org/your-product --profile source-coop
 ```
 
-See [Upload Your Data](/data-upload#get-credentials-with-the-source-cli-recommended) for the one-time install and profile setup.
+See [Upload with the Source CLI](/upload-with-the-cli) for the one-time install and profile setup.
+
+For software that runs on its own, with nobody there to log in, use a [service account](/automated-access) instead.
 
 ## Getting Started with AWS CLI
 
@@ -65,7 +67,3 @@ If you don't have the AWS CLI installed, follow the [AWS CLI Getting Started Gui
 ## Current Status
 
 The Source Data Proxy is currently in beta. We're working to make performance indistinguishable from accessing objects directly via AWS S3.
-
-## Uploading Data Through the Source Data Proxy
-
-Uploading data through the Source Data Proxy is currently disabled while we work on new, easier, and more secure ways to upload data. If you need to upload data, please contact hello@source.coop.
