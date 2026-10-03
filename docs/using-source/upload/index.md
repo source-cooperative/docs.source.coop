@@ -61,15 +61,6 @@ This matches your product page URL, `https://source.coop/your-org/your-product`.
 
 You may not upload outside this path.
 
-## Why we use these controls
-
-These controls prevent accidental or unauthorized access and ensure:
-
-- Clear ownership of uploaded data
-- No accidental access to other providers’ data
-
-This protects both you and Source Cooperative.
-
 ## What not to do
 
 Please do not:
