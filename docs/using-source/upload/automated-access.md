@@ -92,7 +92,7 @@ service account's page lists them too, under **Example usage** in its menu,
 filled in for your service account apart from the key file's path:
 
 ```bash
-export AWS_REGION=us-west-2
+export AWS_DEFAULT_REGION=us-west-2
 export AWS_ENDPOINT_URL_S3=https://data.source.coop
 export AWS_ENDPOINT_URL_STS=https://data.source.coop/.sts
 export AWS_ROLE_ARN=arn:aws:iam::your-org--nightly-sync:role/FullAccess
@@ -101,7 +101,7 @@ export AWS_WEB_IDENTITY_TOKEN_FILE=$HOME/.source-coop/nightly-sync.key
 
 | Variable | What it's for |
 | --- | --- |
-| `AWS_REGION` | Unused by the data proxy, which accepts any region, but set it anyway: many SDKs won't sign requests without one. It doesn't say where your data is stored. |
+| `AWS_DEFAULT_REGION` | Unused by the data proxy, which accepts any region, but set it anyway: many SDKs won't sign requests without one. It doesn't say where your data is stored. The AWS CLI, boto3 and the Go SDK read it; the JavaScript and Java SDKs read `AWS_REGION` instead, so for those set that too. |
 | `AWS_ENDPOINT_URL_S3` | Where to send S3 requests: the data proxy. |
 | `AWS_ENDPOINT_URL_STS` | Where to exchange the key for credentials: the data proxy. |
 | `AWS_ROLE_ARN` | How much the credentials may do. `FullAccess` is everything the service account may do; `ReadOnly` is reads only. The value has the shape AWS tools expect, with the service account's ID where an AWS account number would be. |
