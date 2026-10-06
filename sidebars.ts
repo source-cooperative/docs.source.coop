@@ -30,7 +30,17 @@ const sidebars: SidebarsConfig = {
       items: [
         'using-source/create-an-account',
         'using-source/create-a-data-product',
-        'using-source/data-upload',
+        {
+          type: 'category',
+          label: 'Upload Your Data',
+          link: {type: 'doc', id: 'using-source/upload/data-upload'},
+          items: [
+            'using-source/upload/in-the-browser',
+            'using-source/upload/with-the-cli',
+            'using-source/upload/with-service-account',
+            'using-source/upload/direct-uploads',
+          ],
+        },
         'using-source/bring-your-own-bucket',
         'using-source/data-proxy',
       ],

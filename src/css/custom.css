@@ -102,3 +102,9 @@
   height: auto;
 }
 
+
+/* wrap plain-text blocks (error messages, output); commands keep scrolling */
+pre.language-text code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
