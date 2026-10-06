@@ -15,7 +15,7 @@ This option is ideal for:
 
 ## How to upload via the UI
 
-1. Go to your product page in Source Cooperative (e.g. `https://source.coop/your-org/your-product`)
+1. Go to your product page in Source Cooperative (e.g. `https://source.coop/your-org/product-id`)
 2. In the top-right corner of the Product Contents card, click on the lock icon to open the dropdown menu and enable edit mode by clicking on `Edit Mode`.
 3. Either:
    - Drag‑and‑drop files to the `Product Contents` card

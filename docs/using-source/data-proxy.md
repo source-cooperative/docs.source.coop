@@ -53,7 +53,7 @@ Public datasets work with `--no-sign-request`. To access data that requires auth
 
 ```bash
 source-coop login
-aws s3 ls s3://your-org/your-product --profile source-coop
+aws s3 ls s3://your-org/product-id --profile source-coop
 ```
 
 See [Upload with the Source CLI](/upload-with-the-cli) for the one-time install and profile setup.

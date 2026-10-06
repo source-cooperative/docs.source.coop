@@ -144,7 +144,7 @@ Email [hello@source.coop](mailto:hello@source.coop) with:
   - Role: `arn:aws:iam::123456789012:role/source-coop-upload`
   - User: `arn:aws:iam::123456789012:user/data-uploader`
   - Account: `arn:aws:iam::123456789012:root`
-- Your Source Cooperative account ID and product ID (the `your-org/your-product` prefix you will write to)
+- Your Source Cooperative account ID and product ID (the `your-org/product-id` prefix you will write to)
 - A short description of the workflow (e.g. "nightly ingestion pipeline running on ECS")
 
 We will add the ARN to the bucket policy and confirm when it is active.
@@ -156,7 +156,7 @@ We will add the ARN to the bucket policy and confirm when it is active.
 Once we confirm, upload with credentials for that role, user, or account:
 
 ```bash
-aws s3 cp mydata.csv s3://us-west-2.opendata.source.coop/your-org/your-product/mydata.csv
+aws s3 cp mydata.csv s3://us-west-2.opendata.source.coop/your-org/product-id/mydata.csv
 ```
 
 Services that already run as the role (ECS tasks, Lambda, EC2 instance profiles) need no assume-role step — the SDK picks up the role automatically.
@@ -165,7 +165,7 @@ Services that already run as the role (ECS tasks, Lambda, EC2 instance profiles)
 <summary>Uploading a directory</summary>
 
 ```bash
-aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/
+aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/product-id/
 ```
 
 </details>
@@ -183,7 +183,7 @@ region = us-west-2
 ```
 
 ```bash
-aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ --profile source-coop-upload
+aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/product-id/ --profile source-coop-upload
 ```
 
 </details>
@@ -198,7 +198,7 @@ s3 = boto3.client("s3")
 s3.upload_file(
     "mydata.csv",
     "us-west-2.opendata.source.coop",
-    "your-org/your-product/mydata.csv",
+    "your-org/product-id/mydata.csv",
 )
 ```
 

@@ -110,7 +110,7 @@ jobs:
           audience: https://data.source.coop
           sts-endpoint: https://data.source.coop/.sts
           aws-region: us-west-2
-      - run: aws s3 sync ./outgoing s3://your-org/your-product/outgoing/
+      - run: aws s3 sync ./outgoing s3://your-org/product-id/outgoing/
 ```
 
 Unlike with an API key, the ID in `role-to-assume` matters: it names the service
@@ -239,8 +239,8 @@ With the AWS CLI:
 
 ```bash
 aws --version   # aws-cli/2.13.0 or later
-aws s3 ls s3://your-org/your-product/
-aws s3 sync ./outgoing s3://your-org/your-product/outgoing/
+aws s3 ls s3://your-org/product-id/
+aws s3 sync ./outgoing s3://your-org/product-id/outgoing/
 ```
 
 With boto3:
@@ -250,7 +250,7 @@ import boto3  # boto3 1.28 (botocore 1.31) or later
 
 # No keys or endpoint here: boto3 reads them from the variables above.
 s3 = boto3.client("s3")
-s3.upload_file("mydata.csv", "your-org", "your-product/mydata.csv")
+s3.upload_file("mydata.csv", "account-id", "product-id/mydata.csv")
 ```
 
 boto3 is the exception among the SDKs: it reads its region from

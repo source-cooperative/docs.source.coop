@@ -45,8 +45,8 @@ The `endpoint_url` line is what sends requests to the Source data proxy instead 
 Pass the profile per command with `--profile`:
 
 ```bash
-aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv --profile source-coop
-aws s3 sync ./data s3://your-org/your-product/ --profile source-coop
+aws s3 cp mydata.csv s3://your-org/product-id/mydata.csv --profile source-coop
+aws s3 sync ./data s3://your-org/product-id/ --profile source-coop
 ```
 
 Or set it once for your shell session with the `AWS_PROFILE` environment variable:
@@ -56,8 +56,8 @@ Or set it once for your shell session with the `AWS_PROFILE` environment variabl
 
 ```bash
 export AWS_PROFILE=source-coop
-aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv
-aws s3 sync ./data s3://your-org/your-product/
+aws s3 cp mydata.csv s3://your-org/product-id/mydata.csv
+aws s3 sync ./data s3://your-org/product-id/
 ```
 
 </TabItem>
@@ -65,8 +65,8 @@ aws s3 sync ./data s3://your-org/your-product/
 
 ```powershell
 $env:AWS_PROFILE = "source-coop"
-aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv
-aws s3 sync ./data s3://your-org/your-product/
+aws s3 cp mydata.csv s3://your-org/product-id/mydata.csv
+aws s3 sync ./data s3://your-org/product-id/
 ```
 
 </TabItem>
@@ -96,7 +96,7 @@ You will also see:
 
 - `Expiration`: the expiration time of the credentials (a specific date and time)
 - `Bucket`: the bucket name on the data proxy, which is your account ID (`your-org`)
-- `Prefix`: the prefix (folder) you are allowed to write to (e.g. `your-product/`)
+- `Prefix`: the prefix (folder) you are allowed to write to (e.g. `product-id/`)
 
 ### What the credentials look like
 
@@ -123,7 +123,7 @@ With boto3, pass the endpoint when creating the client:
 import boto3
 
 s3 = boto3.client("s3", endpoint_url="https://data.source.coop", **credentials)
-s3.upload_file("mydata.csv", "your-org", "your-product/mydata.csv")
+s3.upload_file("mydata.csv", "account-id", "product-id/mydata.csv")
 ```
 
 For terminal / shell usage:
@@ -162,13 +162,13 @@ These credentials are:
 ### Example: Upload using the AWS CLI
 
 ```bash
-aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv --endpoint-url https://data.source.coop
+aws s3 cp mydata.csv s3://your-org/product-id/mydata.csv --endpoint-url https://data.source.coop
 ```
 
 Or upload a full directory:
 
 ```bash
-aws s3 sync ./data s3://your-org/your-product/ --endpoint-url https://data.source.coop
+aws s3 sync ./data s3://your-org/product-id/ --endpoint-url https://data.source.coop
 ```
 
 `--endpoint-url` isn't needed if you set `AWS_ENDPOINT_URL` or use the `source-coop` profile above.

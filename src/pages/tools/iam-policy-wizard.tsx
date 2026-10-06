@@ -23,28 +23,34 @@ export default function IamPolicyWizard(): ReactNode {
   return (
     <Layout
       title="IAM Policy Wizard"
-      description="Generate the IAM policy your AWS role or user needs to upload to Source Cooperative.">
+      description="Generate the IAM policy your AWS role or user needs to upload to Source Cooperative."
+    >
       <main className="container margin-vert--lg">
         <h1>IAM policy wizard</h1>
         <div className="alert alert--warning margin-bottom--md" role="note">
-          <strong>Deprecated.</strong> Uploading with an IAM role in your own AWS account is deprecated
-          in favor of <a href="/automated-access">service accounts</a>. Use this wizard only for
-          pipelines already set up this way.
+          <strong>Deprecated.</strong> Uploading with an IAM role in your own
+          AWS account is deprecated in favor of{" "}
+          <a href="/automated-access">service accounts</a>. Use this wizard only
+          for pipelines already set up this way.
         </div>
         <p>
-          Generate the policy to attach to the IAM role or user in <strong>your own</strong> AWS
-          account, so it can upload to your prefix in the Source Cooperative bucket. See{' '}
+          Generate the policy to attach to the IAM role or user in{" "}
+          <strong>your own</strong> AWS account, so it can upload to your prefix
+          in the Source Cooperative bucket. See{" "}
           <a href="/direct-uploads">Direct uploads</a> for the full walkthrough.
         </p>
 
-        <div className="margin-bottom--lg" style={{display: 'grid', gap: '1rem', maxWidth: 480}}>
+        <div
+          className="margin-bottom--lg"
+          style={{ display: "grid", gap: "1rem", maxWidth: 480 }}
+        >
           <label>
             Source Cooperative account ID <span aria-hidden="true">*</span>
             <input
               className="margin-top--xs"
-              style={{width: '100%'}}
+              style={{ width: "100%" }}
               required
-              placeholder="your-org"
+              placeholder="account-id"
               value={accountId}
               onChange={(e) => setAccountId(e.target.value)}
             />
@@ -53,20 +59,23 @@ export default function IamPolicyWizard(): ReactNode {
             Product ID <em>(optional)</em>
             <input
               className="margin-top--xs"
-              style={{width: '100%'}}
-              placeholder="your-product"
+              style={{ width: "100%" }}
+              placeholder="product-id"
               value={productId}
               onChange={(e) => setProductId(e.target.value)}
             />
-            <small>Leave blank to grant access to every product under the account.</small>
+            <small>
+              Leave blank to grant access to every product under the account.
+            </small>
           </label>
           <label>
             Bucket region
             <select
               className="margin-top--xs"
-              style={{width: '100%'}}
+              style={{ width: "100%" }}
               value={region}
-              onChange={(e) => setRegion(e.target.value)}>
+              onChange={(e) => setRegion(e.target.value)}
+            >
               {REGIONS_BY_AREA.map(([area, regions]) => (
                 <optgroup key={area} label={area}>
                   {regions.map((r) => (
@@ -80,18 +89,18 @@ export default function IamPolicyWizard(): ReactNode {
           </label>
         </div>
 
-        {check === 'missing' && (
+        {check === "missing" && (
           <div className="alert alert--warning margin-bottom--md" role="status">
-            <code>{prefix}</code> was not found on Source Cooperative. Double-check the IDs —
-            though this is expected if you have not created it yet. The policy below is generated
-            either way.
+            <code>{prefix}</code> was not found on Source Cooperative.
+            Double-check the IDs — though this is expected if you have not
+            created it yet. The policy below is generated either way.
           </div>
         )}
         {policy ? (
           <>
             <p>
-              Attach this policy to your role or user. It grants read/write (including multipart
-              uploads) under <code>{prefix}/</code>.
+              Attach this policy to your role or user. It grants read/write
+              (including multipart uploads) under <code>{prefix}/</code>.
             </p>
             <CodeBlock
               language="json"
@@ -99,10 +108,11 @@ export default function IamPolicyWizard(): ReactNode {
               children={JSON.stringify(policy, null, 2)}
             />
             <div className="alert alert--secondary margin-top--md" role="note">
-              This only grants permission on your side. Uploads will fail with{' '}
-              <code>AccessDenied</code> until Source Cooperative grants your ARN access on the
-              bucket. Email <a href="mailto:hello@source.coop">hello@source.coop</a> with the ARN of
-              the role or user and the prefix <code>{prefix}/</code>.
+              This only grants permission on your side. Uploads will fail with{" "}
+              <code>AccessDenied</code> until Source Cooperative grants your ARN
+              access on the bucket. Email{" "}
+              <a href="mailto:hello@source.coop">hello@source.coop</a> with the
+              ARN of the role or user and the prefix <code>{prefix}/</code>.
             </div>
           </>
         ) : (
