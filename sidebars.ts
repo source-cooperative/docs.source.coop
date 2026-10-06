@@ -37,7 +37,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'using-source/upload/in-the-browser',
             'using-source/upload/with-the-cli',
-            'using-source/upload/automated-access',
+            'using-source/upload/with-service-account',
             'using-source/upload/direct-uploads',
           ],
         },
