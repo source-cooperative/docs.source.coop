@@ -269,14 +269,12 @@ variables in its own environment.
 A key that has been revoked or has expired, and a key whose service account is
 disabled, are refused with the same error:
 
-```text
+```
 An error occurred (InvalidIdentityToken) when calling the AssumeRoleWithWebIdentity operation: API key was not accepted (request id 8f3a1c2b9d4e5f60-SEA)
 ```
 
 The service account's page shows whether it is disabled, and each key's row
-shows whether the key has been revoked or has expired. If none of those explains
-it, email [hello@source.coop](mailto:hello@source.coop) and quote the request
-id: it lets us find the reason in our logs.
+shows whether the key has been revoked or has expired.
 
 A key's last six characters are a checksum of the rest, so a key that was cut
 short or mistyped when it was copied is refused before anything is looked up,
@@ -287,8 +285,7 @@ An error occurred (InvalidIdentityToken) when calling the AssumeRoleWithWebIdent
 ```
 
 Copy the key again from where you saved it. If you no longer have all of it,
-issue a new key and revoke the old one. The Source CLI checks a key file the
-same way before it sends the key.
+issue a new key and revoke the old one.
 
 ### Keep the key secret
 
