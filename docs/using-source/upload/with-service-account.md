@@ -255,14 +255,16 @@ s3.upload_file("mydata.csv", "your-org", "your-product/mydata.csv")
 
 boto3 is the exception among the SDKs: it reads its region from
 `AWS_DEFAULT_REGION`, not `AWS_REGION`. Set that as well
-(`export AWS_DEFAULT_REGION=us-west-2`), or pass `region_name` to
+(`export AWS_DEFAULT_REGION=us-west-2`, or in PowerShell
+`$env:AWS_DEFAULT_REGION = "us-west-2"`), or pass `region_name` to
 `boto3.client`.
 
 Other AWS SDKs work the same way, provided their web identity credential
 provider reads `AWS_ENDPOINT_URL_STS`.
 
 A cron job or a system service doesn't read your shell's profile, so set the
-variables in its own environment.
+variables in its own environment. On Windows, a scheduled task that runs as
+your user picks up the variables saved above.
 
 ### If the key is refused
 
@@ -375,9 +377,12 @@ before you enable the account.
 ### Revoke a key you found
 
 Anyone who holds a key can revoke it, without an account. If you come across one
-that has leaked, in a repository, a log or a message, save it in a file and
-send it in the body of this request, so it stays out of your shell history and
-process list:
+that has leaked, in a repository, a log or a message, send it in the body of
+this request. The commands below take the key as you paste it, so it stays out of your
+shell history and process list:
+
+<Tabs groupId="os" queryString>
+<TabItem value="unix" label="macOS / Linux">
 
 ```bash
 cat > found.key   # paste the key, press Enter, then Ctrl-D
@@ -387,6 +392,18 @@ printf '{"key":"%s"}' "$(tr -d '\n' < found.key)" |
     --data-binary @-
 rm found.key
 ```
+
+</TabItem>
+<TabItem value="windows" label="Windows (PowerShell)">
+
+```powershell
+$key = (Read-Host "Paste the key").Trim()
+Invoke-RestMethod -Method Post -Uri https://source.coop/api/v1/service-account-keys/revocations `
+  -ContentType "application/json" -Body (@{ key = $key } | ConvertTo-Json)
+```
+
+</TabItem>
+</Tabs>
 
 For a well-formed key the answer is always `204 No Content`, whether the key was
 live, already revoked or unknown. A live key is revoked, and new exchanges with

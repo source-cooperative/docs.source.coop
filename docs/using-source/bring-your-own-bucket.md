@@ -105,9 +105,7 @@ account, no matter how many buckets you connect. The CLI and console retrieve th
 TLS thumbprint automatically:
 
 ```bash
-aws iam create-open-id-connect-provider \
-  --url https://data.source.coop \
-  --client-id-list sts.amazonaws.com
+aws iam create-open-id-connect-provider --url https://data.source.coop --client-id-list sts.amazonaws.com
 ```
 
 This returns the provider ARN

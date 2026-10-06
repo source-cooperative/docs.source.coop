@@ -5,6 +5,9 @@ id: with-the-cli
 slug: /upload-with-the-cli
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 For larger uploads, scripting, or programmatic access, use temporary credentials
 issued by Source Cooperative with an S3 client pointed at the
 [data proxy](/data-upload#how-uploads-work-the-source-data-proxy).
@@ -27,7 +30,7 @@ This opens your browser to authenticate and caches short‑lived credentials in 
 
 **3. Configure an AWS CLI profile**
 
-Add a profile to `~/.aws/config` that calls the Source CLI to fetch credentials on demand and sends requests to the data proxy:
+Add a profile to `~/.aws/config` (`%USERPROFILE%\.aws\config` on Windows) that calls the Source CLI to fetch credentials on demand and sends requests to the data proxy:
 
 ```ini
 [profile source-coop]
@@ -48,11 +51,26 @@ aws s3 sync ./data s3://your-org/your-product/ --profile source-coop
 
 Or set it once for your shell session with the `AWS_PROFILE` environment variable:
 
+<Tabs groupId="os" queryString>
+<TabItem value="unix" label="macOS / Linux">
+
 ```bash
 export AWS_PROFILE=source-coop
 aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv
 aws s3 sync ./data s3://your-org/your-product/
 ```
+
+</TabItem>
+<TabItem value="windows" label="Windows (PowerShell)">
+
+```powershell
+$env:AWS_PROFILE = "source-coop"
+aws s3 cp mydata.csv s3://your-org/your-product/mydata.csv
+aws s3 sync ./data s3://your-org/your-product/
+```
+
+</TabItem>
+</Tabs>
 
 :::tip
 
@@ -110,6 +128,9 @@ s3.upload_file("mydata.csv", "your-org", "your-product/mydata.csv")
 
 For terminal / shell usage:
 
+<Tabs groupId="os" queryString>
+<TabItem value="unix" label="macOS / Linux">
+
 ```bash
 export AWS_ACCESS_KEY_ID="ASIA..."
 export AWS_SECRET_ACCESS_KEY="pwEV..."
@@ -117,6 +138,20 @@ export AWS_SESSION_TOKEN="IQoJ..."
 export AWS_DEFAULT_REGION="us-west-2"
 export AWS_ENDPOINT_URL="https://data.source.coop"  # add this: send requests to the data proxy
 ```
+
+</TabItem>
+<TabItem value="windows" label="Windows (PowerShell)">
+
+```powershell
+$env:AWS_ACCESS_KEY_ID = "ASIA..."
+$env:AWS_SECRET_ACCESS_KEY = "pwEV..."
+$env:AWS_SESSION_TOKEN = "IQoJ..."
+$env:AWS_DEFAULT_REGION = "us-west-2"
+$env:AWS_ENDPOINT_URL = "https://data.source.coop"  # add this: send requests to the data proxy
+```
+
+</TabItem>
+</Tabs>
 
 These credentials are:
 

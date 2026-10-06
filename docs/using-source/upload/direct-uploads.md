@@ -122,14 +122,8 @@ have a workflow that requires this policy.
 <summary>Creating the role with the AWS CLI</summary>
 
 ```bash
-aws iam create-role \
-  --role-name source-coop-upload \
-  --assume-role-policy-document file://trust-policy.json
-
-aws iam put-role-policy \
-  --role-name source-coop-upload \
-  --policy-name source-coop-write \
-  --policy-document file://s3-policy.json
+aws iam create-role --role-name source-coop-upload --assume-role-policy-document file://trust-policy.json
+aws iam put-role-policy --role-name source-coop-upload --policy-name source-coop-write --policy-document file://s3-policy.json
 ```
 
 </details>
@@ -179,7 +173,7 @@ aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/
 <details>
 <summary>Assuming the role from a workstation or CI job</summary>
 
-Let the AWS CLI do the assume-role for you — add a profile to `~/.aws/config`:
+Let the AWS CLI do the assume-role for you — add a profile to `~/.aws/config` (`%USERPROFILE%\.aws\config` on Windows):
 
 ```ini
 [profile source-coop-upload]
@@ -189,8 +183,7 @@ region = us-west-2
 ```
 
 ```bash
-aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ \
-  --profile source-coop-upload
+aws s3 sync ./data s3://us-west-2.opendata.source.coop/your-org/your-product/ --profile source-coop-upload
 ```
 
 </details>
