@@ -53,7 +53,7 @@ maintainers.
    either later.
 5. Under **What it can reach**, click **Grant a product**, choose a product and
    **Read** or **Read and write**, and click **Grant**. Repeat for each
-   product the job needs, and no more: a job that only downloads needs **Read**.
+   product the job needs, and no more.
 6. Click **Create service account**.
 
 You land on the service account's page, showing the key if you added one. You
