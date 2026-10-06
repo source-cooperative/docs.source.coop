@@ -63,6 +63,75 @@ You land on the service account's page, showing the key if you added one. You
 can change what it reaches at any time under **Can reach**; each change is saved
 as you make it.
 
+## GitHub Actions
+
+A service account can trust a GitHub Actions workflow, which then signs in with
+a token GitHub issues for each run. There is no key to store, rotate or leak.
+
+### Trust a workflow
+
+1. On the service account's page, under **Signs in with**, click **Add
+   sign-in** and choose **GitHub workflow**.
+2. Enter the **Repository**, such as `your-org/pipelines`. Repositories created
+   after July 2026 carry their owner's and their own numeric IDs, as in
+   `your-org@123/pipelines@456`. The dialog offers that form when GitHub shows the
+   repository publicly; for a private one, it prints a `gh` command that finds it.
+3. Under **Allow runs from**, choose one of the following:
+   - **Branch**, and provide the repository branch name that will trigger the the workflows  run.
+   - **Tag**, and provide the tag name that will trigger the workflow.
+   - **Environment**, and provide the name of the GitHub environment the job runs in.
+4. Click **Trust it**.
+
+The dialog shows the exact subject it trusts, such as
+`repo:your-org/pipelines:ref:refs/heads/main`.
+
+A repository is trusted only for the ref or environment you name. To trust
+another branch, add another workflow. Wildcards (`*`) are not supported.
+
+### Sign in from the job
+
+Choose **Example usage** from the workflow's menu on the service account's page
+for the step to add, filled in for your service account. It looks like this:
+
+```yaml
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # lets the job ask GitHub for its token
+      contents: read
+    env:
+      AWS_ENDPOINT_URL_S3: https://data.source.coop
+    steps:
+      - name: Sign in to Source Cooperative as your-org--nightly-sync
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::your-org--nightly-sync:role/FullAccess
+          audience: https://data.source.coop
+          sts-endpoint: https://data.source.coop/.sts
+          aws-region: us-west-2
+      - run: aws s3 sync ./outgoing s3://your-org/your-product/outgoing/
+```
+
+Unlike with an API key, the ID in `role-to-assume` matters: it names the service
+account the job signs in as, and the sign-in succeeds only if that service
+account trusts the workflow. End it in `role/ReadOnly` for a job that only
+reads.
+
+The step's credentials last an hour, and nothing renews them during the job. For
+a longer job, add `role-duration-seconds` to the step, up to `43200` (12 hours).
+
+A refused sign-in fails the step with:
+
+```text
+AccessDenied: Not authorized to perform sts:AssumeRoleWithWebIdentity (request id 8f3a1c2b9d4e5f60-SEA)
+```
+
+The same error covers a workflow the service account doesn't trust (check the
+subject, as above), a disabled service account, and an ID in `role-to-assume`
+that isn't a service account. If none of those explains it, email
+[hello@source.coop](mailto:hello@source.coop) and quote the request id.
+
 ## API keys
 
 An API key lets software on your own server, VM, cluster or instrument sign in
@@ -145,13 +214,13 @@ $vars.GetEnumerator() | ForEach-Object {
 </TabItem>
 </Tabs>
 
-| Variable | What it's for |
-| --- | --- |
-| `AWS_REGION` | Unused by the data proxy, which accepts any region, but set it anyway: many SDKs won't sign requests without one. It doesn't say where your data is stored. |
-| `AWS_ENDPOINT_URL_S3` | Where to send S3 requests: the data proxy. |
-| `AWS_ENDPOINT_URL_STS` | Where to exchange the key for credentials: the data proxy. |
-| `AWS_ROLE_ARN` | How much the credentials may do. `FullAccess` is everything the service account may do; `ReadOnly` is reads only. The value has the shape AWS tools expect, with the service account's ID where an AWS account number would be. |
-| `AWS_WEB_IDENTITY_TOKEN_FILE` | The file that holds the key, as an absolute path. Write it out in full: cron, systemd and Windows Task Scheduler don't expand `$HOME` or `~`. |
+| Variable                      | What it's for                                                                                                                                               |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AWS_REGION`                  | Unused by the data proxy, which accepts any region, but set it anyway: many SDKs won't sign requests without one. It doesn't say where your data is stored. |
+| `AWS_ENDPOINT_URL_S3`         | Where to send S3 requests: the data proxy.                                                                                                                  |
+| `AWS_ENDPOINT_URL_STS`        | Where to exchange the key for credentials: the data proxy.                                                                                                  |
+| `AWS_ROLE_ARN`                | References the service account ID and how much the credentials may do.                                                                                      |
+| `AWS_WEB_IDENTITY_TOKEN_FILE` | The file that holds the key, as an absolute path. Write it out in full: cron, systemd and Windows Task Scheduler don't expand `$HOME` or `~`.               |
 
 For a job that only reads, end `AWS_ROLE_ARN` in `role/ReadOnly` instead of
 `role/FullAccess`. Its credentials can't write, even to products the service
@@ -290,11 +359,11 @@ out.
 
 ## Revoke a key, or stop a service account
 
-| To | Do this | What happens |
-| --- | --- | --- |
-| Stop one key | Choose **Revoke** from the key's menu. | New exchanges with the key are refused within about a minute. |
-| Stop one workflow | Choose **Remove** from the workflow's menu. | New sign-ins from the workflow are refused within about a minute. |
-| Stop everything the service account does | Click **Disable** under **Danger zone**. | New exchanges with any of its keys, and new sign-ins from its workflows, are refused within about a minute. Writes stop within about a minute, and reads of restricted products within about five minutes. |
+| To                                       | Do this                                     | What happens                                                                                                                                                                                               |
+| ---------------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Stop one key                             | Choose **Revoke** from the key's menu.      | New exchanges with the key are refused within about a minute.                                                                                                                                              |
+| Stop one workflow                        | Choose **Remove** from the workflow's menu. | New sign-ins from the workflow are refused within about a minute.                                                                                                                                          |
+| Stop everything the service account does | Click **Disable** under **Danger zone**.    | New exchanges with any of its keys, and new sign-ins from its workflows, are refused within about a minute. Writes stop within about a minute, and reads of restricted products within about five minutes. |
 
 Revoking a key doesn't recall credentials already issued with it: they keep
 working until they expire, an hour after they were issued, or up to 12 hours if
@@ -328,78 +397,3 @@ it stop within about a minute. Send the key in the body, never in the URL.
 
 We plan to revoke keys pushed to public GitHub repositories automatically,
 through GitHub's secret scanning.
-
-## GitHub Actions
-
-A service account can trust a GitHub Actions workflow, which then signs in with
-a token GitHub issues for each run. There is no key to store, rotate or leak.
-
-### Trust a workflow
-
-1. On the service account's page, under **Signs in with**, click **Add
-   sign-in** and choose **GitHub workflow**.
-2. Enter the **Repository**, such as `your-org/pipelines`.
-3. Under **Pinned to**, choose **Ref** and enter the full ref the workflow runs
-   on, such as `refs/heads/main` or `refs/tags/v1.0`; or choose **Environment**
-   and enter the name of the GitHub environment the job runs in.
-4. Click **Trust it**.
-
-The dialog shows the exact subject it trusts, such as
-`repo:your-org/pipelines:ref:refs/heads/main`. A run's token has to carry that
-subject exactly, so:
-
-- A job that names an `environment:` carries the environment's subject, not
-  the branch's. Pin such a job to its environment.
-- Runs for pull requests carry a subject that can't be trusted, so a job
-  triggered by `pull_request` can't sign in.
-- Repositories created after July 2026 carry their owner's and their own
-  numeric IDs, as in `your-org@123/pipelines@456`. The dialog offers that form
-  when GitHub shows the repository publicly; for a private one, it prints a `gh`
-  command that finds it.
-
-A repository is trusted only for the ref or environment you name. To trust
-another branch, add another workflow.
-
-### Sign in from the job
-
-Choose **Example usage** from the workflow's menu on the service account's page
-for the step to add, filled in for your service account. It looks like this:
-
-```yaml
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write   # lets the job ask GitHub for its token
-      contents: read
-    env:
-      AWS_ENDPOINT_URL_S3: https://data.source.coop
-    steps:
-      - name: Sign in to Source Cooperative as your-org--nightly-sync
-        uses: aws-actions/configure-aws-credentials@v6
-        with:
-          role-to-assume: arn:aws:iam::your-org--nightly-sync:role/FullAccess
-          audience: https://data.source.coop
-          sts-endpoint: https://data.source.coop/.sts
-          aws-region: us-west-2
-      - run: aws s3 sync ./outgoing s3://your-org/your-product/outgoing/
-```
-
-Unlike with an API key, the ID in `role-to-assume` matters: it names the service
-account the job signs in as, and the sign-in succeeds only if that service
-account trusts the workflow. End it in `role/ReadOnly` for a job that only
-reads.
-
-The step's credentials last an hour, and nothing renews them during the job. For
-a longer job, add `role-duration-seconds` to the step, up to `43200` (12 hours).
-
-A refused sign-in fails the step with:
-
-```text
-AccessDenied: Not authorized to perform sts:AssumeRoleWithWebIdentity (request id 8f3a1c2b9d4e5f60-SEA)
-```
-
-The same error covers a workflow the service account doesn't trust (check the
-subject, as above), a disabled service account, and an ID in `role-to-assume`
-that isn't a service account. If none of those explains it, email
-[hello@source.coop](mailto:hello@source.coop) and quote the request id.
