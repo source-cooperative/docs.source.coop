@@ -45,8 +45,8 @@ That is why these guides use AWS tools:
 - **Your upload credentials come from Source Cooperative, not AWS.** They use
   the AWS credential format (access key ID, secret access key, session token)
   because S3 clients expect it, but they are only valid at the Source data proxy.
-- **Addresses are proxy addresses.** `s3://your-org/your-product/` means the
-  `your-product` product in the `your-org` account on Source Cooperative. It
+- **Addresses are proxy addresses.** `s3://account-id/product-id/` means the
+  `product-id` product in the `account-id` account on Source Cooperative. It
   is not an Amazon S3 bucket. Where your data is physically stored doesn't change it.
 
 ## Where to upload your data
@@ -54,10 +54,10 @@ That is why these guides use AWS tools:
 You may upload only to your product's prefix on the data proxy, for example:
 
 ```
-s3://your-org/your-product/
+s3://account-id/product-id/
 ```
 
-This matches your product page URL, `https://source.coop/your-org/your-product`.
+This matches your product page URL, `https://source.coop/account-id/product-id`.
 
 You may not upload outside this path.
 
