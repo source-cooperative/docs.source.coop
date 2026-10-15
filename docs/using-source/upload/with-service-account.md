@@ -77,7 +77,7 @@ a token GitHub issues for each run. There is no key to store, rotate or leak.
    `your-org@123/pipelines@456`. The dialog offers that form when GitHub shows the
    repository publicly; for a private one, it prints a `gh` command that finds it.
 3. Under **Allow runs from**, choose one of the following:
-   - **Branch**, and provide the repository branch name that will trigger the the workflows  run.
+   - **Branch**, and provide the repository branch name that will trigger the workflow run.
    - **Tag**, and provide the tag name that will trigger the workflow.
    - **Environment**, and provide the name of the GitHub environment the job runs in.
 4. Click **Trust it**.

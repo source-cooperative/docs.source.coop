@@ -24,6 +24,18 @@ $ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+### Prose linting
+
+Docs are linted with [Vale](https://vale.sh) on pull requests. To run it locally:
+
+```
+$ brew install vale
+$ vale sync
+$ vale docs
+```
+
+Errors fail CI; warnings are advisory. Add project terms to `styles/config/vocabularies/Source/accept.txt`.
+
 ### Deployment
 
 Using SSH:

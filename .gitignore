@@ -47,3 +47,7 @@ website/.cpu-prof
 website/i18n/**/*
 #!website/i18n/fr
 #!website/i18n/fr/**/*
+
+# Vale packages, fetched by `vale sync`
+styles/*
+!styles/config/
