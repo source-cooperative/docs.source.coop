@@ -74,6 +74,20 @@ Source uses object storage rather than traditional file storage. This has import
 - **No version control**: Unlike Git-based systems, Source doesn't provide granular version control on individual objects. Source is designed for publishing "fully baked" data products
 - **Flat namespace**: While you can organize objects with path prefixes, the underlying storage is flat rather than hierarchical
 
+### Data Connections
+
+A data connection is a configuration that describes an external S3 bucket you own and how Source accesses it. Data connections are used with the [Bring Your Own Bucket (BYOB)](/bring-your-own-bucket) feature, which allows data products to be served from storage you control rather than Source-managed storage.
+
+Each data connection specifies:
+
+- **Bucket**: The external S3 bucket that holds the data
+- **Authentication Type**: Whether the bucket is public (no credentials needed) or private (accessed via OIDC federation — no credentials stored)
+- **Base Prefix**: An optional root folder within the bucket; individual products can read from a child path beneath it
+- **Allowed Visibilities**: Which data product visibility levels (public, unlisted, restricted) may use this connection
+- **Read Only**: Whether the connection allows browse/download only (required for public, unsigned connections)
+
+Data connections belong to an account and can be shared across multiple data products. For setup instructions, see [Bring Your Own Bucket](/bring-your-own-bucket).
+
 ### Data Viewers
 
 Source provides built-in preview functionality for common data formats directly in the browser. This allows users to visualize and explore data before downloading. When you navigate to an individual file in Source, you'll see a preview along with metadata rather than immediately downloading the file.
