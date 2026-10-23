@@ -43,6 +43,7 @@ const sidebars: SidebarsConfig = {
         },
         'using-source/bring-your-own-bucket',
         'using-source/data-proxy',
+        'using-source/analytics',
       ],
     },
     {
