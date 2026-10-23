@@ -12,8 +12,8 @@ Data products can be owned by an organization or an individual. You will see a d
 ## When creating a data product
 
 - **Product Title**: Maximum 200 characters.
-- - **Owner Account***: The account that the product will be listed under. If you are a part of 1 or multiple organizations, you will see the organization(s) as options for hosting in addition with your personal account. If you are not a part of any organizations, the owner will be your personal account. 
-- - **Product ID**: 3–39 characters, alphanumeric and hyphens only (A–Z, 0–9, -). No consecutive hyphens, and it cannot start or end with a hyphen. The identifier appears in the URL.
+- **Owner Account***: The account that the product will be listed under. If you are a part of 1 or multiple organizations, you will see the organization(s) as options for hosting in addition with your personal account. If you are not a part of any organizations, the owner will be your personal account. 
+- **Product ID**: 3–39 characters, alphanumeric and hyphens only (A–Z, 0–9, -). No consecutive hyphens, and it cannot start or end with a hyphen. The identifier appears in the URL.
 - **Description**: Optional; maximum 500 characters. Use it for a short overview; put detailed documentation in the README.
 - **Visibility**: New data products are created **Unlisted** (not shown in search). When ready to publish, open the data product page, click the gear icon, and set the state to **Listed**.
 - **Tags**: Comma-separated, up to 20 tags. They help others discover your data.
