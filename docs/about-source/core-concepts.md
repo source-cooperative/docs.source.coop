@@ -145,14 +145,16 @@ Organizations can create shared accounts that multiple individuals can manage co
 **Account Roles**: Individuals can have different roles within organizational accounts:
 
 - **Owner**: Full control over the organization and all its data products
-- **Administrator**: Can manage data products and organization members
-- **Member**: Can contribute to the organization's data products based on assigned permissions
+- **Maintainer**: Can manage data products and organization members
+- **Writer**: Can upload and contribute to the organization's data products
+- **Reader**: Can view and download data within the organization's data products
 
-**Data Product Roles**: Access to individual data products can be managed separately:
+**Data Product Roles**: Access to individual data products can be managed separately, using the same four roles:
 
 - **Owner**: Full control over the data product, including deletion and access management
-- **Contributor**: Can upload and modify data within the product
-- **Viewer**: Can view and download data (relevant for restricted access data products)
+- **Maintainer**: Can manage the data product and its members
+- **Writer**: Can upload and modify data within the product
+- **Reader**: Can view and download data (relevant for restricted access data products)
 
 ## Key Principles
 
