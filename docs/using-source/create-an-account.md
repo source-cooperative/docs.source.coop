@@ -82,7 +82,7 @@ You don't need an account to:
 
 However, you will need an account for:
 
-- Accessing data programmatically via AWS CLI
+- Accessing restricted data programmatically via AWS CLI
 - Generating S3-compatible access credentials
 - Publishing your own data products
 
