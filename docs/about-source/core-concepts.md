@@ -76,17 +76,17 @@ Source uses object storage rather than traditional file storage. This has import
 
 ### Data Connections
 
-A data connection is a configuration that describes an external S3 bucket you own and how Source accesses it. Data connections are used with the [Bring Your Own Bucket (BYOB)](/bring-your-own-bucket) feature, which allows data products to be served from storage you control rather than Source-managed storage.
+A data connection describes a storage location — an Amazon S3 bucket (or S3-compatible store such as Cloudflare R2), an Azure Blob container, or a Google Cloud Storage bucket — and how Source accesses it. Source's own storage is configured as data connections, and with the [Bring Your Own Bucket (BYOB)](/bring-your-own-bucket) feature an account can add connections to storage it controls.
 
 Each data connection specifies:
 
-- **Bucket**: The external S3 bucket that holds the data
-- **Authentication Type**: Whether the bucket is public (no credentials needed) or private (accessed via OIDC federation — no credentials stored)
-- **Base Prefix**: An optional root folder within the bucket; individual products can read from a child path beneath it
+- **Location**: The bucket (S3, GCS) or storage account and container (Azure) that holds the data
+- **Authentication**: None, for a public bucket read anonymously, or federated access in which the data proxy assumes an IAM role you grant it, so no long-lived credentials are stored
+- **Base Prefix**: An optional root folder within the bucket; each product's data sits beneath it, at a path set by the connection's prefix template
 - **Allowed Visibilities**: Which data product visibility levels (public, unlisted, restricted) may use this connection
-- **Read Only**: Whether the connection allows browse/download only (required for public, unsigned connections)
+- **Read Only**: Whether products can only browse and download; required for connections without authentication
 
-Data connections belong to an account and can be shared across multiple data products. For setup instructions, see [Bring Your Own Bucket](/bring-your-own-bucket).
+Data connections belong to an account and can be shared across that account's data products. Creating them is in beta and must be enabled for your account by Source staff. For setup instructions, see [Bring Your Own Bucket](/bring-your-own-bucket).
 
 ### Data Viewers
 
