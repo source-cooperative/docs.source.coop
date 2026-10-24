@@ -17,7 +17,7 @@ Source Cooperative is a data publishing utility for the web that allows trusted 
 
 **Cost-Effective at Scale**: Source hosts over 1 petabyte of data across 300+ data products. Whether you're publishing a few gigabytes or hundreds of terabytes, Source provides cost-effective hosting without requiring you to manage cloud infrastructure.
 
-**Cloud-Native Access**: Data on Source is stored in S3-compatible object storage, enabling efficient programmatic access through standard tools like the AWS CLI and various other programming libraries. Access data via the web interface.
+**Cloud-Native Access**: Data on Source is served through an S3-compatible API, whichever cloud stores it, enabling efficient programmatic access through standard tools like the AWS CLI and various other programming libraries. Access data via the web interface.
 
 **Built for the Research Community**: Source is developed and maintained by Radiant Earth, a 501(c)(3) non-profit organization. As a non-profit utility, Source aims to provide the best service to its members at the lowest possible cost, without seeking arbitrary profits or vendor lock-in.
 
