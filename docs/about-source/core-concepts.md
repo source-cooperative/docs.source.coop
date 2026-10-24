@@ -82,7 +82,7 @@ Each data connection specifies:
 
 - **Location**: The bucket (S3, GCS) or storage account and container (Azure) that holds the data
 - **Authentication**: None, for a public bucket read anonymously, or federated access in which the data proxy assumes an IAM role you grant it, so no long-lived credentials are stored
-- **Base Prefix**: An optional root folder within the bucket; each product's data sits beneath it, at a path set by the connection's prefix template
+- **Base Prefix**: An optional root folder within the bucket or container; each product's data sits beneath it, at a path set by the connection's prefix template
 - **Allowed Visibilities**: Which data product visibility levels (public, unlisted, restricted) may use this connection
 - **Read Only**: Whether products can only browse and download; required for connections without authentication
 
