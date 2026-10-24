@@ -76,7 +76,7 @@ Source uses object storage rather than traditional file storage. This has import
 
 ### Data Connections
 
-A data connection describes a storage location — an Amazon S3 bucket (or S3-compatible store such as Cloudflare R2), an Azure Blob container, or a Google Cloud Storage bucket — and how Source accesses it. Source's own storage is configured as data connections, and with the [Bring Your Own Bucket (BYOB)](/bring-your-own-bucket) feature an account can add connections to storage it controls.
+A data connection describes a storage location — an Amazon S3 bucket (or S3-compatible store such as Cloudflare R2), an Azure Blob container, or a Google Cloud Storage bucket — and how Source accesses it. Source's own storage is configured as data connections, and with the Bring Your Own Bucket (BYOB) feature an account can add connections to storage it controls.
 
 Each data connection specifies:
 
