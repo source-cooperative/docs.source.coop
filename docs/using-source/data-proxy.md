@@ -60,6 +60,41 @@ See [Upload with the Source CLI](/upload-with-the-cli) for the one-time install 
 
 For software that runs on its own, with nobody there to log in, use a [service account](/automated-access) instead.
 
+## Using DuckDB
+
+DuckDB's `httpfs` extension doesn't read the AWS CLI's endpoint settings, so give it the proxy in an S3 secret. Paths are `s3://ACCOUNT/PRODUCT/...`, and the proxy only takes path-style requests.
+
+For public data, no credentials are needed:
+
+```sql
+CREATE SECRET source_coop (
+    TYPE s3,
+    ENDPOINT 'data.source.coop',
+    URL_STYLE 'path',
+    REGION 'us-west-2'
+);
+
+SELECT count(*) FROM 's3://cholmes/admin-boundaries/countries.parquet';
+```
+
+For data that needs authentication, set up the `source-coop` AWS profile from [Upload with the Source CLI](/upload-with-the-cli), then let DuckDB get credentials from it:
+
+```sql
+CREATE SECRET source_coop (
+    TYPE s3,
+    PROVIDER credential_chain,
+    CHAIN 'process',
+    PROFILE 'source-coop',
+    ENDPOINT 'data.source.coop',
+    URL_STYLE 'path',
+    REGION 'us-west-2'
+);
+
+SELECT * FROM 's3://your-org/product-id/data.parquet' LIMIT 10;
+```
+
+DuckDB runs the profile's `credential_process` (`source-coop creds`) when the secret is created. The credentials are temporary: if reads start failing after a while, run `CREATE SECRET` again.
+
 ## Getting Started with AWS CLI
 
 If you don't have the AWS CLI installed, follow the [AWS CLI Getting Started Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
