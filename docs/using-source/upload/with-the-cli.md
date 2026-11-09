@@ -23,7 +23,7 @@ Follow the install instructions in the [CLI README](https://github.com/source-co
 **2. Log in**
 
 ```bash
-source-coop login
+source-coop auth login
 ```
 
 This opens your browser to authenticate and caches short‑lived credentials in your OS keyring.
@@ -78,7 +78,7 @@ aws s3 sync ./data s3://your-org/product-id/
 
 :::
 
-The AWS CLI will refresh credentials automatically; re-run `source-coop login` when your session expires. Your upload permissions are scoped to the products you have access to.
+The AWS CLI will refresh credentials automatically; re-run `source-coop auth login` when your session expires. Your upload permissions are scoped to the products you have access to.
 
 ## Without the CLI: get credentials from the UI
 
