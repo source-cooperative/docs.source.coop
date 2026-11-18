@@ -74,6 +74,20 @@ Source uses object storage rather than traditional file storage. This has import
 - **No version control**: Unlike Git-based systems, Source doesn't provide granular version control on individual objects. Source is designed for publishing "fully baked" data products
 - **Flat namespace**: While you can organize objects with path prefixes, the underlying storage is flat rather than hierarchical
 
+### Data Connections
+
+A data connection describes a storage location — an Amazon S3 bucket (or S3-compatible store such as Cloudflare R2), an Azure Blob container, or a Google Cloud Storage bucket — and how Source accesses it. Source's own storage is configured as data connections, and with the Bring Your Own Bucket (BYOB) feature an account can add connections to storage it controls.
+
+Each data connection specifies:
+
+- **Location**: The bucket (S3, GCS) or storage account and container (Azure) that holds the data
+- **Authentication**: None, for a public bucket read anonymously, or federated access in which the data proxy assumes an IAM role you grant it, so no long-lived credentials are stored
+- **Base Prefix**: An optional root folder within the bucket or container; each product's data sits beneath it, at a path set by the connection's prefix template
+- **Allowed Visibilities**: Which data product visibility levels (public, unlisted, restricted) may use this connection
+- **Read Only**: Whether products can only browse and download; required for connections without authentication
+
+Data connections belong to an account and can be shared across that account's data products. Creating them is in beta and must be enabled for your account by Source staff. For setup instructions, see [Bring Your Own Bucket](/bring-your-own-bucket).
+
 ### Data Viewers
 
 Source provides built-in preview functionality for common data formats directly in the browser. This allows users to visualize and explore data before downloading. When you navigate to an individual file in Source, you'll see a preview along with metadata rather than immediately downloading the file.
