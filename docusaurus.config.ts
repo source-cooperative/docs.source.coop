@@ -44,6 +44,34 @@ const config: Config = {
         docsRouteBasePath: '/',
       },
     ],
+    [
+      // Writes /llms.txt (an index of every docs page) and /llms-full.txt
+      // (all pages in one file) for LLMs and agents: https://llmstxt.org/
+      'docusaurus-plugin-llms',
+      {
+        title: 'Source Cooperative',
+        description:
+          'Source Cooperative (https://source.coop) is a data publishing utility for the web, run by the non-profit Radiant Earth. These docs cover creating accounts and data products, uploading data, and reading data through the S3-compatible data proxy.',
+        excludeImports: true,
+        // The docs are served from the site root (the docs preset's routeBasePath: '/').
+        docsDir: [{path: 'docs', routeBasePath: '/'}],
+        // Same order as the sidebar, so case studies come last. Patterns
+        // without a slash match a file name anywhere, so the home page is
+        // named by its full path.
+        includeOrder: [
+          'docs/index.md',
+          'about-source/what-is-source.md',
+          'about-source/core-concepts.md',
+          'about-source/infrastructure.md',
+          'using-source/create-an-account.md',
+          'using-source/create-a-data-product.md',
+          'using-source/upload/index.md',
+          'using-source/upload/*.md',
+          'using-source/*.md',
+          'case-studies/*.md',
+        ],
+      },
+    ],
   ],
 
   presets: [
