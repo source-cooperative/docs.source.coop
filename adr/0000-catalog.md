@@ -12,6 +12,7 @@ I propose that we make the catalog the sole source of truth for Products. In ser
 ## `metadata-catalog-pipeline`
 
 Today, the metadata catalog manages the lifecycle of catalog entries. Instead, its scope will be reduced to augmenting active (ie non-disabled) catalog entries. It performs this role in two ways: observations and suggestions.
+
 ### Observations
 
 Observations are observed quantitative facts about a data product. For example, object count, byte volume, the distribution of files by types, date of last object write. Today, they are retrieved from parsing AWS S3 Inventory reports.
@@ -24,6 +25,7 @@ In the future, we should expand observation sourcing to other providers on a bes
 The `metadata-catalog-pipeline` should be capable of contributing observations about a particular product **without the need for approval but a Product's maintainer**.
 
 Consideration should be given to crafting a data model capable of supporting various levels of detail provided by varying observational sources.
+
 ### Suggestions
 
 Suggestions are ways in which the metadata catalog pipeline (or perhaps even users) can suggest alterations to an existing Product metadata. Only a Product's maintainer is capable of accepting and applying Suggestions.
@@ -47,8 +49,11 @@ If deemed necessary, artifacts of the STAC catalog will be generated on a regula
 | `extent.spatial.bbox` | latest observation `bbox` |
 | `extent.temporal.interval` | latest observation `datetime_range` |
 | `summaries`, `assets` | other latest observations |
+
 ## Technical Architecture
+
 ### RDBMS
+
 The catalog runs on SQLite hosted in Cloudflare D1, in a single database. We chose a relational database for three reasons:
 
 - **Integrity.** Foreign keys, `CHECK` constraints and triggers enforce rules that the current stores cannot. For example, a `tag` must come from the sanctioned set.
@@ -122,6 +127,9 @@ Limits:
 
 One row per product. This is the source of truth for editor-owned metadata.
 
+> [!IMPORTANT]
+> The below schema represents a crude first-pass concept of the table shape. We should better settle in on a design once this general idea is agreed upon.
+
 ```sql
 products(
   id            TEXT PRIMARY KEY,            -- 'account_id/product_id'
@@ -152,6 +160,9 @@ Search indexes are `products_fts` (title, description, keywords), `products_bbox
 
 The controlled vocabulary. Formerly known as "Tags" but renamed for better adherence to STAC convention.
 
+> [!IMPORTANT]
+> The below schema represents a crude first-pass concept of the table shape. We should better settle in on a design once this general idea is agreed upon.
+
 ```sql
 keywords(
   term         TEXT PRIMARY KEY,
@@ -169,6 +180,9 @@ A new term starts as `suggested`. A suggestion can propose it, but a product can
 
 A many-to-many link from products to keywords.
 
+> [!IMPORTANT]
+> The below schema represents a crude first-pass concept of the table shape. We should better settle in on a design once this general idea is agreed upon.
+
 ```sql
 product_keywords(
   product_id TEXT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
@@ -182,6 +196,9 @@ The foreign key blocks unknown terms. A trigger also rejects any term whose `sta
 #### `suggestions`
 
 AI and user-sourced suggestions.
+
+> [!IMPORTANT]
+> The below schema represents a crude first-pass concept of the table shape. We should better settle in on a design once this general idea is agreed upon.
 
 ```sql
 suggestions(
@@ -209,6 +226,9 @@ A suggestion is `stale` when `products.version` has moved past `base_version`. A
 
 Measured values from the pipeline and from maintainers.
 
+> [!IMPORTANT]
+> The below schema represents a crude first-pass concept of the table shape. We should better settle in on a design once this general idea is agreed upon.
+
 ```sql
 observations(
   id          INTEGER PRIMARY KEY,
@@ -232,6 +252,7 @@ observations(
 - R2 metrics may give only an `estimate` of bytes.
 
 Search and the Product page read the latest observation for each `(product_id, key)`. The latest row has the greatest `observed_at`. The `id` breaks ties. An index on `(product_id, key, observed_at)` serves this query.
+
 #### `product_events`
 
 An append-only audit log. Each row records who changed what, when, the old and new value, and the source (`user`, `accepted-suggestion`, `migration`). Triggers or the write path can fill it. The choice depends on research into D1 audit patterns.
