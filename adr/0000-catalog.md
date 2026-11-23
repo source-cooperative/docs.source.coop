@@ -1,7 +1,9 @@
-# ADR-000: Product Catalog 
+# ADR-NNN: Catalog Editing and Search
 
-**Status**: Draft
-**Author**: @alukach
+**Status:** Proposed
+**Date:** 2026-11-20
+**Depends on:** ADR-005
+**Related:** source-cooperative/source.coop#767 and #768 (keyword edit endpoint), metadata-catalog-pipeline#110 (human-in-the-loop redraft)
 
 ---
 
